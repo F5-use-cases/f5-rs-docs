@@ -42,6 +42,7 @@ configure your personal information in the global parameters file.
 
 .. code-block:: terminal
 
+   echo password > ~/.vault_pass.txt
    ansible-vault edit --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-global-vars-vault.yaml
 
 * after you save the f5-rs-global-vars-vault.yaml file for the first time you get an error message, ignore it it's a bug
@@ -54,7 +55,6 @@ the following script will configure jenkins with your information
 
 .. code-block:: terminal
 
-   echo password > ~/.vault_pass.txt
    ansible-playbook --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml
 
    
