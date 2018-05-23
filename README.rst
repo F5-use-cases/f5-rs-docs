@@ -54,6 +54,7 @@ the following script will configure jenkins with your information
 
 .. code-block:: terminal
 
+   echo password > ~/.vault_pass.txt
    ansible-playbook --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml
 
    
