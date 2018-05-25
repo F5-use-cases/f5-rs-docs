@@ -1,15 +1,19 @@
+SecDevOps lab 
+===================
+
+this lab covers how to protect an app using F5's application security solutions and 'bake' the security policy into the application lifecycle. 
+
 Getting started
 ===================
 
 if you run into issues / problems please contact me email with some information, yossi@f5.com
 
-This document explains how to begin using the F5 Reference solutions.
-
-Full documentation for the project located here: http://f5-rs-docs.readthedocs.io/en/latest/
-  
 
 Run the rs-container
 ----------------------------
+
+The entire lab is built from code hosted in this repo, in order to launch the lab environment you will download and run a container that has the tools we are using (ansible and jenkins) as well as the depndencies and requirements to interact with the differnet services (F5, AWS, github.. ) 
+
 
 .. code-block:: terminal
 
@@ -31,12 +35,13 @@ jenkins user is used so that the config changes we do are available to jenkins
    
 configure aws credentials - ONLY accesskey and secretkey. Leave the other fields as "None"
 
-How to get aws key: https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/
 
 .. code-block:: terminal
 
    aws configure
 
+
+copy the global paramaters file to /home/snops
 
 configure your personal information in the global parameters file. 
 
@@ -51,8 +56,7 @@ configure your personal information in the global parameters file.
 Configure jenkins and reload it
 ------------------------------------------------------------
 
-the following script will configure jenkins with your information
-
+the following script will configure jenkins with your information and reload it. 
 .. code-block:: terminal
 
    ansible-playbook --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml
@@ -80,10 +84,10 @@ on your laptop (the container host) Open Jenkins http://localhost:10000
 usernmae: snops , password: default
 
 
-Run your first solution:
+start the dev environment:
 ------------------------------------------------------------------------------------
 
-.. image:: img/aws_waf_sp.png
+.. image:: img/jenkins.png
    :align: center
    
    
