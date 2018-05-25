@@ -41,7 +41,7 @@ configure aws credentials - ONLY accesskey and secretkey. Leave the other fields
    aws configure
 
 
-copy the global paramaters file to /home/snops
+copy the global paramaters file to /home/snops (for now get it from me yossi@f5.com) 
 
 configure your personal information in the global parameters file. 
 
