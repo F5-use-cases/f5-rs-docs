@@ -57,6 +57,7 @@ Configure jenkins and reload it
 ------------------------------------------------------------
 
 the following script will configure jenkins with your information and reload it. 
+
 .. code-block:: terminal
 
    ansible-playbook --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml
