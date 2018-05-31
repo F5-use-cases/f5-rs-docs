@@ -100,6 +100,18 @@ click on 'run' to start the dev environment pipeline.
 
 wait until all of the jobs have finished (turned green). 
 
+open slack - https://f5-rs.slack.com/messages/C9WLUB89F/
+go to the 'builds' channel. 
+use the search box on the upper right corner and filter by your username (student#). 
+jenkins will send to this channel the bigip and the application address. 
+
+open the bigip and login using the provided credentials. 
+try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the bigip. 
+
+check the bigip configuration under the 'rs_app1' partition, 
+AS3 is bening used to push the service configuration to the bigip. the AS3 decleration deploys all of the objects into a partition. 
+check which ASM policy is attached to the 'service_main' VIP. 
+
 
 .. image:: img/jenkins.png
    :align: center
