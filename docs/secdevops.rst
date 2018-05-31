@@ -109,113 +109,60 @@ open the bigip and login using the provided credentials.
 try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the bigip. 
 
 check the bigip configuration under the 'rs_app1' partition, 
-AS3 is bening used to push the service configuration to the bigip. the AS3 decleration deploys all of the objects into a partition. 
+AS3 is used to push the service configuration to the bigip. the AS3 decleration deploys all of the objects into a partition. 
 check which ASM policy is attached to the 'service_main' VIP. 
 
+go to 'traffic learning', make sure you are editing the 'linux-high' policy. 
+you should see a suggestion on 'High ASCII characters in headers' , examine the request. this is a flase positive. the app uses a different language in the header and it is legitimate traffic. 
+accept the suggestion.
 
-.. image:: img/jenkins.png
-   :align: center
-   
-   
-on jenkins main page, click on the folder - "aws waf with splunk"
+check the other suggestions, you'll see some signatures that were triggered. those are actual threats that are part of the autometed security testing and we can ignore the suggestions. 
 
-.. image:: img/jenkins10.PNG
-   :align: center
+apply the policy. we will now export the policy to the git repo and start the autometed build again to check that we are ready to promote it to production. 
 
+go back to jenkins, under the 'f5-rs-app1-dev' there is a job that will export the policy and save it to the git repo - 'SEC export waf policy'
+click on this job and choose 'Build with Parameters' from the left menu. 
 
-Click on the "aws waf stack 01" tab
+you can leave the defaults, it asks for two parameters. one is the name of the policy on the bigip and the other is the new policy name in the git repo. 
 
-.. image:: img/jenkins102.PNG
-   :align: center
+click on 'build' 
 
-click on "run" to start the solution pipeline:
+check the slack channel - you should see a message about the new security policy that's ready. 
+this illustrates how chatops can help between different teams. 
 
-.. image:: img/jenkins11.PNG
-   :align: center
+the security admin role ends here. it's now up to the developer to update the iac_parameters.yaml in their repo to point to the new policy and run the pipeline again. 
 
-choose the region in which you want to deploy the stack and click "build":
-
-Wait until the stack is ready (takes about 10-15 minutes). you should see all of the jobs in green. 
-
-if one of the jobs failed, try to run in again, if it still deosn't work send me a note: yossi@f5.com
-
-.. image:: img/jenkins12.PNG
-   :align: center
-   
-   
-BIGIP access:
-~~~~~~~~~~~~~~
-
-click on "console output" in the "aws tag master" job 
-
-.. image:: img/jenkins3.PNG
-   :align: center
-
-look for "bigip management" in the output
-
-.. image:: img/jenkins4.PNG
-   :align: center
-
-
-Application access:
+change the policy used for the app:
 ~~~~~~~~~~~~~~~~~~~
 
-click on "console output" in the "rs attacks" job , look for the https link to the app and verify that the attack was rejected by ASM 
+ssh into the contianer, make sure you are connected as user 'jenkins' 
+go to the application git folder. check which branches are there and what is the active branch. (git branch) 
+you should be on the 'dev' branch. the files you see belong to the dev branch. 
 
-.. image:: img/jenkins5.PNG
-   :align: center
+.. code-block:: terminal
 
-App securirty lifecycle - Proactive bot defense :
-~~~~~~~~~~~~~~~~~~~
-
-Here you will change the application security policy using jenkins, this ilustrates a process in which the sec admin creates some templates for the app teams to consume
-
-Go back to the "aws with splunk" folder, click on the "waf policy" tab:
-
-.. image:: img/jenkins101.PNG
-   :align: center
-
-Click on "run":
-
-.. image:: img/jenkins13.PNG
-   :align: center
-
-Change the setting for 'proactive bot' to "always':
-
-.. image:: img/jenkins14.PNG
-   :align: center
-
-check that proactive bot defense is on by trying to access the application using curl / postman / browser with spoofed UA 
-
-App securirty lifecycle - Brute-force protection :
-~~~~~~~~~~~~~~~~~~~
-
-Go back to the "aws with splunk" folder, click on the "waf policy" tab:
-
-.. image:: img/jenkins101.PNG
-   :align: center
-
-Click on "run":
-
-.. image:: img/jenkins13.PNG
-   :align: center
-
-Change the setting for 'asm_policy' to "linux-high-bf':
-
-.. image:: img/jenkins15.PNG
-   :align: center
+   cd /home/snops/f5-rs-app1
+   git branch
    
+edit the iac_parameters.yaml file to point the deployment to the new ASM policy. then add the file to git and commit 
 
-Verify Bruteforce is working by trying to enter wrong crednetials. 
+.. code-block:: terminal
 
-first access the login page https://app-url/user/login 10 times to qualify the url.
+   vi iac_parameters.yaml 
+   git add iac_parameters.yaml
+   git commit -m "changed asm policy"
+   
+go back to jenkins, jenkins is set up 
 
-after 3 failures you sohuld get a captcha page 
 
-solve the captcha and after 3 more failures you will get the honeypot page:
 
-.. image:: img/honeypot01.PNG
-   :align: center
+
+
+
+
+
+
+
 
 logs and analytics:
 ~~~~~~~~~~~~~~~~~~~
