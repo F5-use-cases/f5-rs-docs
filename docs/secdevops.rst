@@ -143,7 +143,16 @@ you should be on the 'dev' branch. the files you see belong to the dev branch.
 
    cd /home/snops/f5-rs-app1
    git branch
+
+
+Configure your information in git, this information is used by git (in this lab it we use local git so it only has local meaning) 
+
+.. code-block:: terminal
+
+   git config --global user.email "you@example.com"
+   git config --global user.name "Your Name"
    
+ 
 edit the iac_parameters.yaml file to point the deployment to the new ASM policy. then add the file to git and commit 
 
 .. code-block:: terminal
