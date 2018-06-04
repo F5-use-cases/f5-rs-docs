@@ -94,13 +94,13 @@ usernmae: snops , password: default
 start the dev environment:
 ------------------------------------------------------------------------------------
 
-in jenkins open the 'secdevops lab 01' folder', the lab files are all in this folder 
+in jenkins open the 'DevSecOps - Lab - App2' folder', the lab files are all in this folder 
 we will start by deploying a dev environment, you will start a pipeline that creates a full environment in AWS. 
 
-click on the 'f5-rs-app1-dev' folder.
+click on the 'f5-rs-app2-dev' folder.
 here you can see all of the relevant jenkins jobs for the dev environment.
 
-click on 'aws waf stack 01' , that's the pipeline view for the same folder. 
+click on 'Full stack deployment' , that's the pipeline view for the same folder. 
 click on 'run' to start the dev environment pipeline. 
 
 wait until all of the jobs have finished (turned green). 
