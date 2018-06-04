@@ -43,6 +43,11 @@ configure aws credentials - ONLY accesskey and secretkey. Leave the other fields
 
 copy the global paramaters file to /home/snops (for now get it from me yossi@f5.com) 
 
+.. code-block:: terminal
+
+   vi /home/snops/f5-rs-global-vars-vault.yaml
+   
+
 configure your personal information in the global parameters file. 
 
 .. code-block:: terminal
