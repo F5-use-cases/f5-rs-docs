@@ -42,6 +42,7 @@ Copy credentilas and paramaters files from the host folder.
 
    ssh-keygen -f $HOME/.ssh/id_rsa -t rsa -N ''
    cp /home/snops/host_volume/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global-vars-vault.yaml
+   mkdir ~/.aws && cp /home/snops/host_volume/credentials ~/.aws/credentials
    
 
 configure your personal information in the global parameters file. 
