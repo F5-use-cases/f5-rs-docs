@@ -1,4 +1,4 @@
-SecDevOps lab 
+DevSecOps lab 
 ===================
 
 this lab covers how to protect an app using F5's application security solutions and 'bake' the security policy into the application lifecycle. 
