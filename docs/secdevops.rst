@@ -184,7 +184,7 @@ check the other suggestions, you'll see some signatures that were triggered. tho
 
 apply the policy. we will now export the policy to the git repo and start the autometed build again to check that we are ready to promote it to production. 
 
-go back to jenkins, under the 'f5-rs-app1-dev' there is a job that will export the policy and save it to the git repo - 'SEC export waf policy'
+go back to jenkins, under the 'f5-rs-app2-dev' there is a job that will export the policy and save it to the git repo - 'SEC export waf policy'
 
 .. image:: /img/devsecops_lab01/jenkins075.PNG
    :width: 800 px
@@ -196,36 +196,9 @@ click on this job and choose 'Build with Parameters' from the left menu.
    :width: 800 px
    :align: center
 
-you can leave the defaults, it asks for two parameters. the first parameter is the name of the policy on the bigip and the other is the new policy name in the git repo. 
- 
+you can leave the defaults, it asks for two parameters. the first parameter is the name of the policy on the bigip and the other is the new policy name in the git repo.  
 
 click on 'build' 
-
-ssh into the contianer, make sure you are connected as user 'jenkins' 
-go to the application git folder. check which branches are there and what is the active branch. (git branch) 
-you should be on the 'dev' branch. the files you see belong to the dev branch. 
-
-.. code-block:: terminal
-
-   cd /home/snops/f5-rs-app1
-   git branch
-
-
-Configure your information in git, this information is used by git (in this lab it we use local git so it only has local meaning) 
-
-.. code-block:: terminal
-
-   git config --global user.email "you@example.com"
-   git config --global user.name "Your Name"
-   
- 
-edit the iac_parameters.yaml file to point the deployment to the new ASM policy. then add the file to git and commit 
-
-.. code-block:: terminal
-
-   vi iac_parameters.yaml 
-   git add iac_parameters.yaml
-   git commit -m "changed asm policy"
 
 check the slack channel - you should see a message about the new security policy that's ready. 
 this illustrates how chatops can help between different teams. 
@@ -245,7 +218,7 @@ you should be on the 'dev' branch. the files you see belong to the dev branch.
 
 .. code-block:: terminal
 
-   cd /home/snops/f5-rs-app1
+   cd /home/snops/f5-rs-app2
    git branch
 
 
@@ -257,7 +230,7 @@ Configure your information in git, this information is used by git (in this lab 
    git config --global user.name "Your Name"
    
  
-edit the iac_parameters.yaml file to point the deployment to the new ASM policy. then add the file to git and commit 
+edit the iac_parameters.yaml file to point the deployment to the new ASM policy (linux-high-v01). then add the file to git and commit 
 
 .. code-block:: terminal
 
@@ -266,32 +239,33 @@ edit the iac_parameters.yaml file to point the deployment to the new ASM policy.
    git commit -m "changed asm policy"
 
 
+go back to jenkins and open the 'f5-rs-app2-dev ' folder. choose the 'waf policy' tab , jenkins is set up to monitor the application repo. when a 'commit' is identified jenkins will start an automatic pipeline to deploy the service. it takes up to a minute for jenkins to start the pipeline. 
 
+jenkins takes the parametes from the git repo and uses them to deploy/update the service. 
 
-log on to the bigip again, check which ASM policies are there and which policy is attached to the 'service_main' VIP. 
+log on to the bigip again, check which ASM policies are there and which policy is attached to the 'App2 VIP. 
 check the 'traffic learning' for the security policy and verify you no longer see the 'high ascii charachters' 
 
 this concludes the tests in the 'dev' environment. we are now ready to push the changes to production. 
 we will 'merge' the app1 dev branch with the master branch so that the production deployment will use the correct policy. 
+on the /home/snops/f5-rs-app2 folder:
 
 .. code-block:: terminal
  
    git checkout master
    git merge -m "changed asm policy"
 
+* the merge will trigger a job in jenkins that's configured to monitor this repo - 'Push waf policy', since the environment isn't deployed yet it will fail, either cancel the job or let it fail. 
 
-we will deploy the environemnt. go to the 'f5-rs-app1-prod' folder, choose the 'aws stack waf 01' view and run the pipeline. 
+deploy to PROD:
+~~~~~~~~~~~~~~~~~~
+
+we will deploy the environemnt. go to the 'f5-rs-app2-prod' folder, choose the 'Full stack deployment' view and run the pipeline. 
 go to slack to get the ip's for the bigip and the app. 
 
 
 
 
-
-
-
-go back to jenkins and open the 'f5-rs-app1-dev ' folder. choose the 'waf policy' tab , jenkins is set up to monitor the application repo. when a 'commit' is identified jenkins will start an automatic pipeline to deploy the service. it takes up to a minute for jenkins to start the pipeline. 
-
-jenkins takes the parametes from the git repo and uses them to deploy/update the service. 
 
 
 
