@@ -36,15 +36,12 @@ jenkins user is used so that the config changes we do are available to jenkins
    
    
 Create the SSH keys, the SSH key will be used when creating EC2 instances.  we will strore them in the jenkins SSH folder so that jenkins can use them to access instances.
-Copy credentilas and paramaters files from the host folder. 
-copy the udf SSH key to the authorized ssh keys folder for direct ssh access using UDF. 
+Copy credentilas and paramaters files from the host folder.  
 
 .. code-block:: terminal
 
-   mkdir /var/jenkins_home/.ssh
-   ssh-keygen -f /var/jenkins_home/.ssh/id_rsa -t rsa -N ''
+   ssh-keygen -f $HOME/.ssh/id_rsa -t rsa -N ''
    cp /home/snops/host_volume/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global-vars-vault.yaml
-   cp /home/snops/host_volume/sshkeys/udf.pub /home/snops/.ssh/authorized_keys
    
    
 
