@@ -41,7 +41,8 @@ copy the udf SSH key to the authorized ssh keys folder for direct ssh access usi
 
 .. code-block:: terminal
 
-   ssh-keygen -f var/jenkins_home/.ssh/id_rsa -t rsa -N ''
+   mkdir /var/jenkins_home/.ssh
+   ssh-keygen -f /var/jenkins_home/.ssh/id_rsa -t rsa -N ''
    cp /home/snops/host_volume/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global-vars-vault.yaml
    cp /home/snops/host_volume/sshkeys/udf.pub var/jenkins_home/.ssh/authorized_keys
    
