@@ -30,8 +30,9 @@ The code is open source and |f5_ansible_github|.
 .. toctree::
    :maxdepth: 2
    :caption: Solutions reference
+   :glob:
 
-   /solutions
+   /solutions/secdevops
    
    
 .. toctree::
