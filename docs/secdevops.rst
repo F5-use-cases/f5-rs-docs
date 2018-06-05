@@ -46,14 +46,13 @@ Copy credentilas and paramaters files from the host folder.
    
 
 configure your personal information in the global parameters file. 
+please use your real F5 username and email. username is limited to 8 charachters. 
 
 .. code-block:: terminal
 
    echo password > ~/.vault_pass.txt
    ansible-vault edit --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-global-vars-vault.yaml
 
-* after you save the f5-rs-global-vars-vault.yaml file for the first time you get an error message, ignore it it's a bug
-  ERROR! Unexpected Exception, this is probably a bug: [Errno 1] Operation not permitted: '/home/snops/f5-rs-global-vars-vault.yaml'
 
 Configure jenkins and reload it
 ------------------------------------------------------------
@@ -64,25 +63,12 @@ the following script will configure jenkins with your information and reload it.
 
    ansible-playbook --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml
 
-   
-SSH key configuration (if you don't have an existing SSH key you want to use):
-------------------------------------------------------------------------------------
-
-use key_gen to generate a new private and public key (accept all defaults - DON'T use passphrase)
-
-.. code-block:: terminal
-
-   ssh-keygen
-   
-command will create a private/public key pair in the jenkins home directory: /var/jenkins_home/.ssh/id_rsa /var/jenkins_home/.ssh/id_rsa.pub
-
-store both private and public key in a secure place on your laptop for future use!
 
 
 Open Jenkins:
 ------------------------------------------------------------------------------------
 
-on your laptop (the container host) Open Jenkins http://localhost:10000
+go to UDF, on the 'jumphost' click on 'access' and 'jenkins'  
 
 usernmae: snops , password: default
 
