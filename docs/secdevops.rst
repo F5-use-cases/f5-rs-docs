@@ -220,9 +220,8 @@ you should be on the 'dev' branch. the files you see belong to the dev branch.
 
    cd /home/snops/f5-rs-app2
    git branch
-
-
-Configure your information in git, this information is used by git (in this lab it we use local git so it only has local meaning) 
+   
+Configure your information in git, this information is used by git (in this lab we use local git so it only has local meaning) 
 
 .. code-block:: terminal
 
@@ -238,7 +237,11 @@ edit the iac_parameters.yaml file to point the deployment to the new ASM policy 
    git add iac_parameters.yaml
    git commit -m "changed asm policy"
 
-
+.. image:: /img/devsecops_lab01/dev-cmd-010.PNG
+   :width: 800 px
+   :align: center
+   
+   
 go back to jenkins and open the 'f5-rs-app2-dev ' folder. choose the 'waf policy' tab , jenkins is set up to monitor the application repo. when a 'commit' is identified jenkins will start an automatic pipeline to deploy the service. it takes up to a minute for jenkins to start the pipeline. 
 
 jenkins takes the parametes from the git repo and uses them to deploy/update the service. 
@@ -262,6 +265,11 @@ deploy to PROD:
 
 we will deploy the environemnt. go to the 'f5-rs-app2-prod' folder, choose the 'Full stack deployment' view and run the pipeline. 
 go to slack to get the ip's for the bigip and the app. 
+
+open the bigip and verify that you don't see the 'high ascii' false positive. 
+
+verify the security policy that's attached to the VIP. 
+
 
 
 
