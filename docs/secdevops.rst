@@ -75,6 +75,9 @@ go to UDF, on the 'jumphost' click on 'access' and 'jenkins'
 usernmae: snops , password: default
 
 
+when you open jenkins you sohuld see two jobs that have started running automaticlly, 'Push a WAF policy',
+this happens because jenkins monitors the repo and start the jobs. you can cancel the jobs or let them fail. 
+
 
 start the dev environment:
 ------------------------------------------------------------------------------------
@@ -94,41 +97,117 @@ here you can see all of the relevant jenkins jobs for the dev environment.
    :align: center
 
 click on 'Full stack deployment' , that's the pipeline view for the same folder. 
+
+.. image:: /img/devsecops_lab01/jenkins030.PNG
+   :width: 800 px
+   :align: center
+   
 click on 'run' to start the dev environment pipeline. 
 
+.. image:: /img/devsecops_lab01/jenkins040.PNG
+   :width: 800 px
+   :align: center
+
+
+you can review the output of each job while its running, click on the small CMD icon as shown in the screenshot:
+
+.. image:: /img/devsecops_lab01/jenkins050.PNG
+   :width: 800 px
+   :align: center
+   
+   
 wait until all of the jobs have finished (turned green). 
+
+.. image:: /img/devsecops_lab01/jenkins060.PNG
+   :width: 800 px
+   :align: center
 
 open slack - https://f5-rs.slack.com/messages/C9WLUB89F/
 go to the 'builds' channel. 
 use the search box on the upper right corner and filter by your username (student#). 
 jenkins will send to this channel the bigip and the application address. 
 
-open the bigip and login using the provided credentials. 
-try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the bigip. 
+.. image:: /img/devsecops_lab01/Slack-040.PNG
+   :width: 800 px
+   :align: center
 
-check the bigip configuration under the 'rs_app1' partition, 
-AS3 is used to push the service configuration to the bigip. the AS3 decleration deploys all of the objects into a partition. 
-check which ASM policy is attached to the 'service_main' VIP. 
+open the bigip and login using the provided credentials. 
+explore the objects that were created: 
+
+Cloud formation template:
+~~~~~~~~~~~~~~~~~~~~~~~~~
+this is the base deployment of the bigip, we start with the F5 supported 2nic CFT. 
+it deploys bigip with the latest cloud version, installs the necessary cloudlibs and cloud related scripts.
+
+bigip rs onboard:
+~~~~~~~~~~~~~~~~~
+deploys the 'enterprise' default profiles, for example: 
+HTTP, analytics, AVR, DOSL7, iapps etc. 
+
+push a waf policy:
+~~~~~~~~~~~~~~~~~
+pushes a waf policy from the repo to the bigip, updates DOSL7 and FPS profiles. 
+
+rs-iapp service:
+~~~~~~~~~~~~~~~~~
+deploys a service on the bigip using either AS2 or AS3 
+
+rs-attacks:
+~~~~~~~~~~~~~~~~~
+good and bad traffic generation to the app.
+
+
+try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the bigip. 
+after ignoring the ssl error (because the certificate isn't valid for the domain) you should get to the Hackazone mainpage
+
+
+.. image:: /img/devsecops_lab01/hackazone010.PNG
+   :width: 800 px
+   :align: center
+
+
+SecOps role:
+----------------------------------------
+in this example the app owner deployed a new service to their dev environemnt, the tests show that some of the valid requests are blocked. you should log in to the bigip as the secops engineer and fix the false-positive. 
 
 go to 'traffic learning', make sure you are editing the 'linux-high' policy. 
 you should see a suggestion on 'High ASCII characters in headers' , examine the request. this is a flase positive. the app uses a different language in the header and it is legitimate traffic. 
 accept the suggestion.
+
+
+.. image:: /img/devsecops_lab01/Bigip-040.PNG
+   :width: 800 px
+   :align: center
 
 check the other suggestions, you'll see some signatures that were triggered. those are actual threats that are part of the autometed security testing and we can ignore the suggestions. 
 
 apply the policy. we will now export the policy to the git repo and start the autometed build again to check that we are ready to promote it to production. 
 
 go back to jenkins, under the 'f5-rs-app1-dev' there is a job that will export the policy and save it to the git repo - 'SEC export waf policy'
+
+.. image:: /img/devsecops_lab01/jenkins075.PNG
+   :width: 800 px
+   :align: center
+   
 click on this job and choose 'Build with Parameters' from the left menu. 
 
+.. image:: /img/devsecops_lab01/jenkins080.PNG
+   :width: 800 px
+   :align: center
+
 you can leave the defaults, it asks for two parameters. one is the name of the policy on the bigip and the other is the new policy name in the git repo. 
+in this excersise the change we are doing is loosing the policy on an attribute that has low risk to our environment. we will update the WAF template so that any new deployment will use the updated template. 
 
 click on 'build' 
 
 check the slack channel - you should see a message about the new security policy that's ready. 
 this illustrates how chatops can help between different teams. 
 
-the security admin role ends here. it's now up to the developer to update the iac_parameters.yaml in their repo to point to the new policy and run the pipeline again. 
+.. image:: /img/devsecops_lab01/Slack-030.PNG
+   :width: 800 px
+   :align: center
+
+the security admin role ends here. it's now up to the appowner to run the pipeline again. 
 
 change the policy used for the app:
 ~~~~~~~~~~~~~~~~~~~
