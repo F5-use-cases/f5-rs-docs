@@ -8,7 +8,7 @@ You can use these modules to create, edit, update, and delete configuration obje
 The code is open source and |f5_ansible_github|. 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :includehidden:
    :caption: Support Details
    :glob:
@@ -16,7 +16,7 @@ The code is open source and |f5_ansible_github|.
    /usage/supported-versions
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :includehidden:
    :caption: User's Guide
    :glob:
@@ -31,13 +31,13 @@ The code is open source and |f5_ansible_github|.
    /solutions/devsecops
    
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Module Reference
 
    /modules/modules_by_category
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Developer's Guide
 
    /development/getting-involved
