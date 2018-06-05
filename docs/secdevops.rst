@@ -253,7 +253,7 @@ log on to the bigip again, check which ASM policies are there and which policy i
 check the 'traffic learning' for the security policy and verify you no longer see the 'high ascii charachters' 
 
 this concludes the tests in the 'dev' environment. we are now ready to push the changes to production. 
-we will 'merge' the app1 dev branch with the master branch so that the production deployment will use the correct policy. 
+we will 'merge' the app2 dev branch with the master branch so that the production deployment will use the correct policy. 
 on the /home/snops/f5-rs-app2 folder:
 
 .. code-block:: terminal
@@ -330,5 +330,22 @@ on the bigip, check the bot request log, verify that requests are being challang
 .. image:: /img/devsecops_lab01/pbd-bigip-020.PNG
    :width: 800 px
    :align: center
+
+
+this concludes the tests in the 'dev' environment. we are now ready to push the changes to production. 
+we will 'merge' the app2 dev branch with the master branch so that the production deployment will use the correct policy. 
+on the /home/snops/f5-rs-app2 folder:
+
+.. code-block:: terminal
+ 
+   git checkout master
+   git merge -m "enabled proactive bot defense"
+
+the merge will trigger a job in jenkins that's configured to monitor this repo - 'Push waf policy', open the f5-rs-app2-prd folder and navigate to the 'service deployment pipeline' , you should see the jobs running in up to a minute.  
+
+open the PRODUCTION bigip, check that the DOSL7 profile named rs_dosl7 has the 'proactive bot defense' enabled. 
+
+check that requests are getting challanged in the bot event log. 
+
 
 
