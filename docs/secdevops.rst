@@ -13,11 +13,13 @@ Run the rs-container
 ----------------------------
 
 The entire lab is built from code hosted in this repo, in order to launch the lab environment you will download and run a container that has the tools we are using (ansible and jenkins) as well as the depndencies and requirements to interact with the differnet services (F5, AWS, github.. ) 
+on the linux jumphost in UDF, run the following command to start the container,
+the will attach a volume from the linux host to the container
 
 
 .. code-block:: terminal
 
-    docker run -p 2222:22 -p 10000:8080 -it --rm f5usecases/f5-rs-container
+    sudo docker run -v config:/home/snops/host_volume -p 2222:22 -p 10000:8080 -it --rm f5usecases/f5-rs-container
 
 
 
@@ -33,12 +35,17 @@ jenkins user is used so that the config changes we do are available to jenkins
    su root -c "su jenkins"
    
    
-configure aws credentials - ONLY accesskey and secretkey. Leave the other fields as "None"
-
+Create the SSH keys, the SSH key will be used when creating EC2 instances.  we will strore them in the jenkins SSH folder so that jenkins can use them to access instances.
+Copy credentilas and paramaters files from the host folder. 
+copy the udf SSH key to the authorized ssh keys folder for direct ssh access using UDF. 
 
 .. code-block:: terminal
 
-   aws configure
+   ssh-keygen -f var/jenkins_home/.ssh/id_rsa -t rsa -N ''
+   cp /home/snops/host_volume/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global-vars-vault.yaml
+   cp /home/snops/host_volume/sshkeys/udf.pub var/jenkins_home/.ssh/authorized_keys
+   
+   
 
 
 copy the global paramaters file to /home/snops (for now get it from me yossi@f5.com) 
