@@ -89,7 +89,7 @@ we will start by deploying a dev environment, you will start a pipeline that cre
 click on the 'f5-rs-app2-dev' folder.
 here you can see all of the relevant jenkins jobs for the dev environment.
 
-.. image:: /img/devsecops_lab01/jenkins010.PNG
+.. image:: /img/devsecops_lab01/jenkins020.PNG
    :width: 800 px
    :align: center
 
