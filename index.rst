@@ -29,6 +29,13 @@ The code is open source and |f5_ansible_github|.
 
 .. toctree::
    :maxdepth: 2
+   :caption: Solutions reference
+
+   /solutions
+   
+   
+.. toctree::
+   :maxdepth: 2
    :caption: Module Reference
 
    /modules/modules_by_category
