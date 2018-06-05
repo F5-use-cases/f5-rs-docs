@@ -84,11 +84,14 @@ we will start by deploying a dev environment, you will start a pipeline that cre
 
 .. image:: /img/devsecops_lab01/jenkins010.PNG
    :width: 800 px
-   :alt: alternate text
    :align: center
    
 click on the 'f5-rs-app2-dev' folder.
 here you can see all of the relevant jenkins jobs for the dev environment.
+
+.. image:: /img/devsecops_lab01/jenkins010.PNG
+   :width: 800 px
+   :align: center
 
 click on 'Full stack deployment' , that's the pipeline view for the same folder. 
 click on 'run' to start the dev environment pipeline. 
