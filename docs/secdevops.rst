@@ -82,12 +82,11 @@ start the dev environment:
 in jenkins open the 'DevSecOps - Lab - App2' folder', the lab files are all in this folder 
 we will start by deploying a dev environment, you will start a pipeline that creates a full environment in AWS. 
 
-.. image:: picture.jpeg
+.. image:: /img/devsecops_lab01/jenkins010.PNG
    :height: 100px
    :width: 200 px
-   :scale: 50 %
    :alt: alternate text
-   :align: right
+   :align: center
    
 click on the 'f5-rs-app2-dev' folder.
 here you can see all of the relevant jenkins jobs for the dev environment.
