@@ -25,6 +25,13 @@ The code is open source and |f5_ansible_github|.
 
 .. toctree::
    :maxdepth: 2
+   :caption: Solutions reference
+   :glob:
+
+   /solutions/secdevops
+   
+.. toctree::
+   :maxdepth: 2
    :caption: Module Reference
 
    /modules/modules_by_category
@@ -33,25 +40,8 @@ The code is open source and |f5_ansible_github|.
    :maxdepth: 2
    :caption: Developer's Guide
 
-   /development/cla-landing
    /development/getting-involved
    /development/guidelines
-   /development/write-module/index
-   /development/code-conventions
-   /development/parameters
-   /development/module-patterns
-   /development/ssh-functionality-for-modules
-   /development/tests
-   /development/securing-sensitive-information
 
-.. |f5_ansible_github| raw:: html
 
-   <a href="https://github.com/F5Networks/f5-ansible" target="_blank">TBD</a>
 
-.. |ansible_core| raw:: html
-
-   <a href="https://github.com/ansible/ansible-modules-core" target="_blank">Ansible core product</a>
-
-.. |ansible_extras| raw:: html
-
-   <a href="https://github.com/ansible/ansible-modules-extras" target="_blank">Ansible extras</a>
