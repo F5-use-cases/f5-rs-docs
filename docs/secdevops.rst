@@ -83,8 +83,7 @@ in jenkins open the 'DevSecOps - Lab - App2' folder', the lab files are all in t
 we will start by deploying a dev environment, you will start a pipeline that creates a full environment in AWS. 
 
 .. image:: /img/devsecops_lab01/jenkins010.PNG
-   :height: 100px
-   :width: 200 px
+   :width: 800 px
    :alt: alternate text
    :align: center
    
