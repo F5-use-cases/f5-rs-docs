@@ -43,15 +43,6 @@ Copy credentilas and paramaters files from the host folder.
    ssh-keygen -f $HOME/.ssh/id_rsa -t rsa -N ''
    cp /home/snops/host_volume/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global-vars-vault.yaml
    
-   
-
-
-copy the global paramaters file to /home/snops (for now get it from me yossi@f5.com) 
-
-.. code-block:: terminal
-
-   vi /home/snops/f5-rs-global-vars-vault.yaml
-   
 
 configure your personal information in the global parameters file. 
 
