@@ -46,13 +46,15 @@ Copy credentilas and paramaters files from the host folder.
    
 
 configure your personal information in the global parameters file. 
-please use your real F5 username and email. username is limited to 8 charachters. 
+for the username use your student#, put your actual 
 
 .. code-block:: terminal
 
    echo password > ~/.vault_pass.txt
    ansible-vault edit --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-global-vars-vault.yaml
 
+* after you save the f5-rs-global-vars-vault.yaml file for the first time you get an error message, ignore it it's a bug
+  ERROR! Unexpected Exception, this is probably a bug: [Errno 1] Operation not permitted: '/home/snops/f5-rs-global-vars-vault.yaml'
 
 Configure jenkins and reload it
 ------------------------------------------------------------
