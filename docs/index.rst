@@ -28,7 +28,7 @@ The code is open source and |f5_ansible_github|.
    :caption: Solutions reference
    :glob:
 
-   /solutions/devsecops
+   /solutions/*/solution_index
    
 .. toctree::
    :maxdepth: 1
