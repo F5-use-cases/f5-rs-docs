@@ -80,6 +80,9 @@ when you open jenkins you should see two jobs that have started running automati
 this happens because jenkins monitors the repo and start the jobs. you can cancel the jobs or let them fail. 
 
 
+Module 01 - WAF policy deployment and tuning
+=============================================
+
 start the dev environment:
 ------------------------------------------------------------------------------------
 
@@ -272,9 +275,60 @@ verify the security policy that's attached to the VIP.
 
 
 
+Module 02 - Autometed attack mitigation
+=========================================
 
+Now that we have our app running in production, the app owner noticed some strange activity. some items are added to the cart but never get purchesed. the team also noticed abnormal activity that looks like web scraping. 
 
+in an effort to mitigate those unwanted requests the secops engineer suggests the use of 'proactive bot defense', he configures a template DOSL7 profile with some values as defaults. 
 
+he then exposes the option of enabling / disabling proactive bot defense from the 'iac_paramaters' file. 
 
+it is up to the appowner now to deploy the new feature in dev and promote to PROD when it makes sense for him. 
+
+ssh into the contianer, make sure you are connected as user 'jenkins' 
+go to the application git folder. check which branches are there and what is the active branch. (git branch) 
+you should be on the 'dev' branch. the files you see belong to the dev branch. 
+
+.. code-block:: terminal
+
+   cd /home/snops/f5-rs-app2
+   git checkout dev
+   git branch
+   
+ 
+edit the iac_parameters.yaml file to enable proactive bot defense, 
+change the setting from:
+
+proactive_autometed_attack_prevention: "disabled"
+
+to:
+
+proactive_autometed_attack_prevention: "always"
+
+add the file to git and commit 
+
+.. code-block:: terminal
+
+   vi iac_parameters.yaml 
+   git add iac_parameters.yaml
+   git commit -m "enabled proactive bot defense"
+   
+   
+go back to jenkins and open the 'f5-rs-app2-dev ' folder. choose the 'waf policy' tab , jenkins is set up to monitor the application repo. when a 'commit' is identified jenkins will start an automatic pipeline to deploy the service. it takes up to a minute for jenkins to start the pipeline. 
+
+jenkins takes the parametes from the git repo and uses them to deploy/update the service. 
+
+log on to the dev bigip again, check the setting on the dos profile named rs_dosl7, verify that proactive bot defense is now enabled.
+
+.. image:: /img/devsecops_lab01/pbd-bigip-010.PNG
+   :width: 800 px
+   :align: center
+   
+on the bigip, check the bot request log, verify that requests are being challanged
+
+.. image:: /img/devsecops_lab01/pbd-bigip-020.PNG
+   :width: 800 px
+   :align: center
 
 
