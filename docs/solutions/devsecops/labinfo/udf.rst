@@ -29,7 +29,7 @@ SSH key has to be configured in UDF in order to access the jumphost.
 
 
 Connect using SSH to the Linux Host 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. In the UDF navigate to your :guilabel:`Deployments`
 
