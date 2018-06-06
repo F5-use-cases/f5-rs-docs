@@ -106,35 +106,35 @@ after ignoring the ssl error (because the certificate isn't valid for the domain
 
 
    
-.. |jenkins010| image:: /docs/solutions/devsecops/images/jenkins010.PNG
+.. |jenkins010| image:: images/jenkins010.PNG
+   :width: 800 px
+   :align: center
+   
+.. |jenkins020| image:: images/jenkins020.PNG
    :width: 800 px
    :align: center   
    
-.. |jenkins020| image:: /docs/solutions/devsecops/images/jenkins020.PNG
-   :width: 800 px
-   :align: center   
-   
-.. |jenkins030| image:: /docs/solutions/devsecops/images/jenkins030.PNG
+.. |jenkins030| image:: images/jenkins030.PNG
    :width: 800 px
    :align: center 
    
-.. |jenkins040| image:: /docs/solutions/devsecops/images/jenkins040.PNG
+.. |jenkins040| image:: images/jenkins040.PNG
    :width: 800 px
    :align: center 
    
-.. |jenkins050| image:: /docs/solutions/devsecops/images/jenkins050.PNG
+.. |jenkins050| image:: images/jenkins050.PNG
    :width: 800 px
    :align: center 
    
-.. |jenkins060| image:: /docs/solutions/devsecops/images/jenkins060.PNG
+.. |jenkins060| image:: images/jenkins060.PNG
    :width: 800 px
    :align: center 
    
-.. |jenkins070| image:: /docs/solutions/devsecops/images/jenkins070.PNG
+.. |jenkins070| image:: jenkins070.PNG
    :width: 800 px
    :align: center 
    
    
-.. |hackazone010| image:: /docs/solutions/devsecops/images/hackazone010.PNG
+.. |hackazone010| image:: hackazone010.PNG
    :width: 800 px
    :align: center 
