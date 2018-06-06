@@ -106,11 +106,13 @@ after ignoring the ssl error (because the certificate isn't valid for the domain
 
 
    
-.. |jenkins010| image:: images/jenkins010.PNG
+.. |jenkins010| image:: images/jenkins010.PNG 
+				:width: 800 px 
+				:align: center
    
-.. |jenkins020| image:: images/jenkins020.PNG
-   :width: 800 px
-   :align: center   
+.. |jenkins020| image:: images/jenkins020.PNG :width: 800 px :align: center
+   
+      
    
 .. |jenkins030| image:: images/jenkins030.PNG
    :width: 800 px
