@@ -5,3 +5,11 @@ cloud_sptheme
 sphinxjp.themes.basicstrap
 sphinxcontrib-napoleon
 git+https://github.com/ansible/ansible.git
+sphinxcontrib-addmetahtml
+GitPython
+sphinxcontrib-nwdiag
+sphinxcontrib-blockdiag
+sphinxcontrib-seqdiag
+sphinxcontrib-actdiag
+git+git://github.com/f5devcentral/f5-sphinx-theme@master#egg=f5_sphinx_theme
+sphinxcontrib-addmetahtml
