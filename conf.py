@@ -31,7 +31,7 @@ on_snops = os.environ.get('SNOPS_ISALIVE', None) == 'True'
 print "on_rtd = %s" % on_rtd
 print "on_snops = %s" % on_snops
 
-github_url = "https://github.com/f5devcentral/f5-automation-labs"
+github_url = "https://github.com/F5-use-cases/f5-rs-docs"
 
 branch_map = {
     "stable":"master",

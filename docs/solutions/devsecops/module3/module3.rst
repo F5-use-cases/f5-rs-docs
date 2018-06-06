@@ -1,3 +1,12 @@
+Module 3: declerative advanced waf 
+----------------------------------------
+
+Task 1 - Deploy waf
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+start jenkins 
+
+
 DevSecOps lab 
 ===================
 
