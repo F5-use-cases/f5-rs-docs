@@ -1,54 +1,72 @@
-Lab 2: Tune/fix security policy
+Lab 3: Deploy with new waf policy 
 ----------------------------
 
 Background: 
 ~~~~~~~~~~~~~
 
-the application team tests came back and some of the tests have failed. the test result came back with the WAF blocking page.  
+secops found a false positive on the waf policy, they fixed it and created a new version for that policy. 
  
  
-Task 1 (Secops) - Find which requests were blocked and resolve false-positive 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Task 1 (Dave) - Update the policy you are using in 'DEV' 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-log on to the 'DEV' bigip. 
-go to 'traffic learning', make sure you are editing the 'linux-high' policy. 
-check the requests that triggered suggestions. 
+deploy to dev again:
+~~~~~~~~~~~~~~~~~~~
 
-you should see a suggestion on 'High ASCII characters in headers' , examine the request. this is a false positive. the app uses a different language in the header and it is legitimate traffic. 
-accept the suggestion.
+ssh into the contianer, make sure you are connected as user 'jenkins' 
+go to the application git folder. check which branches are there and what is the active branch. (git branch) 
+you should be on the 'dev' branch. the files you see belong to the dev branch. 
 
-	|Bigip-040|
+.. code-block:: terminal
 
-check the other suggestions, you'll see some signatures that were triggered. those are actual threats that are part of the automated security testing and we can ignore the suggestions. 
-
-apply the policy. we will now export the policy to the git repo and start the automated build again to check that we are ready to promote it to production. 
-
-go back to jenkins, under the 'f5-rs-app2-dev' there is a job that will export the policy and save it to the git repo - 'SEC export waf policy'
-
-	|jenkins075|
+   cd /home/snops/f5-rs-app2
+   git branch
    
-click on this job and choose 'Build with Parameters' from the left menu. 
+Configure your information in git, this information is used by git (in this lab we use local git so it only has local meaning) 
 
-	|jenkins080|
-	
-you can leave the defaults, it asks for two parameters. the first parameter is the name of the policy on the bigip and the other is the new policy name in the git repo.  
+.. code-block:: terminal
 
-click on 'build' 
+   git config --global user.email "you@example.com"
+   git config --global user.name "Your Name"
+   
+ 
+edit the iac_parameters.yaml file to point the deployment to the new ASM policy (linux-high-v01). then add the file to git and commit 
 
-check the slack channel - you should see a message about the new security policy that's ready. 
-this illustrates how chatops can help communicate between different teams. 
+.. code-block:: terminal
 
-	|Slack-030|
+   vi iac_parameters.yaml 
+   git add iac_parameters.yaml
+   git commit -m "changed asm policy"
 
-the security admin role ends here. it's now up to the appowner to run the pipeline again. 
+	|dev-cmd-010|
+   
+   
+go back to jenkins and open the 'f5-rs-app2-dev ' folder. choose the 'waf policy' tab , jenkins is set up to monitor the application repo. when a 'commit' is identified jenkins will start an automatic pipeline to deploy the service. it takes up to a minute for jenkins to start the pipeline. 
+
+jenkins takes the parametes from the git repo and uses them to deploy/update the service. 
+
+log on to the bigip again, check which ASM policies are there and which policy is attached to the 'App2 VIP. 
+check the 'traffic learning' for the security policy and verify you no longer see the 'high ascii charachters' 
+
+this concludes the tests in the 'dev' environment. 
+we are now ready to push the changes to production. 
+
+
+
+we will 'merge' the app2 dev branch with the master branch so that the production deployment will use the correct policy. 
+on the /home/snops/f5-rs-app2 folder:
+
+.. code-block:: terminal
+ 
+   git checkout master
+   git merge -m "changed asm policy"
+
+* the merge will trigger a job in jenkins that's configured to monitor this repo - 'Push waf policy', since the environment isn't deployed yet it will fail, either cancel the job or let it fail. 
+
+
+
 
 
    
-.. |Bigip-040| image:: images/Bigip-040.PNG
-   
-.. |jenkins075| image:: images/jenkins075.PNG 
-   
-.. |jenkins080| image:: images/jenkins080.PNG
-   
-.. |Slack-030| image:: images/Slack-030.PNG
-   
+.. |dev-cmd-010| image:: images/dev-cmd-010.PNG
+
