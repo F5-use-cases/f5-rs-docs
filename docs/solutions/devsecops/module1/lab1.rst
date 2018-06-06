@@ -1,5 +1,5 @@
-Lab 1: Enable dev to deploy their app with a waf policy 
-----------------------------
+Lab 1: Deploy app to DEV environment 
+----------------------------------
 
 Background: 
 ~~~~~~~~~~~~~
@@ -25,7 +25,7 @@ that enables dave to choose the aws region in which to deploy and the name of th
 dave can control the deployment of the security policies from his repo. 
  
 Task 1 - Deploy dev environment 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Open Jenkins:
 ------------------------------------------------------------------------------------
@@ -57,6 +57,11 @@ click on 'run' to start the dev environment pipeline.
    |jenkins040|
 
 
+   
+Task 2 - Review the deployed environment 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   
 you can review the output of each job while its running, click on the small 'console output' icon as shown in the screenshot:
 
    |jenkins050|
@@ -105,6 +110,11 @@ after ignoring the ssl error (because the certificate isn't valid for the domain
    |hackazone010|
 
 
+Task 3 - Go over the test results 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+future work - review the failed tests and report them.
+   
    
 .. |jenkins010| image:: images/jenkins010.PNG 
    
@@ -113,22 +123,11 @@ after ignoring the ssl error (because the certificate isn't valid for the domain
 .. |jenkins030| image:: images/jenkins030.PNG
    
 .. |jenkins040| image:: images/jenkins040.PNG
-  :width: 800 px
-  :align: center 
    
 .. |jenkins050| image:: images/jenkins050.PNG
-   :width: 800 px
-   :align: center 
    
 .. |jenkins060| image:: images/jenkins060.PNG
-   :width: 800 px
-   :align: center 
    
 .. |jenkins070| image:: jenkins070.PNG
-   :width: 800 px
-   :align: center 
-   
    
 .. |hackazone010| image:: hackazone010.PNG
-   :width: 800 px
-   :align: center 
