@@ -41,49 +41,37 @@ this happens because jenkins monitors the repo and start the jobs. you can cance
 in jenkins open the 'DevSecOps - Lab - App2' folder', the lab files are all in this folder 
 we will start by deploying a dev environment, you will start a pipeline that creates a full environment in AWS. 
 
-   |lab-1-1|
+   |jenkins010|
    
 click on the 'f5-rs-app2-dev' folder.
 here you can see all of the relevant jenkins jobs for the dev environment.
 
-.. image:: /docs/solutions/devsecops/images/jenkins020.PNG
-   :width: 800 px
-   :align: center
+   |jenkins020|
 
 click on 'Full stack deployment' , that's the pipeline view for the same folder. 
 
-.. image:: /docs/solutions/devsecops/images/jenkins030.PNG
-   :width: 800 px
-   :align: center
+   |jenkins030|
    
 click on 'run' to start the dev environment pipeline. 
 
-.. image:: /docs/solutions/devsecops/images/jenkins040.PNG
-   :width: 800 px
-   :align: center
+   |jenkins040|
 
 
 you can review the output of each job while its running, click on the small 'console output' icon as shown in the screenshot:
 
-.. image:: /docs/solutions/devsecops/images/jenkins050.PNG
-   :width: 800 px
-   :align: center
+   |jenkins050|
    
    
 wait until all of the jobs have finished (turned green). 
 
-.. image:: /docs/solutions/devsecops/images/jenkins060.PNG
-   :width: 800 px
-   :align: center
+   |jenkins060|
 
 open slack - https://f5-rs.slack.com/messages/C9WLUB89F/
 go to the 'builds' channel. 
 use the search box on the upper right corner and filter by your username (student#). 
 jenkins will send to this channel the bigip and the application address. 
 
-.. image:: /docs/solutions/devsecops/images/Slack-040.PNG
-   :width: 800 px
-   :align: center
+   |jenkins070|
 
 open the bigip and login using the provided credentials. 
 explore the objects that were created: 
@@ -114,16 +102,39 @@ good and bad traffic generation to the app.
 try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the bigip. 
 after ignoring the ssl error (because the certificate isn't valid for the domain) you should get to the Hackazone mainpage
 
-
-.. image:: /docs/solutions/devsecops/images/hackazone010.PNG
-   :width: 800 px
-   :align: center
+   |hackazone010|
 
 
    
-.. |lab-1-1|   image:: /docs/solutions/devsecops/images/jenkins010.PNG
+.. |jenkins010| image:: /docs/solutions/devsecops/images/jenkins010.PNG
    :width: 800 px
    :align: center   
    
+.. |jenkins020| image:: /docs/solutions/devsecops/images/jenkins020.PNG
+   :width: 800 px
+   :align: center   
+   
+.. |jenkins030| image:: /docs/solutions/devsecops/images/jenkins030.PNG
+   :width: 800 px
+   :align: center 
+   
+.. |jenkins040| image:: /docs/solutions/devsecops/images/jenkins040.PNG
+   :width: 800 px
+   :align: center 
+   
+.. |jenkins050| image:: /docs/solutions/devsecops/images/jenkins050.PNG
+   :width: 800 px
+   :align: center 
+   
+.. |jenkins060| image:: /docs/solutions/devsecops/images/jenkins060.PNG
+   :width: 800 px
+   :align: center 
+   
+.. |jenkins070| image:: /docs/solutions/devsecops/images/jenkins070.PNG
+   :width: 800 px
+   :align: center 
    
    
+.. |hackazone010| image:: /docs/solutions/devsecops/images/hackazone010.PNG
+   :width: 800 px
+   :align: center 
