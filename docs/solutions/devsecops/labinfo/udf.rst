@@ -10,7 +10,7 @@ Determine how to start your deployment:
 
 - **Self-Paced/On Your Own:** Login to UDF,
   :guilabel:`Deploy` the
-  ``reference solutions: f5 solutions as code``
+  ``Security Lab: devsecops``
   Blueprint and :guilabel:`Start` it.
 
 Connecting to the Environment
