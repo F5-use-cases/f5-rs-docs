@@ -4,7 +4,7 @@ DevSecOps lab
 this lab covers how to protect an app using F5's application security solutions and 'bake' the security policy into the application lifecycle. 
 
 Getting started
-===================
+----------------------------
 
 if you run into issues / problems please contact me email with some information, yossi@f5.com
 
@@ -81,7 +81,7 @@ this happens because jenkins monitors the repo and start the jobs. you can cance
 
 
 Module 01 - WAF policy deployment and tuning
-=============================================
+----------------------------
 
 start the dev environment:
 ------------------------------------------------------------------------------------
@@ -89,40 +89,40 @@ start the dev environment:
 in jenkins open the 'DevSecOps - Lab - App2' folder', the lab files are all in this folder 
 we will start by deploying a dev environment, you will start a pipeline that creates a full environment in AWS. 
 
-.. image:: /img/devsecops_lab01/jenkins010.PNG
+.. image:: /docs/solutions/devsecops/images/jenkins010.PNG
    :width: 800 px
    :align: center
    
 click on the 'f5-rs-app2-dev' folder.
 here you can see all of the relevant jenkins jobs for the dev environment.
 
-.. image:: /img/devsecops_lab01/jenkins020.PNG
+.. image:: /docs/solutions/devsecops/images/jenkins020.PNG
    :width: 800 px
    :align: center
 
 click on 'Full stack deployment' , that's the pipeline view for the same folder. 
 
-.. image:: /img/devsecops_lab01/jenkins030.PNG
+.. image:: /docs/solutions/devsecops/images/jenkins030.PNG
    :width: 800 px
    :align: center
    
 click on 'run' to start the dev environment pipeline. 
 
-.. image:: /img/devsecops_lab01/jenkins040.PNG
+.. image:: /docs/solutions/devsecops/images/jenkins040.PNG
    :width: 800 px
    :align: center
 
 
 you can review the output of each job while its running, click on the small 'console output' icon as shown in the screenshot:
 
-.. image:: /img/devsecops_lab01/jenkins050.PNG
+.. image:: /docs/solutions/devsecops/images/jenkins050.PNG
    :width: 800 px
    :align: center
    
    
 wait until all of the jobs have finished (turned green). 
 
-.. image:: /img/devsecops_lab01/jenkins060.PNG
+.. image:: /docs/solutions/devsecops/images/jenkins060.PNG
    :width: 800 px
    :align: center
 
@@ -131,7 +131,7 @@ go to the 'builds' channel.
 use the search box on the upper right corner and filter by your username (student#). 
 jenkins will send to this channel the bigip and the application address. 
 
-.. image:: /img/devsecops_lab01/Slack-040.PNG
+.. image:: /docs/solutions/devsecops/images/Slack-040.PNG
    :width: 800 px
    :align: center
 
@@ -165,7 +165,7 @@ try to access the app using the ip provided in the slack channel - that's the El
 after ignoring the ssl error (because the certificate isn't valid for the domain) you should get to the Hackazone mainpage
 
 
-.. image:: /img/devsecops_lab01/hackazone010.PNG
+.. image:: /docs/solutions/devsecops/images/hackazone010.PNG
    :width: 800 px
    :align: center
 
@@ -179,7 +179,7 @@ you should see a suggestion on 'High ASCII characters in headers' , examine the 
 accept the suggestion.
 
 
-.. image:: /img/devsecops_lab01/Bigip-040.PNG
+.. image:: /docs/solutions/devsecops/images/Bigip-040.PNG
    :width: 800 px
    :align: center
 
@@ -189,13 +189,13 @@ apply the policy. we will now export the policy to the git repo and start the au
 
 go back to jenkins, under the 'f5-rs-app2-dev' there is a job that will export the policy and save it to the git repo - 'SEC export waf policy'
 
-.. image:: /img/devsecops_lab01/jenkins075.PNG
+.. image:: /docs/solutions/devsecops/images/jenkins075.PNG
    :width: 800 px
    :align: center
    
 click on this job and choose 'Build with Parameters' from the left menu. 
 
-.. image:: /img/devsecops_lab01/jenkins080.PNG
+.. image:: /docs/solutions/devsecops/images/jenkins080.PNG
    :width: 800 px
    :align: center
 
@@ -206,7 +206,7 @@ click on 'build'
 check the slack channel - you should see a message about the new security policy that's ready. 
 this illustrates how chatops can help between different teams. 
 
-.. image:: /img/devsecops_lab01/Slack-030.PNG
+.. image:: /docs/solutions/devsecops/images/Slack-030.PNG
    :width: 800 px
    :align: center
 
@@ -240,7 +240,7 @@ edit the iac_parameters.yaml file to point the deployment to the new ASM policy 
    git add iac_parameters.yaml
    git commit -m "changed asm policy"
 
-.. image:: /img/devsecops_lab01/dev-cmd-010.PNG
+.. image:: /docs/solutions/devsecops/images/dev-cmd-010.PNG
    :width: 800 px
    :align: center
    
@@ -276,7 +276,7 @@ verify the security policy that's attached to the VIP.
 
 
 Module 02 - Autometed attack mitigation
-=========================================
+----------------------------
 
 Now that we have our app running in production, the app owner noticed some strange activity. some items are added to the cart but never get purchesed. the team also noticed abnormal activity that looks like web scraping. 
 
@@ -321,13 +321,13 @@ jenkins takes the parametes from the git repo and uses them to deploy/update the
 
 log on to the dev bigip again, check the setting on the dos profile named rs_dosl7, verify that proactive bot defense is now enabled.
 
-.. image:: /img/devsecops_lab01/pbd-bigip-010.PNG
+.. image:: /docs/solutions/devsecops/images/pbd-bigip-010.PNG
    :width: 800 px
    :align: center
    
 on the bigip, check the bot request log, verify that requests are being challanged
 
-.. image:: /img/devsecops_lab01/pbd-bigip-020.PNG
+.. image:: /docs/solutions/devsecops/images/pbd-bigip-020.PNG
    :width: 800 px
    :align: center
 
@@ -348,7 +348,7 @@ open the PRODUCTION bigip, check that the DOSL7 profile named rs_dosl7 has the '
 check that requests are getting challanged in the bot event log. 
 
 Module 03 - Application layer encryption 
-=========================================
+----------------------------
 
 Application is up and running, sales on the site have seen a big growth. our support center started getting complaints from customers 
 that their account is abused and they are charged with purcheses they never did. 
@@ -393,7 +393,7 @@ jenkins takes the parametes from the git repo and uses them to deploy/update the
 
 log on to the dev bigip again, check the setting on the FPS profile.
 
-.. image:: /img/devsecops_lab01/ale-bigip-010.PNG
+.. image:: /docs/solutions/devsecops/images/ale-bigip-010.PNG
    :width: 800 px
    :align: center
    
