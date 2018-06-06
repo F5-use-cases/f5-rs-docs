@@ -24,11 +24,11 @@ The code is open source and |f5_ansible_github|.
    /usage/getting_started
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Solutions reference
    :glob:
 
-   /solutions/*/solution_index
+   /solutions/*/*_index
    
 .. toctree::
    :maxdepth: 1
