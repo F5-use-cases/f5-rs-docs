@@ -18,9 +18,7 @@ in each environment we are deploying:
 -  1 x F5 BIG-IP VE (latest cloud version)
 -  An autoscale group of application servers running DOCKER with a dockerized Hackazone app running on them. 
 
-.. image:: /docs/solutions/devsecops/images/lab_diag_010.PNG
-   :width: 800 px
-   :align: center
+	|lab-diag-010|
 
 
 Accessing the lab
@@ -34,3 +32,6 @@ The lab is built from code, to run it you need a docker host (can be your laptop
 
    udf
    local
+
+   
+.. |lab-diag-010| image:: images/lab-diag-010.PNG   

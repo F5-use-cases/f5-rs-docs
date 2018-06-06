@@ -17,7 +17,7 @@ You can use these modules to create, edit, update, and delete configuration obje
 .. toctree::
    :maxdepth: 1
    :includehidden:
-   :caption: User's Guide
+   :caption: User Guide
    :glob:
 
    /usage/getting_started
