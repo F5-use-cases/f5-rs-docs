@@ -128,6 +128,6 @@ future work - review the failed tests and report them.
    
 .. |jenkins060| image:: images/jenkins060.PNG
    
-.. |jenkins070| image:: jenkins070.PNG
+.. |jenkins070| image:: images/jenkins070.PNG
    
-.. |hackazone010| image:: hackazone010.PNG
+.. |hackazone010| image:: images/hackazone010.PNG
