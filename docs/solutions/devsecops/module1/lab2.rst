@@ -1,4 +1,4 @@
-Lab 2: Tune/fix security policy
+Lab 2 (Secops): Tune/fix security policy
 ----------------------------
 
 Background: 
@@ -7,7 +7,7 @@ Background:
 the application team tests came back and some of the tests have failed. the test result came back with the WAF blocking page.  
  
  
-Task 1 (Secops) - Find which requests were blocked and resolve false-positive 
+Task 1 - Find which requests were blocked and resolve false-positive 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 log on to the 'DEV' bigip. 
@@ -22,6 +22,12 @@ accept the suggestion.
 check the other suggestions, you'll see some signatures that were triggered. those are actual threats that are part of the automated security testing and we can ignore the suggestions. 
 
 apply the policy. we will now export the policy to the git repo and start the automated build again to check that we are ready to promote it to production. 
+
+* you are applying the policy to DEV, secops shouldn't change the policy running in production (unless there is an emergency)
+
+
+Task 2 - export the security policy to the waf policies templates repo.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 go back to jenkins, under the 'f5-rs-app2-dev' there is a job that will export the policy and save it to the git repo - 'SEC export waf policy'
 
