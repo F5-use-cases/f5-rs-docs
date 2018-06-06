@@ -41,9 +41,7 @@ this happens because jenkins monitors the repo and start the jobs. you can cance
 in jenkins open the 'DevSecOps - Lab - App2' folder', the lab files are all in this folder 
 we will start by deploying a dev environment, you will start a pipeline that creates a full environment in AWS. 
 
-.. image:: /docs/solutions/devsecops/images/jenkins010.PNG
-   :width: 800 px
-   :align: center
+   |lab-1-1|
    
 click on the 'f5-rs-app2-dev' folder.
 here you can see all of the relevant jenkins jobs for the dev environment.
@@ -121,3 +119,11 @@ after ignoring the ssl error (because the certificate isn't valid for the domain
    :width: 800 px
    :align: center
 
+
+   
+.. |lab-1-1|   image:: /docs/solutions/devsecops/images/jenkins010.PNG
+   :width: 800 px
+   :align: center   
+   
+   
+   
