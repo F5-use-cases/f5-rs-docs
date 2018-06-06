@@ -4,8 +4,7 @@ F5 reference solutions as code
 This project is designed to provide a common framework for deploying and developing F5 solutions as code. 
 
 You can use these modules to create, edit, update, and delete configuration objects on BIG-IP or cloud infrastructure.
-
-The code is open source and |f5_ansible_github|. 
+ 
 
 .. toctree::
    :maxdepth: 1
