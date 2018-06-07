@@ -4,8 +4,7 @@ DevSecops - Advanced WAF in a CI/CD workflow
 This class covers the following topics:
 
 - Shifting WAF policy left, closer to DEV. 
-- secops / dev roles and waf policy maintenance workflow 
-- declarative advanced waf 
+- Declarative advanced waf 
 
 Expected time to complete: **1 hours**
 
