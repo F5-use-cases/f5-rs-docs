@@ -9,8 +9,8 @@ Determine how to start your deployment:
   instructions given by your instructor to join the UDF Course.
 
 - **Self-Paced/On Your Own:** Login to UDF,
-  :guilabel:`Deploy` the
-  ``Security Lab: devsecops``
+  :guilabel:`Deploy` the 
+  :guilabel: ``Security Lab: devsecops``
   Blueprint and :guilabel:`Start` it.
 
 Connecting to the Environment
@@ -31,7 +31,7 @@ SSH key has to be configured in UDF in order to access the jumphost.
 Connect using SSH to the Linux Host 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. In the UDF navigate to your :guilabel:`Deployments`
+#. In UDF navigate to your :guilabel:`Deployments`
 
 #. Click the :guilabel:`Details` button for your Deployment
 
@@ -104,5 +104,5 @@ the following script will configure jenkins with your information and reload it.
    ansible-playbook --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml
 
 
-   - Start: :ref:`module1`
+- Start: :ref:`module1`
 
