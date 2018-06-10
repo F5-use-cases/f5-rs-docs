@@ -34,4 +34,4 @@ The lab is built from code, to run it you need a docker host (can be your laptop
    local
 
    
-.. |lab-diag-010| image:: images/lab-diag-010.PNG   
+.. |lab-diag-010| image:: images/lab-diag-010.PNG

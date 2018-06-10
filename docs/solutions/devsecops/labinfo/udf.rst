@@ -84,7 +84,7 @@ Copy credentilas and paramaters files from the host folder.
    
 
 configure your personal information in the global parameters file. 
-for the username use your student#, put your actual 
+for the username use your student#
 
 .. code-block:: terminal
 
@@ -104,5 +104,6 @@ the following script will configure jenkins with your information and reload it.
    ansible-playbook --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml
 
 
+   
 - Start: :ref:`module1`
 

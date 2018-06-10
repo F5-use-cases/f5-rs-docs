@@ -38,7 +38,9 @@ edit the iac_parameters.yaml file to point the deployment to the new ASM policy 
    git add iac_parameters.yaml
    git commit -m "changed asm policy"
 
-	|dev-cmd-010|
+
+   
+   |dev-cmd-010|
    
    
 go back to jenkins and open the 'f5-rs-app2-dev ' folder. choose the 'waf policy' tab , jenkins is set up to monitor the application repo. when a 'commit' is identified jenkins will start an automatic pipeline to deploy the service. it takes up to a minute for jenkins to start the pipeline. 
@@ -59,7 +61,7 @@ on the /home/snops/f5-rs-app2 folder:
 .. code-block:: terminal
  
    git checkout master
-   git merge -m "changed asm policy"
+   git merge -m dev "changed asm policy"
 
 * the merge will trigger a job in jenkins that's configured to monitor this repo - 'Push waf policy', since the environment isn't deployed yet it will fail, either cancel the job or let it fail. 
 
