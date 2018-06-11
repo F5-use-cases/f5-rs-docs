@@ -15,7 +15,7 @@ on the /home/snops/f5-rs-app2 folder:
 .. code-block:: terminal
  
    git checkout master
-   git merge -m "changed asm policy"
+   git merge -m dev "changed asm policy"
 
 * the merge will trigger a job in jenkins that's configured to monitor this repo - 'Push waf policy', since the environment isn't deployed yet it will fail, either cancel the job or let it fail. 
 

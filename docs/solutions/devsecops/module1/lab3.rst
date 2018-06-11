@@ -55,16 +55,6 @@ we are now ready to push the changes to production.
 
 
 
-we will 'merge' the app2 dev branch with the master branch so that the production deployment will use the correct policy. 
-on the /home/snops/f5-rs-app2 folder:
-
-.. code-block:: terminal
- 
-   git checkout master
-   git merge -m dev "changed asm policy"
-
-* the merge will trigger a job in jenkins that's configured to monitor this repo - 'Push waf policy', since the environment isn't deployed yet it will fail, either cancel the job or let it fail. 
-
 
 
 

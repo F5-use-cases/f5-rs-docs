@@ -74,7 +74,7 @@ on the /home/snops/f5-rs-app2 folder:
 .. code-block:: terminal
  
    git checkout master
-   git merge -m "enabled proactive bot defense"
+   git merge dev -m "enabled proactive bot defense"
 
 the merge will trigger a job in jenkins that's configured to monitor this repo - 'Push waf policy', open the f5-rs-app2-prd folder and navigate to the 'service deployment pipeline' , you should see the jobs running in up to a minute.  
 
@@ -139,7 +139,7 @@ on the /home/snops/f5-rs-app2 folder:
 .. code-block:: terminal
  
    git checkout master
-   git merge -m "enabled login password encryption"
+   git merge dev -m "enabled login password encryption"
 
 the merge will trigger a job in jenkins that's configured to monitor this repo - 'Push waf policy', open the f5-rs-app2-prd folder and navigate to the 'service deployment pipeline' , you should see the jobs running in up to a minute.  
 
