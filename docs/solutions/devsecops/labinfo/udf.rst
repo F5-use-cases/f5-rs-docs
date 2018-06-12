@@ -10,7 +10,7 @@ Determine how to start your deployment:
 
 - **Self-Paced/On Your Own:** Login to UDF,
   :guilabel:`Deploy` the 
-  :guilabel: ``Security Lab: devsecops``
+  :guilabel:`Security Lab: DevSecOps`
   Blueprint and :guilabel:`Start` it.
 
 Connecting to the Environment
@@ -24,7 +24,6 @@ SSH key has to be configured in UDF in order to access the jumphost.
   The lab environment provides several access methods to the Jumphost:
 
   - SSH to the linux  host 
-  - SSH to the SNOPS container (only available after you start the lab)
   - HTTP Access to Jenkins (only available after you start the lab) 
 
 

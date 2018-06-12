@@ -1,4 +1,4 @@
-Lab 1: Deploy app to DEV environment 
+Lab 1 (Dave): Deploy app to DEV environment 
 ----------------------------------
 
 Background: 
@@ -9,37 +9,70 @@ in this lab we don't cover the 'how to' of the security templates. we focus on t
 
 The Tasks are split between the two roles:
  - secops
- - dev (the person who's responsible of changing code for the app and the infrastructure of the app) - dave 
+ - Dave - the person who's responsible of changing code for the app and the infrastructure of the app (dev team)
  
 Lab scenario:
 ~~~~~~~~~~~~~
 
 New app - App2 is being developed. the app is an e-commerce site. 
-code is ready and ready to go into 'DEV' environemnt. for lab simplicity there are only two environments - DEV and PROD. 
-dave should deploy their new code into a DEV environment that is exactly the same as the production environment. 
-run their tests and security testing and after all of the tests finish successfully deploy the code to production.
+code is ready to go into 'DEV' environment. for lab simplicity there are only two environments - DEV and PROD. 
+Dave should deploy their new code into a DEV environment that is exactly the same as the production environment. 
+run their application tests and security tests.
 
-the infrastructure of the environments is built from code which exposes some parameters to dave. 
-that enables dave to choose the aws region in which to deploy and the name of the app. 
+.. Note:: Pipeline is broken to DEV and PROD for lab simplicity. 
+   from a workflow perspective the pipeline are the same. 
+   it is broken up to two for better lab flow. 
+
+   
+.. Out of scope:: a major part of the app build process is out of scope for this lab, 
+   Building the app code and publish it as a container to the registry. this process is done using DOCKERHUB.  
+
+   
+Dave repo:
+~~~~~~~~~~~
+
+explore dave's repo, that's the app2 repo. 
+on the container CLI, 
+
+.. code-block:: terminal
+
+   cd /home/snops/f5-rs-app2
+   ls
+
+ - application code under the 'all-in-one-hackazon' folder. 
+ - infrastructure code maintained in the 'iac_parameters.yaml' file. 
  
-dave can control the deployment of the security policies from his repo. 
+explore the file parameters:
+
+.. code-block:: terminal
+
+   more iac_parameters.yaml
+   
+the infrastructure of the environments is built using ansible playbooks that were built by devops/netops. 
+those playbooks are being controlled by jenkins which takes the iac_parameters.yaml file and uses it as parameters for the playbooks. 
+that enables dave to choose the aws region in which to deploy, the name of the app and more.  
+ 
+dave can also control the deployment of the security policies from his repo as we will see. 
  
 Task 1 - Deploy dev environment 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. Note:: Jenkins can be configured to run the dev pipeline based on code change in dave's app repo. 
+   in this lab we are manually starting the AWS pipeline in Jenkins to visualize the process. 
+
 Open Jenkins:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-go to UDF, on the 'jumphost' click on 'access' and 'jenkins'  
+go to UDF, on the :guilabel:`jumphost` click on :guilabel: 'access' and :guilabel: 'jenkins'
 
 usernmae: snops , password: default
 
-when you open jenkins you should see two jobs that have started running automaticlly, 'Push a WAF policy',
-this happens because jenkins monitors the repo and start the jobs. you can cancel the jobs or let them fail. 
+when you open jenkins you should see some jobs that have started running automatically, jobs that contain: 'Push a WAF policy',
+this happens because jenkins monitors the repo and start the jobs. *you can cancel the jobs or let them fail*. 
 
 
-in jenkins open the 'DevSecOps - Lab - App2' folder', the lab files are all in this folder 
-we will start by deploying a dev environment, you will start a pipeline that creates a full environment in AWS. 
+in jenkins open the :guilabel: `DevSecOps - Lab - App2` folder, the lab jobs are all in this folder 
+we will start by deploying a DEV environment, you will start a pipeline that creates a full environment in AWS. 
 
    |jenkins010|
    
@@ -62,12 +95,12 @@ Task 2 - Review the deployed environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    
-you can review the output of each job while its running, click on the small 'console output' icon as shown in the screenshot:
+you can review the output of each job while its running, click on the small :guilabel: `console output` icon as shown in the screenshot:
 
    |jenkins050|
    
    
-wait until all of the jobs have finished (turned green). 
+wait until all of the jobs have finished (turned green and got to the ). 
 
    |jenkins060|
 
