@@ -39,8 +39,8 @@ on the container CLI,
    cd /home/snops/f5-rs-app2
    ls
 
- - application code under the 'all-in-one-hackazon' folder. 
- - infrastructure code maintained in the 'iac_parameters.yaml' file. 
+- application code under the 'all-in-one-hackazon' folder. 
+- infrastructure code maintained in the 'iac_parameters.yaml' file. 
  
 explore the file parameters:
 
@@ -58,20 +58,22 @@ Task 1 - Deploy dev environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. Note:: Jenkins can be configured to run the dev pipeline based on code change in dave's app repo. 
-   in this lab we are manually starting the AWS pipeline in Jenkins to visualize the process. 
+   in this lab we are manually starting the Full stack pipeline in Jenkins to visualize the process. 
 
 Open Jenkins:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-go to UDF, on the :guilabel:`jumphost` click on :guilabel: 'access' and :guilabel: 'jenkins'
+go to UDF, on the :guilabel:`jumphost` click on :guilabel:`access` and :guilabel:`jenkins`
 
 usernmae: snops , password: default
 
 when you open jenkins you should see some jobs that have started running automatically, jobs that contain: 'Push a WAF policy',
-this happens because jenkins monitors the repo and start the jobs. *you can cancel the jobs or let them fail*. 
+this happens because jenkins monitors the repo and start the jobs. 
+
+- *you can cancel the jobs or let them fail*. 
 
 
-in jenkins open the :guilabel: `DevSecOps - Lab - App2` folder, the lab jobs are all in this folder 
+in jenkins open the :guilabel:`DevSecOps - Lab - App2` folder, the lab jobs are all in this folder 
 we will start by deploying a DEV environment, you will start a pipeline that creates a full environment in AWS. 
 
    |jenkins010|
@@ -145,6 +147,13 @@ rs-attacks:
 bad traffic generation to the app. used for security testing. 
 
 
+
+
+
+
+Access the App:
+~~~~~~~~~~~~~~~~~
+
 try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the bigip.
 after ignoring the ssl error (because the certificate isn't valid for the domain) you should get to the Hackazone mainpage
 
@@ -155,7 +164,7 @@ Task 3 - Go over the test results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 the deployment process failed because not all of the application tests completed successfully. 
-review the app-test job :guilabel: `console output`
+review the app-test job :guilabel:`console output`
 
 scroll to the bottom of the page, you should see the response with "request rejected", and the failure reason as "unexpected response returned"
 

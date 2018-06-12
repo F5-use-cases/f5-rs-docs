@@ -10,9 +10,10 @@ the application team tests came back and some of the tests have failed. the test
 Task 1 - Find which requests were blocked and resolve false-positive 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-log on to the 'DEV' bigip. 
-go to 'traffic learning', make sure you are editing the 'linux-high' policy. 
-check the requests that triggered suggestions. 
+- log on to the 'DEV' bigip. 
+- go to 'traffic learning', 
+- make sure you are editing the 'linux-high' policy. 
+- check the requests that triggered suggestions. 
 
 you should see a suggestion on 'High ASCII characters in headers' , examine the request. this is a false positive. the app uses a different language in the header and it is legitimate traffic. 
 you can also see that the request comes from a trusted ip.
@@ -20,7 +21,7 @@ accept the suggestion.
 
 	|Bigip-030|
 
-apply the policy. we will now export the policy to the git repo and start the automated build again to check that we are ready to promote it to production. 
+apply the policy.
 
 .. Note:: you are applying the policy to DEV,
    secops shouldn't change the policy running in production 

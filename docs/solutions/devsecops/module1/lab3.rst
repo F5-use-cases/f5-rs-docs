@@ -43,6 +43,7 @@ edit the iac_parameters.yaml file to point the deployment to the new ASM policy 
    git add iac_parameters.yaml
    git commit -m "changed asm policy"
    
+
    |dev-cmd-010|
    
 
