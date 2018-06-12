@@ -15,19 +15,23 @@ go to 'traffic learning', make sure you are editing the 'linux-high' policy.
 check the requests that triggered suggestions. 
 
 you should see a suggestion on 'High ASCII characters in headers' , examine the request. this is a false positive. the app uses a different language in the header and it is legitimate traffic. 
+you can also see that the request comes from a trusted ip.
 accept the suggestion.
 
-	|Bigip-040|
-
-check the other suggestions, you'll see some signatures that were triggered. those are actual threats that are part of the automated security testing and we can ignore the suggestions. 
+	|Bigip-030|
 
 apply the policy. we will now export the policy to the git repo and start the automated build again to check that we are ready to promote it to production. 
 
-* you are applying the policy to DEV, secops shouldn't change the policy running in production (unless there is an emergency)
-
+.. Note:: you are applying the policy to DEV,
+   secops shouldn't change the policy running in production 
+   ** unless there is a true emergency 
+   
 
 Task 2 - export the security policy to the waf policies templates repo.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+secops have updated the policy with a setting that makes sense to update on the general template. 
+we will now export the policy from the bigip to the waf-policies repo (managed by secops)
 
 go back to jenkins, under the 'f5-rs-app2-dev' there is a job that will export the policy and save it to the git repo - 'SEC export waf policy'
 
@@ -39,6 +43,11 @@ click on this job and choose 'Build with Parameters' from the left menu.
 	
 you can leave the defaults, it asks for two parameters. the first parameter is the name of the policy on the bigip and the other is the new policy name in the git repo.  
 
+.. Note:: why saving the template with a different version ? 
+   changes should be tracked, more than that we should allow app teams to 'control their own destiny' 
+   allowing them to choose the right time and place to update the waf policy in their environment. 
+   by versioning the policies we ensure their control over which template gets deployed. 
+   
 click on 'build' 
 
 check the slack channel - you should see a message about the new security policy that's ready. 
@@ -46,11 +55,11 @@ this illustrates how chatops can help communicate between different teams.
 
 	|Slack-030|
 
-the security admin role ends here. it's now up to the appowner to run the pipeline again. 
+the security admin role ends here. it's now up to Dave to run the pipeline again. 
 
 
    
-.. |Bigip-040| image:: images/Bigip-040.PNG
+.. |Bigip-030| image:: images/Bigip-030.PNG
    
 .. |jenkins075| image:: images/jenkins075.PNG 
    

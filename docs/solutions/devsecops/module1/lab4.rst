@@ -9,24 +9,30 @@ we completed tests in DEV, both functional tests and security tests have passed.
 Task 1 - merge infrastructure as code file from dev
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-we will 'merge' the app2 dev branch with the master branch so that the production deployment will use the correct policy. 
-on the /home/snops/f5-rs-app2 folder:
+- we will 'merge' the app2 dev branch with the master branch.
+  so that the production deployment will use the correct policy. 
+
+- on the /home/snops/f5-rs-app2 folder:
 
 .. code-block:: terminal
  
    git checkout master
    git merge -m dev "changed asm policy"
 
-* the merge will trigger a job in jenkins that's configured to monitor this repo - 'Push waf policy', since the environment isn't deployed yet it will fail, either cancel the job or let it fail. 
-
+.. Note:: the merge will trigger a job in jenkins that's configured to monitor this repo - 'Push waf policy',
+          since the environment isn't deployed yet it will fail, either cancel the job or let it fail.     
 
 Task 2 deploy PROD:
 ~~~~~~~~~~~~~~~~~~
 
-we will deploy the environment. 
-go to the 'f5-rs-app2-prod' folder, choose the 'Full stack deployment' view and run the pipeline. 
-go to slack to get the ip's for the bigip and the app. 
+.. Note:: in this lab we manually deploy PROD after the tests have completed.
+          this manual step can easily be automated. what are the metrics that we need to verify successful deployment ? 
+		  how can splunk analytics / bigiq 6.0 help with that ? 
 
-open the bigip and verify that you don't see the 'high ascii' false positive. 
+- go to the 'f5-rs-app2-prod' folder, choose the 'Full stack deployment' view and run the pipeline. 
 
-verify the security policy that's attached to the VIP. 
+- go to slack  https://f5-rs.slack.com/messages/C9WLUB89F/ to get the ip's for the bigip and the app. 
+
+- open the bigip and verify that you don't see the 'high ascii' false positive. 
+
+- verify the security policy that's attached to the VIP. 

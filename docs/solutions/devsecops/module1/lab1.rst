@@ -100,18 +100,21 @@ you can review the output of each job while its running, click on the small :gui
    |jenkins050|
    
    
-wait until all of the jobs have finished (turned green and got to the ). 
+wait until all of the jobs have finished (turned green and the app-test one is red ). 
 
-   |jenkins060|
+   |jenkins055|
 
-open slack - https://f5-rs.slack.com/messages/C9WLUB89F/
-go to the 'builds' channel. 
-use the search box on the upper right corner and filter by your username (student#). 
-jenkins will send to this channel the bigip and the application address. 
+   
+ - open slack - https://f5-rs.slack.com/messages/C9WLUB89F/
+ - go to the 'builds' channel. 
+ - use the search box on the upper right corner and filter by your username (student#). 
+ - jenkins will send to this channel the bigip and the application address. 
 
-   |jenkins070|
 
-open the bigip and login using the provided credentials. 
+   |slack040|
+
+open the bigip and login using the provided credentials (username: admin, password: the one you defined in the global parameters file)
+
 explore the objects that were created: 
 
 Cloud formation template:
@@ -132,12 +135,17 @@ rs-iapp service:
 ~~~~~~~~~~~~~~~~~
 deploys a service on the bigip using either AS2 or AS3 
 
+app-test:
+~~~~~~~~~~~~~~~~~
+good traffic generation to the app.
+
+
 rs-attacks:
 ~~~~~~~~~~~~~~~~~
-good and bad traffic generation to the app.
+bad traffic generation to the app. used for security testing. 
 
 
-try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the bigip. 
+try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the bigip.
 after ignoring the ssl error (because the certificate isn't valid for the domain) you should get to the Hackazone mainpage
 
    |hackazone010|
@@ -146,7 +154,18 @@ after ignoring the ssl error (because the certificate isn't valid for the domain
 Task 3 - Go over the test results 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-future work - review the failed tests and report them.
+the deployment process failed because not all of the application tests completed successfully. 
+review the app-test job :guilabel: `console output`
+
+scroll to the bottom of the page, you should see the response with "request rejected", and the failure reason as "unexpected response returned"
+
+this is an indication that ASM has blocked the request. in our case it is a false positive. 
+
+   |jenkins056|
+   
+.. Note:: in this lab secops uses the same WAF policy template for many apps.
+   we don't want to create a 'snowflake' waf policy. so with this failure dave will escalete to secops. 
+   that ensures that the setting will be reviewd and if needed the policy template will get updated. 
    
    
 .. |jenkins010| image:: images/jenkins010.PNG 
@@ -159,8 +178,10 @@ future work - review the failed tests and report them.
    
 .. |jenkins050| image:: images/jenkins050.PNG
    
-.. |jenkins060| image:: images/jenkins060.PNG
+.. |jenkins055| image:: images/jenkins055.PNG
+
+.. |jenkins056| image:: images/jenkins056.PNG
    
-.. |jenkins070| image:: images/jenkins070.PNG
+.. |slack040| image:: images/Slack-040.PNG
    
 .. |hackazone010| image:: images/hackazone010.PNG
