@@ -82,8 +82,12 @@ Copy credentilas and paramaters files from the host folder.
    mkdir ~/.aws && cp /home/snops/host_volume/credentials ~/.aws/credentials
    
 
-configure your personal information in the global parameters file. 
-for the username use your student#
+- configure your personal information in the global parameters file. 
+- use your student# from teams
+- an example below:
+- vault_dac_user: "student01"
+- vault_dac_email: "yossi@f5.com"
+- vault_dac_password: "supersecurepassword1"
 
 .. code-block:: terminal
 
