@@ -13,7 +13,7 @@ Determine how to start your deployment:
   :guilabel: ``Security Lab: devsecops``
   Blueprint and :guilabel:`Start` it.
 
-Connecting to the Environment - test
+Connecting to the Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To connect to the lab environment we will use SSH to the jumphost. 

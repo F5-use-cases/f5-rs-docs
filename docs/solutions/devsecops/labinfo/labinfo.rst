@@ -2,7 +2,7 @@ Lab  Environment
 ~~~~~~~~~~~~~~~~~
 
 Lab Environment
-------------
+---------------
 
 this lab is intended to represent an app team that deploys their app on their own AWS VPC. while most of the componenets are dedicated for their app and separated from the rest of the netwrok, there are some services that the enterprise provides to this app team which are shared and are pre-built: 
 
