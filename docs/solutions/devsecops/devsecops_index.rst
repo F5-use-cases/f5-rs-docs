@@ -3,7 +3,7 @@ DevSecOps - Advanced WAF in a CI/CD Workflow
 
 This lab covers the following topics:
 
- - Shifting WAF policies [left](https://en.wikipedia.org/wiki/Shift_left_testing), closer to Dev 
+ - Shifting WAF policies `left <https://en.wikipedia.org/wiki/Shift_left_testing>`, closer to Dev 
  - Declarative Advanced WAF
 
 Lab Goals: 
