@@ -9,14 +9,14 @@ This lab covers the following topics:
 Lab Goals: 
 ~~~~~~~~~~
 
- + Describe main DevSecOps concepts and how they translate into an actual environment
+ + Describe the main DevSecOps concepts and how they translate into an actual environment
  + Describe the various roles in a DevSecOps workflow (SecOps, Dev, DevOps)
  + Describe the workflow with F5 Application Security integrated into the pipeline
 
 Roles in the Lab:
 ~~~~~~~~~~~~~~~~ 
  + SecOps - Represents an application security engineer
- + Dave - Represents an application development team member that is responsible for the app and for pushing it into the pipeline
+ + Dave - Represents an application development team member who is responsible for the app and for pushing it into the pipeline
  + DevOps / Automation / SRE - aren't represented in the lab. Their role is to build the tools we utilize in this lab (the automation pipeline of infrastructure and application security)
 
 OUT OF SCOPE: 
