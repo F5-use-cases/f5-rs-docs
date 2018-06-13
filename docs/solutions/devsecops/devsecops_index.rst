@@ -21,12 +21,12 @@ Roles in the Lab:
 
 OUT OF SCOPE: 
 ~~~~~~~~~~~~~ 
- + The "How to" of the automation pieces. 
- + for the "how to" please refer to the F5 super netops training. 
+ + The "how-to" and the mechanics of the automation components
+ + Please refer to the `F5 Super-NetOps Training <https://f5.com/supernetops>`_ for the above
  
 Expected time to complete: **2 hours**
 
-To continue please review the information about the Lab Environment.
+To continue, please review the information about the Lab Environment.
 
 .. toctree::
    :maxdepth: 1
