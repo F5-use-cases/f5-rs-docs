@@ -90,7 +90,9 @@ Copy credentilas and paramaters files from the host folder.
    ansible-vault edit --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-global-vars-vault.yaml
 
 - Once in edit mode - type ``i`` to activate INSERT mode and configure your personal information by changing the following variables: ``vault_dac_user``, ``vault_dac_email`` and ``vault_dac_password``
-- Use your student# from Teams as the username
+- Use your student# from Teams for ``vault_dac_user`` - used as a Tenant ID to differentiate between multiple deployments
+- Choose your own (secure) value for ``vault_dac_password`` - this is the password for the ``admin`` user of the BIG-IP
+- There are a number of special characters that you should avoid using in passwords for F5 products. See https://support.f5.com/csp/article/K2873 for details
 
 For example:
 
@@ -98,7 +100,7 @@ For example:
 
    vault_dac_user: "student01"
    vault_dac_email: "yossi@f5.com"
-   vault_dac_password: "supersecurepassword1"
+   vault_dac_password: "Sup3rsecur3Passw0rd1"
 
 - Press the ``ESC`` key and save the file by typing: ``:wq``  
 
