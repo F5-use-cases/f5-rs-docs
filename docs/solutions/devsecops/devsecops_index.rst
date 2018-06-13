@@ -1,12 +1,12 @@
-DevSecops - Advanced WAF in a CI/CD workflow
+DevSecOps - Advanced WAF in a CI/CD Workflow
 ===========================================
 
-This Lab covers the following topics:
+This lab covers the following topics:
 
- - Shifting WAF policy left, closer to DEV. 
- - Declarative advanced waf 
+ - Shifting WAF policies [left](https://en.wikipedia.org/wiki/Shift_left_testing), closer to Dev 
+ - Declarative Advanced WAF
 
-Lab Goal: 
+Lab Goals: 
 ~~~~~~~~~~
 
  + Describe devsecops main concepts and how they translate into an actual environemnt
