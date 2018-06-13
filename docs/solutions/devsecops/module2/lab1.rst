@@ -15,9 +15,11 @@ it is up to Dave now to deploy the new feature in dev and promote to PROD when i
 Task 1 - Enable proactive bot defense in the DEV environment 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ssh into the contianer, make sure you are connected as user 'jenkins' 
-go to the application git folder. check which branches are there and what is the active branch. (git branch) 
-you should be on the 'dev' branch. the files you see belong to the dev branch. 
+- Open the container CLI
+- make sure you are connected as user 'jenkins' 
+- go to the application git folder. 
+- check which branches are there and what is the active branch. (git branch) 
+- you should be on the 'dev' branch. the files you see belong to the dev branch. 
 
 .. code-block:: terminal
 
@@ -26,16 +28,13 @@ you should be on the 'dev' branch. the files you see belong to the dev branch.
    git branch
    
  
-edit the iac_parameters.yaml file to enable proactive bot defense, 
-change the setting from:
+- edit the iac_parameters.yaml file to enable proactive bot defense, 
+- change the setting from:
+  + proactive_autometed_attack_prevention: "disabled"
+  + to:
+  + proactive_autometed_attack_prevention: "always"
 
-proactive_autometed_attack_prevention: "disabled"
-
-to:
-
-proactive_autometed_attack_prevention: "always"
-
-add the file to git and commit 
+- add the file to git and commit 
 
 .. code-block:: terminal
 
@@ -44,11 +43,11 @@ add the file to git and commit
    git commit -m "enabled proactive bot defense"
    
    
-go back to jenkins and open the 'f5-rs-app2-dev ' folder. choose the 'waf policy' tab , jenkins is set up to monitor the application repo. when a 'commit' is identified jenkins will start an automatic pipeline to deploy the service. it takes up to a minute for jenkins to start the pipeline. 
+- go back to jenkins and open the 'f5-rs-app2-dev ' folder. choose the 'waf policy' tab , 
+  jenkins is set up to monitor the application repo. when a 'commit' is identified jenkins will start an automatic pipeline to deploy the service. it takes up to a minute for jenkins to start the pipeline. 
+  jenkins takes the parametes from the git repo and uses them to deploy/update the service. 
 
-jenkins takes the parametes from the git repo and uses them to deploy/update the service. 
-
-Log on to splunk , navigate to your app and look under the 'security - dos' tab for proactive mitigation. 
+- Log on to splunk , navigate to your app and look under the 'security - dos' tab for proactive mitigation. 
 
 Task 2 - (Secops) Verify botdefense configuration and logs on the bigip 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -20,11 +20,11 @@ Dave should deploy their new code into a DEV environment that is exactly the sam
 run their application tests and security tests.
 
 .. Note:: Pipeline is broken to DEV and PROD for lab simplicity. 
-   from a workflow perspective the pipeline are the same. 
-   it is broken up to two for better lab flow. 
+   from a workflow perspective the pipelines are the same. 
+   it is broken up to two for a better lab flow. 
 
    
-.. Out of scope:: a major part of the app build process is out of scope for this lab, 
+.. Note:: OUT OF SCOPE - a major part of the app build process is out of scope for this lab, 
    Building the app code and publish it as a container to the registry. this process is done using DOCKERHUB.  
 
    
@@ -48,11 +48,11 @@ explore the file parameters:
 
    more iac_parameters.yaml
    
-the infrastructure of the environments is built using ansible playbooks that were built by devops/netops. 
+the infrastructure of the environments is deployed using ansible playbooks that were built by devops/netops. 
 those playbooks are being controlled by jenkins which takes the iac_parameters.yaml file and uses it as parameters for the playbooks. 
-that enables dave to choose the aws region in which to deploy, the name of the app and more.  
- 
-dave can also control the deployment of the security policies from his repo as we will see. 
+
+- that enables dave to choose the aws region in which to deploy, the name of the app and more.  
+- dave can also control the deployment of the security policies from his repo as we will see. 
  
 Task 1 - Deploy dev environment 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
