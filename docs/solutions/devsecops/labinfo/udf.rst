@@ -90,7 +90,7 @@ Copy credentilas and paramaters files from the host folder.
    ansible-vault edit --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-global-vars-vault.yaml
 
 - Once in edit mode - type ``i`` to activate INSERT mode and configure your personal information by changing the following variables: ``vault_dac_user``, ``vault_dac_email`` and ``vault_dac_password``
-- use your student# from teams for the username
+- Use your student# from Teams as the username
 
 For example:
 
@@ -100,9 +100,9 @@ For example:
    vault_dac_email: "yossi@f5.com"
    vault_dac_password: "supersecurepassword1"
 
-Type 
+- Press the ``ESC`` key, and save the file by typing: ``:wq``  
 
-* after you save the f5-rs-global-vars-vault.yaml file for the first time you get an error message, ignore it it's a bug
+* After you save the f5-rs-global-vars-vault.yaml file for the first time you get an error message, ignore it it's a bug
   ERROR! Unexpected Exception, this is probably a bug: [Errno 1] Operation not permitted: '/home/snops/f5-rs-global-vars-vault.yaml'
 
 Configure jenkins and reload it
