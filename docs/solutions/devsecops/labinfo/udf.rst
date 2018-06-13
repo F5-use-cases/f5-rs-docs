@@ -82,19 +82,29 @@ Copy credentilas and paramaters files from the host folder.
    mkdir ~/.aws && cp /home/snops/host_volume/credentials ~/.aws/credentials
    
 
-- configure your personal information in the global parameters file. 
-- use your student# from teams
-- an example below:
-- vault_dac_user: "student01"
-- vault_dac_email: "yossi@f5.com"
-- vault_dac_password: "supersecurepassword1"
+- Edit the encrypted global parameters file ``/home/snops/f5-rs-global-vars-vault.yaml`` by typing:
 
 .. code-block:: terminal
 
    echo password > ~/.vault_pass.txt
    ansible-vault edit --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-global-vars-vault.yaml
 
-* after you save the f5-rs-global-vars-vault.yaml file for the first time you get an error message, ignore it it's a bug
+- Once in edit mode - type ``i`` to activate INSERT mode and configure your personal information by changing the following variables: ``vault_dac_user``, ``vault_dac_email`` and ``vault_dac_password``
+- Use your student# from Teams for ``vault_dac_user`` - used as a Tenant ID to differentiate between multiple deployments
+- Choose your own (secure) value for ``vault_dac_password`` - this is the password for the ``admin`` user of the BIG-IP
+- There are a number of special characters that you should avoid using in passwords for F5 products. See https://support.f5.com/csp/article/K2873 for details
+
+For example:
+
+.. code-block:: terminal
+
+   vault_dac_user: "student01"
+   vault_dac_email: "yossi@f5.com"
+   vault_dac_password: "Sup3rsecur3Passw0rd1"
+
+- Press the ``ESC`` key and save the file by typing: ``:wq``  
+
+* After you save the ``f5-rs-global-vars-vault.yaml`` file for the first time you get an error message, ignore it it's a bug
   ERROR! Unexpected Exception, this is probably a bug: [Errno 1] Operation not permitted: '/home/snops/f5-rs-global-vars-vault.yaml'
 
 Configure jenkins and reload it

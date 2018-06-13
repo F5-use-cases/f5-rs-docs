@@ -65,7 +65,7 @@ Open Jenkins:
 
 go to UDF, on the :guilabel:`jumphost` click on :guilabel:`access` and :guilabel:`jenkins`
 
-usernmae: snops , password: default
+username: ``snops`` , password: ``default``
 
 when you open jenkins you should see some jobs that have started running automatically, jobs that contain: 'Push a WAF policy',
 this happens because jenkins monitors the repo and start the jobs. 
