@@ -82,17 +82,25 @@ Copy credentilas and paramaters files from the host folder.
    mkdir ~/.aws && cp /home/snops/host_volume/credentials ~/.aws/credentials
    
 
-- configure your personal information in the global parameters file. 
-- use your student# from teams
-- an example below:
-- vault_dac_user: "student01"
-- vault_dac_email: "yossi@f5.com"
-- vault_dac_password: "supersecurepassword1"
+- Edit the encrypted global parameters file ``/home/snops/f5-rs-global-vars-vault.yaml`` by typing:
 
 .. code-block:: terminal
 
    echo password > ~/.vault_pass.txt
    ansible-vault edit --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-global-vars-vault.yaml
+
+- Once in edit mode - type ``i`` to activate INSERT mode and configure your personal information by changing the following variables: ``vault_dac_user``, ``vault_dac_email`` and ``vault_dac_password``
+- use your student# from teams for the username
+
+For example:
+
+.. code-block:: terminal
+
+   vault_dac_user: "student01"
+   vault_dac_email: "yossi@f5.com"
+   vault_dac_password: "supersecurepassword1"
+
+Type 
 
 * after you save the f5-rs-global-vars-vault.yaml file for the first time you get an error message, ignore it it's a bug
   ERROR! Unexpected Exception, this is probably a bug: [Errno 1] Operation not permitted: '/home/snops/f5-rs-global-vars-vault.yaml'
