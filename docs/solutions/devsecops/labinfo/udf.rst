@@ -100,9 +100,9 @@ For example:
    vault_dac_email: "yossi@f5.com"
    vault_dac_password: "supersecurepassword1"
 
-- Press the ``ESC`` key, and save the file by typing: ``:wq``  
+- Press the ``ESC`` key and save the file by typing: ``:wq``  
 
-* After you save the f5-rs-global-vars-vault.yaml file for the first time you get an error message, ignore it it's a bug
+* After you save the ``f5-rs-global-vars-vault.yaml`` file for the first time you get an error message, ignore it it's a bug
   ERROR! Unexpected Exception, this is probably a bug: [Errno 1] Operation not permitted: '/home/snops/f5-rs-global-vars-vault.yaml'
 
 Configure jenkins and reload it
