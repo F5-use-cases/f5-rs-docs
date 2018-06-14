@@ -59,11 +59,11 @@ the will attach a volume from the linux host to the container
 
 
 .. Note:: after running the docker run command you are immediatly 'attached' to the container.
+
    if you open another window to the linux host you need to attach to the container again. 
-   use the command: 
-   .. code-block:: terminal
-       sudo docker attach rs-container
    
+   to attach use the command: sudo docker attach rs-container
+       
 
 1.3 Configure credentials and personal information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

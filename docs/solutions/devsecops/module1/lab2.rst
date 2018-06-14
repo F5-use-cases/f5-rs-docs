@@ -4,12 +4,14 @@ Lab 2 (Secops): Tune/fix security policy
 Background: 
 ~~~~~~~~~~~~~
 
-the application team tests came back and some of the tests have failed. the test result came back with the WAF blocking page.  
+the application team tests came back and some of the tests have failed. the test result came back with the WAF blocking page.
  
  
-Task 1 - Find which requests were blocked and resolve false-positive 
+Task 2.1 - Find which requests were blocked and resolve false-positive 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+2.1.1 Clear false positive:
+**************************	
 - log on to the 'DEV' bigip. 
 - go to 'traffic learning', 
 - make sure you are editing the 'linux-high' policy. 
@@ -21,24 +23,30 @@ accept the suggestion.
 
 	|Bigip-030|
 
-apply the policy.
+2.1.2 Apply the policy :
+**************************	
+
+- apply the policy.
 
 .. Note:: you are applying the policy to DEV,
    secops shouldn't change the policy running in production 
    ** unless there is a true emergency 
    
 
-Task 2 - export the security policy to the waf policies templates repo.
+Task 2.2 - Save the WAF policy to the templates repo (managed by secops) 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 secops have updated the policy with a setting that makes sense to update on the general template. 
 we will now export the policy from the bigip to the waf-policies repo (managed by secops)
 
-go back to jenkins, under the 'f5-rs-app2-dev' there is a job that will export the policy and save it to the git repo - 'SEC export waf policy'
+2.2.1 Pull WAF policy from the bigip :
+**************************
+
+go back to jenkins, under the 'f5-rs-app2-dev' there is a job that will export the policy and save it to the git repo - :guilabel:`SEC export waf policy`
 
 	|jenkins075|
    
-click on this job and choose 'Build with Parameters' from the left menu. 
+click on this job and choose :guilabel:`Build with Parameters` from the left menu. 
 
 	|jenkins080|
 	
@@ -50,6 +58,9 @@ you can leave the defaults, it asks for two parameters. the first parameter is t
    by versioning the policies we ensure their control over which template gets deployed. 
    
 click on 'build' 
+
+2.2.2 Check slack channel notification :
+**************************
 
 check the slack channel - you should see a message about the new security policy that's ready. 
 this illustrates how chatops can help communicate between different teams. 

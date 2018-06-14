@@ -37,6 +37,7 @@ on the container CLI type the following command to view git branches:
 
 .. code-block:: terminal
 
+   cd /home/snops/f5-rs-app2
    git branch
    
 the app repo has two branches, dev and master. we are now working on the dev branch. 
@@ -78,7 +79,7 @@ Task 1.2 - Deploy dev environment
 
 go to UDF, on the :guilabel:`jumphost` click on :guilabel:`access` and :guilabel:`jenkins`
 
-username: ``snops`` , password: ``default``
+:guilabel:`username:` ``snops`` , :guilabel:`password:` ``default``
 
 
 .. Note:: when you open jenkins you should see some jobs that have started running automatically, jobs that contain: 'Push a WAF policy',
@@ -146,7 +147,16 @@ wait until all of the jobs have finished (turned green and the app-test one is r
 
 explore the objects that were created: 
 
-1.3.5 Summary - Jobs roles:
+1.3.5 Access the App:
+**************************	
+
+try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the bigip.
+after ignoring the ssl error (because the certificate isn't valid for the domain) you should get to the Hackazone mainpage
+
+   |hackazone010|
+   
+
+1.3.6 Summary - Jobs roles:
 **************************	
 
 A1 - aws-net:
@@ -221,14 +231,6 @@ Z - destroy:
 - Destroy the environment 
 
 
-1.3.6 Summary - Access the App:
-**************************	
-
-try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the bigip.
-after ignoring the ssl error (because the certificate isn't valid for the domain) you should get to the Hackazone mainpage
-
-   |hackazone010|
-
 
 Task 1.4 - Go over the test results 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -245,7 +247,7 @@ review the app-test job :guilabel:`console output`
 1.4.2 identify the WAF blocked page response:
 **************************	
    
-scroll to the bottom of the page, you should see the response with "request rejected", and the failure reason as "unexpected response returned"
+scroll to the bottom of the page, you should see the response with :guilabel:`request rejected`, and the failure reason as :guilabel:`unexpected response returned`
 
 this is an indication that ASM has blocked the request. in our case it is a false positive. 
 
