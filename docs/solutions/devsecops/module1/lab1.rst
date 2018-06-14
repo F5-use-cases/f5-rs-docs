@@ -27,14 +27,11 @@ run their application tests and security tests.
 .. Note:: OUT OF SCOPE - a major part of the app build process is out of scope for this lab, 
    Building the app code and publish it as a container to the registry. this process is done using DOCKERHUB.  
 
-Task 1 - review Dave's repo
+Task 1.1 - review Dave's repo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1.1 Review dave's repo, that's the app2 repo
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 1.1.1 view git branches in the application repo:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+****************************************************
 
 on the container CLI type the following command to view git branches:
 
@@ -45,7 +42,7 @@ on the container CLI type the following command to view git branches:
 the app repo has two branches, dev and master. we are now working on the dev branch. 
 
 1.1.2 view files in the application repo:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+****************************************************
 
 on the container CLI type the following commands to view the files in the repo:
 
@@ -58,7 +55,7 @@ on the container CLI type the following commands to view the files in the repo:
 - infrastructure code maintained in the 'iac_parameters.yaml' file. 
  
 1.1.3 explore the infrastructure as code parameters file:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*****************************************************************
 
 .. code-block:: terminal
 
@@ -70,14 +67,14 @@ those playbooks are being controlled by jenkins which takes the iac_parameters.y
 - that enables dave to choose the aws region in which to deploy, the name of the app and more.  
 - dave can also control the deployment of the security policies from his repo as we will see. 
  
-Task 2 - Deploy dev environment 
+Task 1.2 - Deploy dev environment 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. Note:: Jenkins can be configured to run the dev pipeline based on code change in dave's app repo. 
    in this lab we are manually starting the Full stack pipeline in Jenkins to visualize the process. 
 
-2.1 Open Jenkins:
-~~~~~~~~~~~~~~~~~~~~~~~~~
+1.2.1 Open Jenkins:
+**************************
 
 go to UDF, on the :guilabel:`jumphost` click on :guilabel:`access` and :guilabel:`jenkins`
 
@@ -89,8 +86,11 @@ username: ``snops`` , password: ``default``
 		  *you can cancel the jobs or let them fail*. 
 
 
+1.2.2 start the 'Full stack pipeline':
+**************************		  
 in jenkins open the :guilabel:`DevSecOps - Lab - App2` folder, the lab jobs are all in this folder 
 we will start by deploying a DEV environment, you will start a pipeline that creates a full environment in AWS. 
+
 
    |jenkins010|
    
@@ -109,67 +109,120 @@ click on 'run' to start the dev environment pipeline.
 
 
    
-Task 3 - Review the deployed environment 
+Task 1.3 - Review the deployed environment 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   
+1.3.1 review jobs output:
+**************************	
+
 you can review the output of each job while its running, click on the small :guilabel:`console output` icon as shown in the screenshot:
 
    |jenkins050|
    
+1.3.2 let the jobs run until the pipeline finishes:
+**************************	
    
 wait until all of the jobs have finished (turned green and the app-test one is red ). 
 
    |jenkins055|
 
+1.3.3 open slack and extract bigip and application info:
+**************************	
    
- - open slack - https://f5-rs.slack.com/messages/C9WLUB89F/
- - go to the 'builds' channel. 
+ - open slack - https://f5-rs.slack.com/messages/C9WLUB89F/ (if you don't already have an account you can set it up with an F5 email)
+ - go to the :guilabel:`builds` channel. 
  - use the search box on the upper right corner and filter by your username (student#). 
  - jenkins will send to this channel the bigip and the application address. 
 
 
    |slack040|
 
-open the bigip:
-~~~~~~~~~~~~~~
-- use the address from the slack notification (look for your username in the 'builds' channel)
+1.3.4 login to the bigip:
+**************************	
+
+- use the address from the slack notification (look for your username in the :guilabel:`builds` channel)
 - username: admin
-- password: the one you defined in the global parameters file in the vault_dac_password parameter.
+- password: the personal password you defined in the global parameters file in the vault_dac_password parameter.
 
 explore the objects that were created: 
 
-Cloud formation template:
-~~~~~~~~~~~~~~~~~~~~~~~~~
-this is the base deployment of the bigip, we start with the F5 supported 2nic CFT. 
-it deploys bigip with the latest cloud version, installs the necessary cloudlibs and cloud related scripts.
+1.3.5 Summary - Jobs roles:
+**************************	
 
-bigip rs onboard:
-~~~~~~~~~~~~~~~~~
-deploys the 'enterprise' default profiles, for example: 
-HTTP, analytics, AVR, DOSL7, iapps etc. 
+A1 - aws-net:
++++++++++++++
+- Builds an AWS VPC with subnets and security groups. 
+- Jenkins runs a shell command that kicks off an ansible playbook with parameters from the application repo. (like which region) 
+- Ansible playbook takes the parameters and use them to deploy a cloud formation template 
+- cloud formation template deploys all resources in AWS subscription
 
-push a waf policy:
-~~~~~~~~~~~~~~~~~
-pushes a waf policy from the repo to the bigip, updates DOSL7 and FPS profiles. 
-
-rs-iapp service:
-~~~~~~~~~~~~~~~~~
-deploys a service on the bigip using either AS2 or AS3 
-
-app-test:
-~~~~~~~~~~~~~~~~~
-good traffic generation to the app.
+A2 - aws_app:
++++++++++++++
+- Deploys an AWS autoscale group with a containerized app
+- Jenkins runs a shell command that kicks off an ansible playbook with parameters from the application repo. (like container name)
+- Jenkins uses the VPC / subnets  information from previews job 
+- Ansible playbook takes the parameters and use them to deploy a cloud formation template 
+- cloud formation template deploys all resources in AWS subscription
 
 
-rs-attacks:
-~~~~~~~~~~~~~~~~~
-bad traffic generation to the app. used for security testing. 
+A3 - aws-bigip:
++++++++++++++
+- Deploys a BIGIP to AWS 
+- Jenkins runs a shell command that kicks off an ansible playbook with parameters from the application repo. (like which region) 
+- Jenkins uses the VPC / subnets  information from previews job 
+- Ansible playbook takes the parameters and use them to deploy a cloud formation template 
+- cloud formation template deploys all resources in AWS subscription
+
+A4 - aws bigip onboard (rest_user):
++++++++++++++
+- Connects to the BIGIP over SSH with private key (only way to connect to an AWS instance).
+- configures rest user and password for future use 
+
+A5 - bigip rs onboard:
++++++++++++++
+- deploys the 'enterprise' default profiles, for example: HTTP, analytics, AVR, DOSL7, iapps etc.  
+- Jenkins runs a shell command that kicks off an ansible playbook with parameters from the application repo.  
+- Ansible playbook takes the parameters and uses them to deploy a configuration to the BIGIP using the F5 supported ansible modules and API's.
+
+B1 - push a WAF policy:
++++++++++++++
+- deploys the 'application specific' profiles, for example: DOSL7, waf policy 
+- Jenkins runs a shell command that kicks off an ansible playbook with parameters from the application repo. (which waf policy to use, dosl7 parameters)
+- Ansible playbook takes the parameters and uses them to deploy a configuration to the BIGIP using the F5 supported ansible modules and API's.
+
+B2 - rs-iapp service:
++++++++++++++
+- deploys the 'service definition' uses AS2 API 
+- Jenkins runs a shell command that kicks off an ansible playbook with parameters from the application repo.
+- Jenkins uses the application autoscale group name from previous jobs
+- Ansible playbook takes the parameters and uses them to deploy a configuration to the BIGIP using the F5 supported ansible modules and API's.
+- AS2 turns the service definition into objects on the BIGIP 
+
+B3 - app-test:
++++++++++++++
+- Send HTTP requests to the application to test it 
+- Jenkins runs a shell command that kicks off an ansible playbook with parameters
+- Ansible playbook takes the parameters and uses them to run HTTP requests to our APP.
+
+B4  - rs-attacks:
++++++++++++++
+- Test app vulnerabilities 
+- Jenkins runs a shell command that kicks off an ansible playbook with parameters
+- Ansible playbook takes the parameters and uses them to run HTTP requests to our APP.
+
+SEC export waf policy:
++++++++++++++
+- Pulls a policy from a bigip and stores in a git repo 
+- Jenkins runs a shell command that kicks off an ansible playbook with parameters
+- Ansible playbook takes the parameters and uses them to run F5 modules (Created by Fouad Chmainy <F.Chmainy@F5.com> ) to pull the waf policy from the BIGIP 
+
+Z - destroy:
++++++++++++++
+- Destroy the environment 
 
 
-
-Access the App:
-~~~~~~~~~~~~~~~~~
+1.3.6 Summary - Access the App:
+**************************	
 
 try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the bigip.
 after ignoring the ssl error (because the certificate isn't valid for the domain) you should get to the Hackazone mainpage
@@ -177,14 +230,20 @@ after ignoring the ssl error (because the certificate isn't valid for the domain
    |hackazone010|
 
 
-Task 4 - Go over the test results 
+Task 1.4 - Go over the test results 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.4.1 view the test results:
+**************************	
 
 the deployment process failed because not all of the application tests completed successfully. 
 review the app-test job :guilabel:`console output`
 
    |jenkins053|
    
+
+1.4.2 identify the WAF blocked page response:
+**************************	
    
 scroll to the bottom of the page, you should see the response with "request rejected", and the failure reason as "unexpected response returned"
 
