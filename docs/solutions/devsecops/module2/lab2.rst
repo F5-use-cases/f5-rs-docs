@@ -1,4 +1,4 @@
-Lab 2: (Dave) Account takeover protection (app layer encryption)
+Lab 2: (Dave) Account takeover protection (app layer encryption) - OPTIONAL 
 ----------------------------------
 
 Background: 

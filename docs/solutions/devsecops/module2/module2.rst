@@ -8,7 +8,7 @@ the Lab doesn't cover how to configure the automation tools, just how to operate
 in this lab we cover: 
 
 - automated attacks prevention 
-- application layer encryption  
+- application layer encryption (OPTIONAL) 
 
 .. toctree::
    :maxdepth: 1

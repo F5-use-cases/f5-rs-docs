@@ -6,7 +6,7 @@ Background:
 
 we completed tests in DEV, both functional tests and security tests have passed. 
  
-Task 1 - merge infrastructure as code file from dev
+Task 4.1 - merge infrastructure as code file from dev
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - we will 'merge' the app2 dev branch with the master branch.
@@ -22,7 +22,7 @@ Task 1 - merge infrastructure as code file from dev
 .. Note:: the merge will trigger a job in jenkins that's configured to monitor this repo - 'Push waf policy',
           since the environment isn't deployed yet it will fail, either cancel the job or let it fail.     
 
-Task 2 deploy PROD:
+Task 4.2 deploy PROD:
 ~~~~~~~~~~~~~~~~~~
 
 .. Note:: in this lab we manually deploy PROD after the tests have completed.
