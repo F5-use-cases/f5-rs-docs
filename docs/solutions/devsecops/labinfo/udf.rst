@@ -55,9 +55,15 @@ the will attach a volume from the linux host to the container
 
 .. code-block:: terminal
 
-    sudo docker run -v config:/home/snops/host_volume -p 2222:22 -p 10000:8080 -it --rm f5usecases/f5-rs-container
+    sudo docker run -name rs-container -v config:/home/snops/host_volume -p 2222:22 -p 10000:8080 -it --rm f5usecases/f5-rs-container
 
 
+.. Note:: after running the docker run command you are immediatly 'attached' to the container.
+   if you open another window to the linux host you need to attach to the container again. 
+   use the command: 
+   .. code-block:: terminal
+       sudo docker attach rs-container
+   
 
 Configure credentials and personal information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -77,21 +83,21 @@ Copy credentilas and paramaters files from the host folder.
 
 .. code-block:: terminal
 
-   ssh-keygen -f $HOME/.ssh/id_rsa -t rsa -N ''
+   cp -r host_volume/.ssh /var/jenkins_home
    cp /home/snops/host_volume/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global-vars-vault.yaml
-   mkdir ~/.aws && cp /home/snops/host_volume/credentials ~/.aws/credentials
+   mkdir /var/jenkins_home/.aws && cp /home/snops/host_volume/credentials /var/jenkins_home/.aws/credentials
+   echo password > /var/jenkins_home/.vault_pass.txt
    
 
 - Edit the encrypted global parameters file ``/home/snops/f5-rs-global-vars-vault.yaml`` by typing:
 
 .. code-block:: terminal
 
-   echo password > ~/.vault_pass.txt
-   ansible-vault edit --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-global-vars-vault.yaml
+   ansible-vault edit --vault-password-file /var/jenkins_home/.vault_pass.txt /home/snops/f5-rs-global-vars-vault.yaml
 
 - Once in edit mode - type ``i`` to activate INSERT mode and configure your personal information by changing the following variables: ``vault_dac_user``, ``vault_dac_email`` and ``vault_dac_password``
 - Use your student# from Teams for ``vault_dac_user`` - used as a Tenant ID to differentiate between multiple deployments
-- Choose your own (secure) value for ``vault_dac_password`` - this is the password for the ``admin`` user of the BIG-IP
+- Choose your own (secure) value for ``vault_dac_password`` - ** this is the password for the ``admin`` user of the BIG-IP **
 - There are a number of special characters that you should avoid using in passwords for F5 products. See https://support.f5.com/csp/article/K2873 for details
 
 For example:

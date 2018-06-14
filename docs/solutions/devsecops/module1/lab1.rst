@@ -97,7 +97,7 @@ Task 2 - Review the deployed environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    
-you can review the output of each job while its running, click on the small :guilabel: `console output` icon as shown in the screenshot:
+you can review the output of each job while its running, click on the small :guilabel:`console output` icon as shown in the screenshot:
 
    |jenkins050|
    
@@ -148,9 +148,6 @@ bad traffic generation to the app. used for security testing.
 
 
 
-
-
-
 Access the App:
 ~~~~~~~~~~~~~~~~~
 
@@ -169,6 +166,9 @@ review the app-test job :guilabel:`console output`
 scroll to the bottom of the page, you should see the response with "request rejected", and the failure reason as "unexpected response returned"
 
 this is an indication that ASM has blocked the request. in our case it is a false positive. 
+
+
+
 
    |jenkins056|
    
