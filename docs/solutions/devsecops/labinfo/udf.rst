@@ -13,8 +13,8 @@ Determine how to start your deployment:
   :guilabel:`Security Lab: DevSecOps`
   Blueprint and :guilabel:`Start` it.
 
-Connecting to the Environment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.  Connecting to the Environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To connect to the lab environment we will use SSH to the jumphost. 
 
@@ -27,7 +27,7 @@ SSH key has to be configured in UDF in order to access the jumphost.
   - HTTP Access to Jenkins (only available after you start the lab) 
 
 
-Connect using SSH to the Linux Host 
+1.1 Connect using SSH to the Linux Host 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. In UDF navigate to your :guilabel:`Deployments`
@@ -45,7 +45,7 @@ Connect using SSH to the Linux Host
 #. Select how you would like to continue:
 
 
-Run the rs-container
+1.2 Run the rs-container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The entire lab is built from code hosted in this repo, in order to launch the lab environment you will download and run a container that has the tools we are using (ansible and jenkins) as well as the depndencies and requirements to interact with the differnet services (F5, AWS, github.. ) 
@@ -65,11 +65,11 @@ the will attach a volume from the linux host to the container
        sudo docker attach rs-container
    
 
-Configure credentials and personal information
+1.3 Configure credentials and personal information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-log in as jenkins (root password is 'default')
-
+1.3.1 log in as jenkins (root password is 'default')
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 jenkins user is used so that the config changes we do are available to jenkins
 
 .. code-block:: terminal
@@ -77,18 +77,25 @@ jenkins user is used so that the config changes we do are available to jenkins
    su root -c "su jenkins"
    
    
-Create the SSH keys, the SSH key will be used when creating EC2 instances.  we will strore them in the jenkins SSH folder so that jenkins can use them to access instances.
+1.3.2 Copy ssh key, aws credentials and global parameters file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Copy credentilas and paramaters files from the host folder.  
+the SSH key will be used when creating EC2 instances.  
+we will store them in the Jenkins SSH folder so that Jenkins can use them to access instances.
+
+Copy credentials and parameters files from the host folder using the following commands: 
 
 .. code-block:: terminal
 
-   cp -r host_volume/.ssh /var/jenkins_home
+   ssh-keygen -f var/jenkins_home/.ssh/id_rsa -t rsa -N ''
    cp /home/snops/host_volume/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global-vars-vault.yaml
    mkdir /var/jenkins_home/.aws && cp /home/snops/host_volume/credentials /var/jenkins_home/.aws/credentials
    echo password > /var/jenkins_home/.vault_pass.txt
    
 
+1.3.3 Edit the global parameters file with your personal information 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   
 - Edit the encrypted global parameters file ``/home/snops/f5-rs-global-vars-vault.yaml`` by typing:
 
 .. code-block:: terminal
@@ -113,10 +120,10 @@ For example:
 * After you save the ``f5-rs-global-vars-vault.yaml`` file for the first time you get an error message, ignore it it's a bug
   ERROR! Unexpected Exception, this is probably a bug: [Errno 1] Operation not permitted: '/home/snops/f5-rs-global-vars-vault.yaml'
 
-Configure jenkins and reload it
+1.3.4 Configure jenkins and reload it
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-the following script will configure jenkins with your information and reload it. 
+Run the following command to configure jenkins with your personal information and reload it: 
 
 .. code-block:: terminal
 

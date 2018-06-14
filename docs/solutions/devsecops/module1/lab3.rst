@@ -60,8 +60,8 @@ Service deployment update:
   
 - that way it will update the waf policy on the bigip
 
-- go back to jenkins and open the 'f5-rs-app2-dev ' folder. choose the 'waf policy' tab ,  it takes up to 
-  a minute for jenkins to start the pipeline. you should see that the tasks start to run and the pipeline finishes successfully. 
+- go back to jenkins and open the 'f5-rs-app2-dev ' folder. choose the 'Service deployment pipeline' tab ,  it takes up to 
+  a minute for jenkins to start the pipeline. you should see that the tasks start to run and the pipeline finishes successfully (all tasks are now green). 
 
 
 - log on to the bigip again, check which ASM policies are there and which policy is attached to the 'App2 VIP' 

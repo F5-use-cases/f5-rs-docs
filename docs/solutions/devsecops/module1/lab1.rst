@@ -27,12 +27,27 @@ run their application tests and security tests.
 .. Note:: OUT OF SCOPE - a major part of the app build process is out of scope for this lab, 
    Building the app code and publish it as a container to the registry. this process is done using DOCKERHUB.  
 
-   
-Dave repo:
-~~~~~~~~~~~
+Task 1 - review Dave's repo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-explore dave's repo, that's the app2 repo. 
-on the container CLI, 
+1.1 Review dave's repo, that's the app2 repo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.1.1 view git branches in the application repo:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+on the container CLI type the following command to view git branches:
+
+.. code-block:: terminal
+
+   git branch
+   
+the app repo has two branches, dev and master. we are now working on the dev branch. 
+
+1.1.2 view files in the application repo:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+on the container CLI type the following commands to view the files in the repo:
 
 .. code-block:: terminal
 
@@ -42,7 +57,8 @@ on the container CLI,
 - application code under the 'all-in-one-hackazon' folder. 
 - infrastructure code maintained in the 'iac_parameters.yaml' file. 
  
-explore the file parameters:
+1.1.3 explore the infrastructure as code parameters file:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: terminal
 
@@ -54,23 +70,23 @@ those playbooks are being controlled by jenkins which takes the iac_parameters.y
 - that enables dave to choose the aws region in which to deploy, the name of the app and more.  
 - dave can also control the deployment of the security policies from his repo as we will see. 
  
-Task 1 - Deploy dev environment 
+Task 2 - Deploy dev environment 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. Note:: Jenkins can be configured to run the dev pipeline based on code change in dave's app repo. 
    in this lab we are manually starting the Full stack pipeline in Jenkins to visualize the process. 
 
-Open Jenkins:
+2.1 Open Jenkins:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 go to UDF, on the :guilabel:`jumphost` click on :guilabel:`access` and :guilabel:`jenkins`
 
 username: ``snops`` , password: ``default``
 
-when you open jenkins you should see some jobs that have started running automatically, jobs that contain: 'Push a WAF policy',
-this happens because jenkins monitors the repo and start the jobs. 
 
-- *you can cancel the jobs or let them fail*. 
+.. Note:: when you open jenkins you should see some jobs that have started running automatically, jobs that contain: 'Push a WAF policy',
+          this happens because jenkins monitors the repo and start the jobs.
+		  *you can cancel the jobs or let them fail*. 
 
 
 in jenkins open the :guilabel:`DevSecOps - Lab - App2` folder, the lab jobs are all in this folder 
@@ -93,7 +109,7 @@ click on 'run' to start the dev environment pipeline.
 
 
    
-Task 2 - Review the deployed environment 
+Task 3 - Review the deployed environment 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    
@@ -115,7 +131,11 @@ wait until all of the jobs have finished (turned green and the app-test one is r
 
    |slack040|
 
-open the bigip and login using the provided credentials (username: admin, password: the one you defined in the global parameters file)
+open the bigip:
+~~~~~~~~~~~~~~
+- use the address from the slack notification (look for your username in the 'builds' channel)
+- username: admin
+- password: the one you defined in the global parameters file in the vault_dac_password parameter.
 
 explore the objects that were created: 
 
@@ -157,12 +177,15 @@ after ignoring the ssl error (because the certificate isn't valid for the domain
    |hackazone010|
 
 
-Task 3 - Go over the test results 
+Task 4 - Go over the test results 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 the deployment process failed because not all of the application tests completed successfully. 
 review the app-test job :guilabel:`console output`
 
+   |jenkins053|
+   
+   
 scroll to the bottom of the page, you should see the response with "request rejected", and the failure reason as "unexpected response returned"
 
 this is an indication that ASM has blocked the request. in our case it is a false positive. 
@@ -188,6 +211,8 @@ this is an indication that ASM has blocked the request. in our case it is a fals
 .. |jenkins050| image:: images/jenkins050.PNG
    
 .. |jenkins055| image:: images/jenkins055.PNG
+
+.. |jenkins053| image:: images/jenkins053.PNG
 
 .. |jenkins056| image:: images/jenkins056.PNG
    
