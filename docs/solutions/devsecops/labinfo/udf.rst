@@ -87,7 +87,7 @@ Copy credentials and parameters files from the host folder using the following c
 
 .. code-block:: terminal
 
-   ssh-keygen -f var/jenkins_home/.ssh/id_rsa -t rsa -N ''
+   ssh-keygen -f /var/jenkins_home/.ssh/id_rsa -t rsa -N ''
    cp /home/snops/host_volume/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global-vars-vault.yaml
    mkdir /var/jenkins_home/.aws && cp /home/snops/host_volume/credentials /var/jenkins_home/.aws/credentials
    echo password > /var/jenkins_home/.vault_pass.txt
