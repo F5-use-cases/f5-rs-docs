@@ -55,7 +55,7 @@ the will attach a volume from the linux host to the container
 
 .. code-block:: terminal
 
-    sudo docker run -name rs-container -v config:/home/snops/host_volume -p 2222:22 -p 10000:8080 -it --rm f5usecases/f5-rs-container
+    sudo docker run --name rs-container -v config:/home/snops/host_volume -p 2222:22 -p 10000:8080 -it --rm f5usecases/f5-rs-container
 
 
 .. Note:: after running the docker run command you are immediatly 'attached' to the container.

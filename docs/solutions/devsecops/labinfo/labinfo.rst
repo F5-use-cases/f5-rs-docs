@@ -30,7 +30,7 @@ one of the automation guidelines is to use F5 supported solutions where possible
 - AWS cloud formation templates are used to deploy resources into AWS (network, app, BIGIP) 
  - for more information on CFT , https://aws.amazon.com/cloudformation/
  - F5 supported CFT's , https://github.com/F5Networks/f5-aws-cloudformation 
-- Ansible modules are used to contorl BIGIP configuration (Profiles, waf policy upload, iApp) 
+- Ansible modules are used to control BIGIP configuration (Profiles, waf policy upload, iApp) 
  - more info on F5 supported ansible modules http://clouddocs.f5.com/products/orchestration/ansible/devel/ 
 - F5 REST API calls are used when no ansible module is available (for example, update a DOSL7 profile) 
  - more info on F5 iControl REST, https://devcentral.f5.com/Wiki/Default.aspx?Page=HomePage&NS=iControlREST
