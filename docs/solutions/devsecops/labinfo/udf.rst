@@ -103,7 +103,7 @@ Run the following command to configure jenkins with your personal information an
 
 .. code-block:: terminal
 
-   ansible-playbook --vault-password-file ~/.vault_pass.txt /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml
+   ansible-playbook --vault-password-file /var/jenkins_home/.vault_pass.txt /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml
 
 
    
