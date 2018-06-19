@@ -23,61 +23,39 @@ SSH key has to be configured in UDF in order to access the jumphost.
 
   The lab environment provides several access methods to the Jumphost:
 
+  - SSH to RS-CONTAINER 
   - SSH to the linux  host 
   - HTTP Access to Jenkins (only available after you start the lab) 
 
 
-1.1 Connect using SSH to the Linux Host 
+1.1 Connect using SSH to the RS-CONTAINER
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. In UDF navigate to your :guilabel:`Deployments`
+#. In UDF navigate to the  :guilabel:`Deployments` 
 
-#. Click the :guilabel:`Details` button for your Deployment
+#. Click the :guilabel:`Details` button for your DevSecOps Deployment
 
 #. Click the :guilabel:`Components` tab
 
-#. Find the ``Linux Jumphost`` Component and click the the :guilabel:`Details`
+#. Find the ``Linux Jumphost`` Component and click the the :guilabel:`ACCESS`
    button.
 
-#. use your favorite SSH client to connect using your private key.
+#. use your favorite SSH client to connect using your private key username is :guilabel:`root`
 
 
-#. Select how you would like to continue:
-
-
-1.2 Run the rs-container
+1.2 Configure the rs-container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The entire lab is built from code hosted in this repo, in order to launch the lab environment you will download and run a container that has the tools we are using (ansible and jenkins) as well as the depndencies and requirements to interact with the differnet services (F5, AWS, github.. ) 
-on the linux jumphost in UDF, run the following command to start the container,
-the will attach a volume from the linux host to the container
+The entire lab is built from code hosted in this repo, the container that you are connecting to runs on the linux host
+and is publicly available. to run the deployments you need to configure it with personal information and credentials. 
 
 
-.. code-block:: terminal
-
-    sudo docker run --name rs-container -v config:/home/snops/host_volume -p 2222:22 -p 10000:8080 -it --rm f5usecases/f5-rs-container
-
-
-.. Note:: after running the docker run command you are immediatly 'attached' to the container.
-
-   if you open another window to the linux host you need to attach to the container again. 
-   
-   to attach use the command: sudo docker attach rs-container
        
-
 1.3 Configure credentials and personal information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.3.1 log in as jenkins (root password is 'default')
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-jenkins user is used so that the config changes we do are available to jenkins
-
-.. code-block:: terminal
-
-   su root -c "su jenkins"
    
-   
-1.3.2 Copy ssh key, aws credentials and global parameters file
+1.3.1 Copy ssh key, aws credentials and global parameters file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 the SSH key will be used when creating EC2 instances.  
@@ -87,13 +65,11 @@ Copy credentials and parameters files from the host folder using the following c
 
 .. code-block:: terminal
 
-   ssh-keygen -f /var/jenkins_home/.ssh/id_rsa -t rsa -N ''
-   cp /home/snops/host_volume/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global-vars-vault.yaml
-   mkdir /var/jenkins_home/.aws && cp /home/snops/host_volume/credentials /var/jenkins_home/.aws/credentials
-   echo password > /var/jenkins_home/.vault_pass.txt
+   /home/snops/host_volume/udf_startup.sh
+   chown -R jenkins:snops /var/jenkins_home/.ssh && chmod 600 /var/jenkins_home/.ssh/*
    
 
-1.3.3 Edit the global parameters file with your personal information 
+1.3.2 Edit the global parameters file with your personal information 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    
 - Edit the encrypted global parameters file ``/home/snops/f5-rs-global-vars-vault.yaml`` by typing:
@@ -120,7 +96,7 @@ For example:
 * After you save the ``f5-rs-global-vars-vault.yaml`` file for the first time you get an error message, ignore it it's a bug
   ERROR! Unexpected Exception, this is probably a bug: [Errno 1] Operation not permitted: '/home/snops/f5-rs-global-vars-vault.yaml'
 
-1.3.4 Configure jenkins and reload it
+1.3.3 Configure jenkins and reload it
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Run the following command to configure jenkins with your personal information and reload it: 

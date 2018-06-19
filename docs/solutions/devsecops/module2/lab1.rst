@@ -72,7 +72,7 @@ log on to the dev bigip again, check the setting on the dos profile named rs_dos
    
 on the bigip, check the bot request log, verify that requests are being challanged
 
-	|pbd-bigip-010|
+	|pbd-bigip-020|
 
 
 this concludes the tests in the 'DEV' environment. we are now ready to push the changes to production. 
@@ -107,7 +107,7 @@ check that requests are getting challenged in the bot event log.
    
 .. |pbd-bigip-010| image:: images/pbd-bigip-010.PNG 
    
-.. ||pbd-bigip-020|| image:: images/|pbd-bigip-020|.PNG 
+.. |pbd-bigip-020| image:: images/|pbd-bigip-020|.PNG 
    
 .. |ale-bigip-010| image:: images/ale-bigip-010.PNG
    
