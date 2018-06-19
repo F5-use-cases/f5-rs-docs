@@ -39,8 +39,8 @@ SSH key has to be configured in UDF in order to access the jumphost.
 
 #. Find the ``Linux Jumphost`` Component and click the the :guilabel:`ACCESS`
    button.
-
-#. use your favorite SSH client to connect using your private key username is :guilabel:`root`
+   
+#. use your favorite SSH client to connect to RS-CONTAINER using your UDF private key. username is :guilabel:`root`
 
 
 1.2 Configure the rs-container
