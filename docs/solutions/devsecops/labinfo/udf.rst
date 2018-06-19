@@ -65,6 +65,7 @@ Copy credentials and parameters files from the host folder using the following c
 
 .. code-block:: terminal
 
+   su jenkins
    /home/snops/host_volume/udf_startup.sh
    chown -R jenkins:snops /var/jenkins_home/.ssh && chmod 600 /var/jenkins_home/.ssh/*
    
