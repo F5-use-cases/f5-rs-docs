@@ -17,7 +17,7 @@ Task 4.1 - merge infrastructure as code file from dev
 .. code-block:: terminal
  
    git checkout master
-   git merge -m dev "changed asm policy"
+   git merge dev -m "changed asm policy"
 
 .. Note:: the merge will trigger a job in jenkins that's configured to monitor this repo - 'Push waf policy',
           since the environment isn't deployed yet it will fail, either cancel the job or let it fail.     

@@ -40,7 +40,7 @@ SSH key has to be configured in UDF in order to access the jumphost.
 #. Find the ``Linux Jumphost`` Component and click the the :guilabel:`ACCESS`
    button.
    
-#. use your favorite SSH client to connect to RS-CONTAINER using your UDF private key. username is :guilabel:`root`
+#. use your favorite SSH client to connect to :guilabel:`RS-CONTAINER` using your UDF private key. username is :guilabel:`root`
 
 
 1.2 Configure the rs-container
@@ -61,7 +61,7 @@ and is publicly available. to run the deployments you need to configure it with 
 the SSH key will be used when creating EC2 instances.  
 we will store them in the Jenkins SSH folder so that Jenkins can use them to access instances.
 
-Copy credentials and parameters files from the host folder using the following commands: 
+Copy credentials and parameters files from the host folder using the following script: 
 
 .. code-block:: terminal
 

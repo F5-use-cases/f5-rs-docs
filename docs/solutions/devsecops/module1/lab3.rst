@@ -49,7 +49,7 @@ edit the iac_parameters.yaml file to point the deployment to the new WAF policy 
    git commit -m "changed asm policy"
    
 
-   |dev-cmd-010|
+|dev-cmd-010|
    
 
 3.1.4 service deployment update:
