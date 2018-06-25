@@ -104,7 +104,7 @@ check that requests are getting challenged in the bot event log.
    
 .. |pbd-bigip-010| image:: images/pbd-bigip-010.PNG 
    
-.. |pbd-bigip-020| image:: images/pbd-bigip-020|.PNG 
+.. |pbd-bigip-020| image:: images/pbd-bigip-020.PNG 
    
 .. |ale-bigip-010| image:: images/ale-bigip-010.PNG
    
