@@ -71,7 +71,7 @@ open the PRODUCTION bigip, check that the FPS profile named rs_fps has the 'logi
    
 .. |pbd-bigip-010| image:: images/pbd-bigip-010.PNG 
    
-.. ||pbd-bigip-020|| image:: images/|pbd-bigip-020|.PNG 
+.. |pbd-bigip-020| image:: images/pbd-bigip-020.PNG 
    
 .. |ale-bigip-010| image:: images/ale-bigip-010.PNG
    
