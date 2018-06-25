@@ -34,7 +34,7 @@ Task 1.1 - Enable proactive bot defense in the DEV environment
 ****************************************************
  
 - edit the iac_parameters.yaml file to enable proactive bot defense, 
-- change the setting from: 'proactive_autometed_attack_prevention: "disabled"' 'proactive_autometed_attack_prevention: "always"'
+- change the setting from: ``proactive_autometed_attack_prevention: "disabled"`` to ``proactive_autometed_attack_prevention: "always"``
 
 .. code-block:: terminal
 
