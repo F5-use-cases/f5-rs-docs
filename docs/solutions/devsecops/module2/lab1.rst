@@ -58,12 +58,12 @@ Task 1.1 - Enable proactive bot defense in the DEV environment
 
 - OPTIONAL - Log on to splunk (logon details in the UDF documentation), navigate to your app and look under the 'Security - DDoS' tab for proactive mitigation. 
 
-Task 1.2 - (Secops) Verify bot defense configuration and logs on the BIGIP 
+Task 1.2 - (Secops) Verify bot defense configuration and logs on the BIG-IP 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-while all of the logs are sent to splunk where they can be viewed by Dave, part of the lab is to verify the change on the BIGIP. 
+while all of the logs are sent to splunk where they can be viewed by Dave, part of the lab is to verify the change on the BIG-IP. 
 this task doesn't represents an actual step of the deployment. it is just for lab purpose 
-log on to the dev bigip again, check the setting on the dos profile named rs_dosl7, verify that proactive bot defense is now enabled.
+log on to the dev BIG-IP again, check the setting on the dos profile named rs_dosl7, verify that proactive bot defense is now enabled.
 
 	|pbd-bigip-010|
    
@@ -94,7 +94,7 @@ on the /home/snops/f5-rs-app2 folder:
 
 the merge will trigger a job in Jenkins that's configured to monitor this repo - :guilabel:`Push WAF policy`, open the :guilabel:`f5-rs-app2-prd` folder and navigate to the :guilabel:`Service deployment pipeline` , you should see the jobs running in up to a minute.  
 
-open the PRODUCTION bigip, check that the DOSL7 profile named rs_dosl7 has the 'proactive bot defense' enabled. 
+open the PRODUCTION BIG-IP, check that the DOSL7 profile named rs_dosl7 has the 'proactive bot defense' enabled. 
 
 check that requests are getting challenged in the bot event log. 
 
