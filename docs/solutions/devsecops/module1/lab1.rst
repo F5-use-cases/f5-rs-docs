@@ -65,8 +65,8 @@ on the container CLI type the following commands to view the files in the repo:
 the infrastructure of the environments is deployed using ansible playbooks that were built by devops/netops. 
 those playbooks are being controlled by jenkins which takes the iac_parameters.yaml file and uses it as parameters for the playbooks. 
 
-- that enables dave to choose the aws region in which to deploy, the name of the app and more.  
-- dave can also control the deployment of the security policies from his repo as we will see. 
+- that enables Dave to choose the AWS region in which to deploy, the name of the app and more.  
+- Dave can also control the deployment of the security policies from his repo as we will see. 
  
 Task 1.2 - Deploy dev environment 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -127,18 +127,18 @@ wait until all of the jobs have finished (turned green and the app-test one is r
 
    |jenkins055|
 
-1.3.3 open slack and extract bigip and application info:
+1.3.3 open slack and extract BIG-IP and application info:
 **************************	
    
  - open slack - https://f5-rs.slack.com/messages/C9WLUB89F/ (if you don't already have an account you can set it up with an F5 email)
  - go to the :guilabel:`builds` channel. 
  - use the search box on the upper right corner and filter by your username (student#). 
- - jenkins will send to this channel the bigip and the application address. 
+ - jenkins will send to this channel the BIG-IP and the application address. 
 
 
    |slack040|
 
-1.3.4 login to the bigip:
+1.3.4 login to the BIG-IP:
 **************************	
 
 - use the address from the slack notification (look for your username in the :guilabel:`builds` channel)
@@ -150,7 +150,7 @@ explore the objects that were created:
 1.3.5 Access the App:
 **************************	
 
-try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the bigip.
+try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the BIG-IP.
 after ignoring the ssl error (because the certificate isn't valid for the domain) you should get to the Hackazone mainpage
 
    |hackazone010|
@@ -177,7 +177,7 @@ A2 - aws_app:
 
 A3 - aws-bigip:
 +++++++++++++
-- Deploys a BIGIP to AWS 
+- Deploys a BIG-IP to AWS 
 - Jenkins runs a shell command that kicks off an ansible playbook with parameters from the application repo. (like which region) 
 - Jenkins uses the VPC / subnets  information from previews job 
 - Ansible playbook takes the parameters and use them to deploy a cloud formation template 
@@ -185,28 +185,28 @@ A3 - aws-bigip:
 
 A4 - aws bigip onboard (rest_user):
 +++++++++++++
-- Connects to the BIGIP over SSH with private key (only way to connect to an AWS instance).
+- Connects to the BIG-IP over SSH with private key (only way to connect to an AWS instance).
 - configures rest user and password for future use 
 
 A5 - bigip rs onboard:
 +++++++++++++
 - deploys the 'enterprise' default profiles, for example: HTTP, analytics, AVR, DOSL7, iapps etc.  
 - Jenkins runs a shell command that kicks off an ansible playbook with parameters from the application repo.  
-- Ansible playbook takes the parameters and uses them to deploy a configuration to the BIGIP using the F5 supported ansible modules and API's.
+- Ansible playbook takes the parameters and uses them to deploy a configuration to the BIG-IP using the F5 supported ansible modules and API's.
 
 B1 - push a WAF policy:
 +++++++++++++
 - deploys the 'application specific' profiles, for example: DOSL7, waf policy 
 - Jenkins runs a shell command that kicks off an ansible playbook with parameters from the application repo. (which waf policy to use, dosl7 parameters)
-- Ansible playbook takes the parameters and uses them to deploy a configuration to the BIGIP using the F5 supported ansible modules and API's.
+- Ansible playbook takes the parameters and uses them to deploy a configuration to the BIG-IP using the F5 supported ansible modules and API's.
 
 B2 - rs-iapp service:
 +++++++++++++
 - deploys the 'service definition' uses AS2 API 
 - Jenkins runs a shell command that kicks off an ansible playbook with parameters from the application repo.
 - Jenkins uses the application autoscale group name from previous jobs
-- Ansible playbook takes the parameters and uses them to deploy a configuration to the BIGIP using the F5 supported ansible modules and API's.
-- AS2 turns the service definition into objects on the BIGIP 
+- Ansible playbook takes the parameters and uses them to deploy a configuration to the BIG-IP using the F5 supported ansible modules and API's.
+- AS2 turns the service definition into objects on the BIG-IP 
 
 B3 - app-test:
 +++++++++++++
@@ -222,9 +222,9 @@ B4  - rs-attacks:
 
 SEC export waf policy:
 +++++++++++++
-- Pulls a policy from a bigip and stores in a git repo 
+- Pulls a policy from a BIG-IP and stores in a git repo 
 - Jenkins runs a shell command that kicks off an ansible playbook with parameters
-- Ansible playbook takes the parameters and uses them to run F5 modules (Created by Fouad Chmainy <F.Chmainy@F5.com> ) to pull the waf policy from the BIGIP 
+- Ansible playbook takes the parameters and uses them to run F5 modules (Created by Fouad Chmainy <F.Chmainy@F5.com> ) to pull the waf policy from the BIG-IP 
 
 Z - destroy:
 +++++++++++++
@@ -257,8 +257,8 @@ this is an indication that ASM has blocked the request. in our case it is a fals
    |jenkins056|
    
 .. Note:: in this lab secops uses the same WAF policy template for many apps.
-   we don't want to create a 'snowflake' waf policy. so with this failure dave will escalete to secops. 
-   that ensures that the setting will be reviewd and if needed the policy template will get updated. 
+   we don't want to create a 'snowflake' waf policy. so with this failure Dave will escalate to secops. 
+   this ensures that the setting will be reviewed and if needed the policy template will get updated. 
    
    
 .. |jenkins010| image:: images/jenkins010.PNG 

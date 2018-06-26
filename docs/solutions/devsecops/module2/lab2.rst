@@ -8,7 +8,7 @@ Application is up and running, sales on the site have seen a big growth. our sup
 that their account is abused and they are charged with purcheses they never did. 
 after further investigation it turns out that the user's credentials were stolen by a malware on the client side. 
 
-secops engineer suggests to turn on f5's application encryption on the login page, he configured a template profile with some settings that make sense for the enterprise. exposing the login page paramters (URI), and a choice to enable/disable. 
+secops engineer suggests to turn on F5's application encryption on the login page, he configured a template profile with some settings that make sense for the enterprise. exposing the login page paramters (URI), and a choice to enable/disable. 
 
 
 Task 4 - Enable application layer encryption 
@@ -50,7 +50,7 @@ it is up to Dave now to deploy the new feature in DEV and promote to PROD when i
 
 - jenkins takes the parametes from the git repo and uses them to deploy/update the service. 
 
-- log on to the dev bigip again, check the setting on the FPS profile.
+- log on to the dev BIG-IP again, check the setting on the FPS profile.
 
 	|ale-bigip-010|
    
@@ -66,12 +66,12 @@ on the /home/snops/f5-rs-app2 folder:
 
 the merge will trigger a job in jenkins that's configured to monitor this repo - 'Push waf policy', open the f5-rs-app2-prd folder and navigate to the 'service deployment pipeline' , you should see the jobs running in up to a minute.  
 
-open the PRODUCTION bigip, check that the FPS profile named rs_fps has the 'login_password_encryption' enabled. 
+open the PRODUCTION BIG-IP, check that the FPS profile named rs_fps has the 'login_password_encryption' enabled. 
    
    
 .. |pbd-bigip-010| image:: images/pbd-bigip-010.PNG 
    
-.. ||pbd-bigip-020|| image:: images/|pbd-bigip-020|.PNG 
+.. |pbd-bigip-020| image:: images/pbd-bigip-020.PNG 
    
 .. |ale-bigip-010| image:: images/ale-bigip-010.PNG
    

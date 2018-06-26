@@ -27,12 +27,12 @@ Task 4.2 deploy PROD:
 
 .. Note:: in this lab we manually deploy PROD after the tests have completed.
           this manual step can easily be automated. what are the metrics that we need to verify successful deployment ? 
-		  how can splunk analytics / bigiq 6.0 help with that ? 
+		  how can splunk analytics / BIG-IQ 6.0 help with that ? 
 
 - go to the 'f5-rs-app2-prod' folder, choose the 'Full stack deployment' view and run the pipeline. 
 
-- go to slack  https://f5-rs.slack.com/messages/C9WLUB89F/ to get the ip's for the bigip and the app. 
+- go to slack  https://f5-rs.slack.com/messages/C9WLUB89F/ to get the ip's for the BIG-IP and the app. 
 
-- open the bigip and verify that you don't see the 'high ascii' false positive. 
+- open the BIG-IP and verify that you don't see the 'high ascii' false positive. 
 
 - verify the security policy that's attached to the VIP. 

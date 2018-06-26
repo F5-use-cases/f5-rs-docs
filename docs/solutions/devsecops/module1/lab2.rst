@@ -12,7 +12,7 @@ Task 2.1 - Find which requests were blocked and resolve false-positive
 
 2.1.1 Clear false positive:
 **************************	
-- log on to the 'DEV' bigip. 
+- log on to the 'DEV' BIG-IP. 
 - go to 'traffic learning', 
 - make sure you are editing the 'linux-high' policy. 
 - check the requests that triggered suggestions. 
@@ -37,9 +37,9 @@ Task 2.2 - Save the WAF policy to the templates repo (managed by secops)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 secops have updated the policy with a setting that makes sense to update on the general template. 
-we will now export the policy from the bigip to the waf-policies repo (managed by secops)
+we will now export the policy from the BIG-IP to the waf-policies repo (managed by secops)
 
-2.2.1 Pull WAF policy from the bigip :
+2.2.1 Pull WAF policy from the BIG-IP :
 **************************
 
 go back to jenkins, under the 'f5-rs-app2-dev' there is a job that will export the policy and save it to the git repo - :guilabel:`SEC export waf policy`
@@ -50,7 +50,7 @@ click on this job and choose :guilabel:`Build with Parameters` from the left men
 
 	|jenkins080|
 	
-you can leave the defaults, it asks for two parameters. the first parameter is the name of the policy on the bigip and the other is the new policy name in the git repo.  
+you can leave the defaults, it asks for two parameters. the first parameter is the name of the policy on the BIG-IP and the other is the new policy name in the git repo.  
 
 .. Note:: why saving the template with a different version ? 
    changes should be tracked, more than that we should allow app teams to 'control their own destiny' 
