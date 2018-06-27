@@ -86,7 +86,7 @@ For example:
 
 .. code-block:: terminal
 
-   vault_dac_user: "student01"
+   vault_dac_user: "student01" // username IS case sensitive
    vault_dac_email: "yossi@f5.com"
    vault_dac_password: "Sup3rsecur3Passw0rd1"
 

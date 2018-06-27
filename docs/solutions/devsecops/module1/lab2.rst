@@ -12,14 +12,16 @@ Task 2.1 - Find which requests were blocked and resolve false-positive
 
 2.1.1 Clear false positive:
 **************************	
-- log on to the 'DEV' bigip. 
+- log on to the 'DEV' bigip. (username: admin , password: your personal password that you set in the lab setup ) 
+- Take bigip address from slack, search by your username.
 - go to 'traffic learning', 
 - make sure you are editing the 'linux-high' policy. 
 - check the requests that triggered suggestions. 
 
 you should see a suggestion on 'High ASCII characters in headers' , examine the request. this is a false positive. the app uses a different language in the header and it is legitimate traffic. 
 you can also see that the request comes from a trusted ip.
-accept the suggestion.
+
+- accept the suggestion.
 
 	|Bigip-030|
 

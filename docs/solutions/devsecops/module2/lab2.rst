@@ -17,7 +17,6 @@ Task 4 - Enable application layer encryption
 it is up to Dave now to deploy the new feature in DEV and promote to PROD when it makes sense for him. 
 
 - Open the container CLI 
-- make sure you are connected as user 'jenkins' 
 - go to the application git folder. check which branches are there and what is the active branch. (git branch) 
 - you should be on the 'dev' branch. the files you see belong to the dev branch. 
 
@@ -46,7 +45,7 @@ it is up to Dave now to deploy the new feature in DEV and promote to PROD when i
    git commit -m "enabled login password encryption"
    
    
-- go back to jenkins and open the 'f5-rs-app2-dev ' folder. choose the 'waf policy' tab , jenkins is set up to monitor the application repo. when a 'commit' is identified jenkins will start an automatic pipeline to deploy the service. it takes up to a minute for jenkins to start the pipeline. 
+- go back to jenkins and open the 'f5-rs-app2-dev ' folder. choose the 'Service deployment pipeline' tab , jenkins is set up to monitor the application repo. when a 'commit' is identified jenkins will start an automatic pipeline to deploy the service. it takes up to a minute for jenkins to start the pipeline. 
 
 - jenkins takes the parametes from the git repo and uses them to deploy/update the service. 
 

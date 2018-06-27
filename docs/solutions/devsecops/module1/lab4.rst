@@ -27,7 +27,7 @@ Task 4.2 deploy PROD:
 
 .. Note:: in this lab we manually deploy PROD after the tests have completed.
           this manual step can easily be automated. what are the metrics that we need to verify successful deployment ? 
-		  how can splunk analytics / bigiq 6.0 help with that ? 
+		  How can splunk analytics / bigiq 6.0 help with that ? 
 
 - go to the 'f5-rs-app2-prod' folder, choose the 'Full stack deployment' view and run the pipeline. 
 

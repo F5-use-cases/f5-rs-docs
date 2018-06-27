@@ -42,6 +42,10 @@ on the container CLI type the following command to view git branches:
    
 the app repo has two branches, dev and master. we are now working on the dev branch. 
 
+.. Note:: the lab builds two environments, dev and prod. 
+   the dev environment deploys the code on the dev branch 
+   the prod environment deploys the code on the master branch.
+
 1.1.2 view files in the application repo:
 ****************************************************
 
@@ -257,8 +261,8 @@ this is an indication that ASM has blocked the request. in our case it is a fals
    |jenkins056|
    
 .. Note:: in this lab secops uses the same WAF policy template for many apps.
-   we don't want to create a 'snowflake' waf policy. so with this failure dave will escalete to secops. 
-   that ensures that the setting will be reviewd and if needed the policy template will get updated. 
+   we don't want to create a 'snowflake' waf policy. so with this failure dave will escalate to secops. 
+   that ensures that the setting will be reviewed and if needed the policy template will get updated. 
    
    
 .. |jenkins010| image:: images/jenkins010.PNG 

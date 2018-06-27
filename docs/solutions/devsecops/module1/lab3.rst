@@ -16,6 +16,7 @@ to do so we will edit the 'infrastructure as code' parameters file in dave's app
 3.1.1 Update git with your information:
 **************************
 Configure your information in git, this information is used by git (in this lab we use local git so it only has local meaning) 
+- on the RS-CONTAINER CLI 
 
 .. code-block:: terminal
 
@@ -40,8 +41,8 @@ Configure your information in git, this information is used by git (in this lab 
 edit the iac_parameters.yaml file to point the deployment to the new WAF policy (linux-high-v01). then add the file to git and commit.
 
  - change line: waf_policy_name: "linux-high"
- - to: waf_policy_name: "linux-high-v01"
-
+ - to: waf_policy_name: "linux-high-v01" 
+ 
 .. code-block:: terminal
 
    vi iac_parameters.yaml 
