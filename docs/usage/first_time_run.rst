@@ -12,14 +12,6 @@ email me: yossi@f5.com
 Run the rs-container - First time run on a new docker host 
 ----------------------------
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
-   
-   udf
-   local_run
-
-   
 .. code-block:: terminal
 
     docker run -t -d --name rs-container -v config:/home/snops/host_volume -p 2222:22 -p 10000:8080 --rm f5usecases/f5-rs-container
