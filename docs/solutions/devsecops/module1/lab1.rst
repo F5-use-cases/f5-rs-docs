@@ -261,13 +261,10 @@ this is an indication that ASM has blocked the request. in our case it is a fals
    |jenkins056|
    
 .. Note:: in this lab secops uses the same WAF policy template for many apps.
-<<<<<<< HEAD
    we don't want to create a 'snowflake' waf policy. so with this failure dave will escalate to secops. 
    that ensures that the setting will be reviewed and if needed the policy template will get updated. 
-=======
    we don't want to create a 'snowflake' waf policy. so with this failure Dave will escalate to secops. 
    this ensures that the setting will be reviewed and if needed the policy template will get updated. 
->>>>>>> 62d828d413fa65a7d311815a5ddca91565b9c1b5
    
    
 .. |jenkins010| image:: images/jenkins010.PNG 

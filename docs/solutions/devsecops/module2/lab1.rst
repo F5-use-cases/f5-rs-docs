@@ -34,15 +34,12 @@ Task 1.1 - Enable proactive bot defense in the DEV environment
 ****************************************************
  
 - edit the iac_parameters.yaml file to enable proactive bot defense, 
-<<<<<<< HEAD
 - change the setting from:
 
 + proactive_autometed_attack_prevention: "disabled"
 + To
 + Proactive_autometed_attack_prevention: "always"
-=======
 - change the setting from: ``proactive_autometed_attack_prevention: "disabled"`` to ``proactive_autometed_attack_prevention: "always"``
->>>>>>> 62d828d413fa65a7d311815a5ddca91565b9c1b5
 
 .. code-block:: terminal
 
@@ -60,11 +57,8 @@ Task 1.1 - Enable proactive bot defense in the DEV environment
 1.1.4 View the automatic pipeline:
 **************************************************** 
    
-<<<<<<< HEAD
 - go back to jenkins and open the :guilabel:`f5-rs-app2-dev` folder. choose the :guilabel:`Service deployment pipeline` tab , 
-=======
 - go back to jenkins and open the :guilabel:`f5-rs-app2-dev` folder. choose the :guilabel:`Service deployment pipeline` tab, 
->>>>>>> 62d828d413fa65a7d311815a5ddca91565b9c1b5
   jenkins is set up to monitor the application repo. when a 'commit' is identified jenkins will start an automatic pipeline to deploy the service. it takes up to a minute for jenkins to start the pipeline. 
   jenkins takes the parametes from the git repo and uses them to deploy/update the service. 
 

@@ -40,15 +40,11 @@ Configure your information in git, this information is used by git (in this lab 
  
 edit the iac_parameters.yaml file to point the deployment to the new WAF policy (linux-high-v01). then add the file to git and commit.
 
-<<<<<<< HEAD
  - change line: waf_policy_name: "linux-high"
  - to: waf_policy_name: "linux-high-v01" 
- 
-=======
  - change line: ``waf_policy_name: "linux-high"``
  - to: ``waf_policy_name: "linux-high-v01"``
 
->>>>>>> 62d828d413fa65a7d311815a5ddca91565b9c1b5
 .. code-block:: terminal
 
    vi iac_parameters.yaml 

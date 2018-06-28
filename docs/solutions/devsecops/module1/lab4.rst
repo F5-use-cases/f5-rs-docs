@@ -19,7 +19,7 @@ Task 4.1 - merge infrastructure as code file from dev
    git checkout master
    git merge dev -m "changed asm policy"
 
-.. Note:: the merge will trigger a job in jenkins that's configured to monitor this repo - 'Push waf policy',
+.. Note:: the merge will trigger a job in Jenkins that's configured to monitor this repo - 'Push waf policy',
           since the environment isn't deployed yet it will fail, either cancel the job or let it fail.     
 
 Task 4.2 deploy PROD:
@@ -27,11 +27,8 @@ Task 4.2 deploy PROD:
 
 .. Note:: in this lab we manually deploy PROD after the tests have completed.
           this manual step can easily be automated. what are the metrics that we need to verify successful deployment ? 
-<<<<<<< HEAD
 		  How can splunk analytics / bigiq 6.0 help with that ? 
-=======
-		  how can splunk analytics / BIG-IQ 6.0 help with that ? 
->>>>>>> 62d828d413fa65a7d311815a5ddca91565b9c1b5
+		  How can splunk analytics / BIG-IQ 6.0 help with that ? 
 
 - go to the 'f5-rs-app2-prod' folder, choose the 'Full stack deployment' view and run the pipeline. 
 

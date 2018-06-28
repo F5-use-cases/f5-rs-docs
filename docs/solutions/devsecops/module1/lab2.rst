@@ -12,12 +12,10 @@ Task 2.1 - Find which requests were blocked and resolve false-positive
 
 2.1.1 Clear false positive:
 **************************	
-<<<<<<< HEAD
+
 - log on to the 'DEV' bigip. (username: admin , password: your personal password that you set in the lab setup ) 
 - Take bigip address from slack, search by your username.
-=======
 - log on to the 'DEV' BIG-IP. 
->>>>>>> 62d828d413fa65a7d311815a5ddca91565b9c1b5
 - go to 'traffic learning', 
 - make sure you are editing the 'linux-high' policy. 
 - check the requests that triggered suggestions. 
