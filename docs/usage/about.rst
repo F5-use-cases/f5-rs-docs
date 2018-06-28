@@ -60,3 +60,4 @@ You can run the container from any docker host, follow the instructions here:
 .. |lab-diag-005| image:: images/lab-diag-005.PNG   
 .. |lab-diag-010| image:: images/lab-diag-010.PNG
 .. |automation-workflow-010| image:: images/automation-workflow-010.PNG
+

@@ -9,18 +9,12 @@ You can use these modules to create, edit, update, and delete configuration obje
 .. toctree::
    :maxdepth: 1
    :includehidden:
-   :caption: Support Details
-   :glob:
-
-   /usage/supported-versions
-
-.. toctree::
-   :maxdepth: 1
-   :includehidden:
    :caption: User Guide
    :glob:
 
+   /usage/about
    /usage/getting_started
+   
 
 .. toctree::
    :maxdepth: 1
@@ -35,6 +29,14 @@ You can use these modules to create, edit, update, and delete configuration obje
 
    /modules/modules_by_category
 
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+   :caption: Support Details
+   :glob:
+
+   /usage/supported-versions
+   
 .. toctree::
    :maxdepth: 1
    :caption: Developer's Guide
