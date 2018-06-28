@@ -9,12 +9,12 @@ https://f5-rs.slack.com
 
 email me: yossi@f5.com
 
-Run the rs-container 
+Run the rs-container - First time run on a new docker host 
 ----------------------------
 
 .. code-block:: terminal
 
-    taken out
+    docker run -t -d --name rs-container -v config:/home/snops/host_volume -p 2222:22 -p 10000:8080 --rm f5usecases/f5-rs-container
 
 Configure credentials and personal information
 ------------------------------------------------------------
