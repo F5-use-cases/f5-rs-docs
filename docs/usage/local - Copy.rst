@@ -1,7 +1,31 @@
-Running the container for the first time on a host
+Running the container on your docker host
 ------------------------------------------
 
-1.0 Configure the rs-container
+.. NOTE:: The following instructions will create a volume on your docker host and will instruct you 
+          to store private information in the host volume. the information in the volume will persist 
+		  on the host even after the container is terminated. 
+
+1.  run the rs-container
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: terminal
+
+   docker run -t -d --name rs-container -v config:/home/snops/host_volume -p 2222:22 -p 10000:8080 --rm f5usecases/f5-rs-container
+ 
+ The container exposes the following access methods:
+
+  - SSH to RS-CONTAINER ssh://localhsot:2222
+  - HTTP Access to Jenkins http://localhost:10000 (only available after you start the lab) 
+
+1.1 Connect using SSH to the RS-CONTAINER
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  - SSH to dockerhost:2222 
+  - username: :guilabel:`root`
+  - password: :guilabel:`default`
+
+
+1.2 Configure the rs-container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The entire lab is built from code hosted in this repo.
@@ -11,13 +35,13 @@ To run the deployments you need to configure your personal information and crede
           those are used to deploy resources on your account. those cloud resources will appear on your cloud account
 		  it is your responsibility to use it responsibly and shut down the instances when done. 
        
-1.1 Configure credentials and personal information
+1.3 Configure credentials and personal information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 the following steps are required only in the first time you run the container on a host, 
 this information persists on the host and will be available for you on any subsequent runs. 
 
-1.1.1 Create an AWS credentials file
+1.3.1 Create an AWS credentials file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - create an AWS credentials file by typing:
 
@@ -34,7 +58,7 @@ this information persists on the host and will be available for you on any subse
    aws_secret_access_key = CHANGE_TO_SECRET
 
    
-1.1.2 Create a personal SSH key
+1.3.2 Create a personal SSH key
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 the SSH key will be used when creating EC2 instances.  
@@ -48,13 +72,13 @@ Copy credentials and parameters files from the host folder using the following s
    ssh-keygen -f /home/snops/host_volume/sshkeys/id_rsa -t rsa -N ''
    
 
-1.1.2 create a file with the password to encrypt the parameters file
+1.3.2 create a file with the password to encrypt the parameters file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: terminal
 
    echo password > /var/jenkins_home/.vault_pass.txt
 
-1.1.3 Edit the global parameters file with your personal information 
+1.3.3 Edit the global parameters file with your personal information 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   
    
 - Edit the encrypted global parameters file ``/home/snops/f5-rs-global-vars-vault.yaml`` by typing:
@@ -78,7 +102,7 @@ For example:
 
 - Press the ``ESC`` key and save the file by typing: ``:wq``  
 
-1.1.4 Configure jenkins and reload it
+1.3.3 Configure jenkins and reload it
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Run the following command to configure jenkins with your personal information and reload it: 
@@ -89,4 +113,5 @@ Run the following command to configure jenkins with your personal information an
 
 
    
+- Start: :ref:`module1`
 
