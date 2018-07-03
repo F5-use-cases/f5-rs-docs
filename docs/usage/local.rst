@@ -10,7 +10,8 @@ Running the container on your docker host
 
 .. code-block:: terminal
 
-   docker run -t -d --name rs-container -v config:/home/snops/host_volume -p 2222:22 -p 10000:8080 --rm f5usecases/f5-rs-container
+   docker pull f5usecases/f5-rs-container
+   docker run -it --name rs-container -v config:/home/snops/host_volume -p 2222:22 -p 10000:8080 --rm f5usecases/f5-rs-container
  
 The container exposes the following access methods:
 
@@ -38,8 +39,6 @@ The container exposes the following access methods:
 
 2. Start a solution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-List of available solutions:
  
 .. toctree::
    :maxdepth: 1

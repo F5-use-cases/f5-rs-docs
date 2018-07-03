@@ -1,7 +1,7 @@
 Initial setup 
 ---------------
 
-1 Configure the rs-container
+1. Configure the rs-container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The entire lab is built from code hosted in this repo.
@@ -89,16 +89,28 @@ For example:
 
 - Press the ``ESC`` key and save the file by typing: ``:wq``  
 
+1.2 Run the container startup script 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2 move on to 'regular run'
+- Run the container startup script with the following command:
+- The script will download the repos again and copy files from the host volume you just populated to the relevant directories 
+
+.. code-block:: terminal
+
+   /snopsboot/start
+
+
+2. Start a solution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+List of available solutions:
+ 
 .. toctree::
    :maxdepth: 1
    :caption: Solutions
    :glob:
 
-   regular_run
+   /solutions/*/*_index
 
    
 

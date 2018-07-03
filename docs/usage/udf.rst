@@ -56,8 +56,6 @@ The lab environment provides several access methods to the Jumphost:
 
 2. Start a solution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-List of available solutions:
  
 .. toctree::
    :maxdepth: 1
