@@ -25,7 +25,7 @@ The container exposes the following access methods:
 - password: :guilabel:`default`
 
    
-1.2 Configure the container
+1.2 initial setup or skip to solutions if already completed the initial setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    
 - Move on to configure the container:
@@ -35,4 +35,15 @@ The container exposes the following access methods:
    :glob:
 
    first_time_run
-   regular_run
+
+2. Start a solution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+List of available solutions:
+ 
+.. toctree::
+   :maxdepth: 1
+   :caption: Solutions
+   :glob:
+
+   /solutions/*/*_index

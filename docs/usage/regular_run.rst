@@ -6,7 +6,7 @@ Regular run (after you completed the initial setup)
           on the host even after the container is terminated. 
 
 
-1 Copy ssh key, aws credentials and global parameters file
+1. Copy ssh key, aws credentials and global parameters file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 the SSH key will be used when creating EC2 instances.  
@@ -19,7 +19,7 @@ Copy credentials and parameters files from the host folder using the following s
    /home/snops/startup.sh
        
 
-2 Start a solution
+2. Start a solution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 List of available solutions:

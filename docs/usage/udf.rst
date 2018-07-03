@@ -43,7 +43,7 @@ The lab environment provides several access methods to the Jumphost:
 #. use your favorite SSH client to connect to :guilabel:`RS-CONTAINER` using your UDF private key. username is :guilabel:`root`
 
 
-1.2 Configure the container
+1.2 initial setup or skip to solutions 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    
 - Move on to configure the container:
@@ -53,4 +53,16 @@ The lab environment provides several access methods to the Jumphost:
    :glob:
 
    first_time_run
-   regular_run
+
+2. Start a solution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+List of available solutions:
+ 
+.. toctree::
+   :maxdepth: 1
+   :caption: Solutions
+   :glob:
+
+   /solutions/*/*_index
+      
