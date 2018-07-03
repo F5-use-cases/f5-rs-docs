@@ -1,8 +1,8 @@
-Running the container for the first time on a host
-------------------------------------------
+Initial setup 
+---------------
 
-1.0 Configure the rs-container
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1 Configure the rs-container
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The entire lab is built from code hosted in this repo.
 To run the deployments you need to configure your personal information and credentials. 
@@ -89,27 +89,6 @@ Run the following command to copy the parameters file:
    cp /home/snops/f5-rs-global-vars-vault.yaml /home/snops/host_volume/f5-rs-global-vars-vault.yaml
 
    
-1.2 Run the normal startup script 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-After the initial setup your personal information is now on the host volume and will persist so you won't need to repeat those steps. 
-you will now run the script to copy the files you created on the host volume to the relevant libraries. 
-
-Copy credentials and parameters files from the host folder using the following script: 
-
-.. code-block:: terminal
-
-   /home/snops/startup.sh
-   
-   
-1.3 Configure jenkins and reload it
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Run the following command to configure jenkins with your personal information and reload it: 
-
-.. code-block:: terminal
-
-   ansible-playbook --vault-password-file /var/jenkins_home/.vault_pass.txt /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml
 
 
    

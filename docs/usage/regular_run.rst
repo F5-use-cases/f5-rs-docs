@@ -6,8 +6,8 @@ Regular run (after you completed the initial setup)
 		  on the host even after the container is terminated. 
 
 
-1.0 Copy ssh key, aws credentials and global parameters file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1 Copy ssh key, aws credentials and global parameters file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 the SSH key will be used when creating EC2 instances.  
 we will store them in the Jenkins SSH folder so that Jenkins can use them to access instances.
@@ -28,4 +28,15 @@ Run the following command to configure jenkins with your personal information an
    ansible-playbook --vault-password-file /var/jenkins_home/.vault_pass.txt /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml
 
 
+2 Start a solutions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+List of available solutions:
+ 
+.. toctree::
+   :maxdepth: 1
+   :caption: Solutions
+   :glob:
+
+   /solutions/*/*_index
+   

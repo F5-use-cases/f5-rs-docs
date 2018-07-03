@@ -18,7 +18,7 @@ You can use these modules to create, edit, update, and delete configuration obje
 
 .. toctree::
    :maxdepth: 1
-   :caption: Solutions reference
+   :caption: Solutions
    :glob:
 
    /solutions/*/*_index

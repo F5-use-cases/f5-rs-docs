@@ -3,7 +3,7 @@ Running the container on your docker host
 
 .. NOTE:: The following instructions will create a volume on your docker host and will instruct you 
           to store private information in the host volume. the information in the volume will persist 
-		  on the host even after the container is terminated. 
+          on the host even after the container is terminated. 
 
 1.  run the rs-container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

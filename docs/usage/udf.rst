@@ -21,7 +21,7 @@ To connect to the lab environment we will use SSH to the jumphost.
 SSH key has to be configured in UDF in order to access the jumphost. 
 
 
-  The lab environment provides several access methods to the Jumphost:
+The lab environment provides several access methods to the Jumphost:
 
 - SSH to RS-CONTAINER 
 - SSH to the linux  host 
