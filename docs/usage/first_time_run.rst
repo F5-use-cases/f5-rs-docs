@@ -37,27 +37,20 @@ this information persists on the host and will be available for you on any subse
 1.1.2 Create a personal SSH key
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-the SSH key will be used when creating EC2 instances.  
-we will store them in the Jenkins SSH folder so that Jenkins can use them to access instances.
+The SSH key will be used when creating EC2 instances.  
+we will store them in the host-volume so they will persist any container restart
 
 Copy credentials and parameters files from the host folder using the following script: 
 
 .. code-block:: terminal
 
    mkdir -p /home/snops/host_volume/sshkeys
-   ssh-keygen -f /home/snops/host_volume/sshkeys/id_rsa -t rsa -N ''
-   
-
-1.1.2 create a file with the password to encrypt the parameters file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. code-block:: terminal
-
-   echo password > /var/jenkins_home/.vault_pass.txt
+   ssh-keygen -f /home/snops/host_volume/sshkeys/id_rsa -t rsa -N ''  
 
 1.1.3 Edit the global parameters file with your personal information 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   
    
-- Edit the encrypted global parameters file ``/home/snops/f5-rs-global-vars-vault.yaml`` by typing:
+- Edit the encrypted global parameters file `/home/snops/f5-rs-global-vars-vault.yaml` by typing:
 
 .. code-block:: terminal
 
@@ -78,7 +71,16 @@ For example:
 
 - Press the ``ESC`` key and save the file by typing: ``:wq``  
 
-1.1.4 Configure jenkins and reload it
+1.1.4 copy the parameters file to your host volume so it will persist after container restart 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Run the following command to copy the parameters file: 
+
+.. code-block:: terminal
+
+   cp /home/snops/f5-rs-global-vars-vault.yaml /home/snops/host_volume/f5-rs-global-vars-vault.yaml
+
+1.1.5 Configure jenkins and reload it
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Run the following command to configure jenkins with your personal information and reload it: 

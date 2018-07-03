@@ -53,4 +53,4 @@ SSH key has to be configured in UDF in order to access the jumphost.
    :glob:
 
    first_time_run
-   regular_runs
+   regular_run

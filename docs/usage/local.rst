@@ -36,4 +36,4 @@ Running the container on your docker host
    :glob:
 
    first_time_run
-   regular_runs
+   regular_run
