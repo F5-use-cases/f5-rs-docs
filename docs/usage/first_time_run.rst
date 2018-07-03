@@ -44,26 +44,18 @@ we will store them in the host-volume so they will persist any container restart
 
    mkdir -p /home/snops/host_volume/sshkeys
    ssh-keygen -f /home/snops/host_volume/sshkeys/id_rsa -t rsa -N ''  
-
-1.1.3 Create a file with the ansible-vault password 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Create a file that contains the ansible-vault password
-
-.. code-block:: terminal
-
-   echo password > /var/jenkins_home/.vault_pass.txt
    
-1.1.4-(F5 employees ONLY) - Create parameters file on the host volume 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.1.3-(F5 employees ONLY) - Create parameters file on the host volume 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-copy paste the text from https://hive.f5.com/people/rosenboim/blog/2018/06/28/rs-global-parameters-file
+- copy paste the text from https://hive.f5.com/people/rosenboim/blog/2018/06/28/rs-global-parameters-file
+- If using UDF you should already have the file, skip to 1.1.5
 
 .. code-block:: terminal
 
    vi /home/snops/host_volume/f5-rs-global-vars-vault.yaml
    
-1.1.4-(External users) - Create parameters file on the host volume 
+1.1.3-(External users) - Create parameters file on the host volume 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 copy paste the example file to the host volume
@@ -73,7 +65,7 @@ copy paste the example file to the host volume
    cp  /home/snops/f5-rs-global-vars-vault.yaml /home/snops/host_volume/f5-rs-global-vars-vault.yaml
 
    
-1.1.5 Edit the global parameters file with your personal information 
+1.1.4 Edit the global parameters file with your personal information 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   
    
 - Edit the encrypted global parameters file `/home/snops/host_volume/f5-rs-global-vars-vault.yaml` by typing:
@@ -96,15 +88,6 @@ For example:
    vault_dac_password: "Sup3rsecur3Passw0rd1"
 
 - Press the ``ESC`` key and save the file by typing: ``:wq``  
-
-1.1.6 copy the parameters file to your host volume so it will persist after container restart 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Run the following command to copy the parameters file: 
-
-.. code-block:: terminal
-
-   cp /home/snops/f5-rs-global-vars-vault.yaml /home/snops/host_volume/f5-rs-global-vars-vault.yaml
 
 
 2 move on to 'regular run'
