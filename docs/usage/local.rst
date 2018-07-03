@@ -12,17 +12,17 @@ Running the container on your docker host
 
    docker run -t -d --name rs-container -v config:/home/snops/host_volume -p 2222:22 -p 10000:8080 --rm f5usecases/f5-rs-container
  
- The container exposes the following access methods:
+The container exposes the following access methods:
 
-  - SSH to RS-CONTAINER ssh://localhsot:2222
-  - HTTP Access to Jenkins http://localhost:10000 (only available after you start the lab) 
+- SSH to RS-CONTAINER ssh://localhsot:2222
+- HTTP Access to Jenkins http://localhost:10000 (only available after you start the lab) 
 
 1.1 Connect using SSH to the RS-CONTAINER
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-  - SSH to dockerhost:2222 
-  - username: :guilabel:`root`
-  - password: :guilabel:`default`
+- SSH to dockerhost:2222 
+- username: :guilabel:`root`
+- password: :guilabel:`default`
 
 
 

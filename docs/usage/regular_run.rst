@@ -1,4 +1,4 @@
-Running the container on your docker host
+Regular run (after you completed the initial setup) 
 ------------------------------------------
 
 .. NOTE:: The following instructions will create a volume on your docker host and will instruct you 
@@ -28,6 +28,4 @@ Run the following command to configure jenkins with your personal information an
    ansible-playbook --vault-password-file /var/jenkins_home/.vault_pass.txt /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml
 
 
-   
-- Start: :ref:`module1`
 

@@ -23,9 +23,9 @@ SSH key has to be configured in UDF in order to access the jumphost.
 
   The lab environment provides several access methods to the Jumphost:
 
-  - SSH to RS-CONTAINER 
-  - SSH to the linux  host 
-  - HTTP Access to Jenkins (only available after you start the lab) 
+- SSH to RS-CONTAINER 
+- SSH to the linux  host 
+- HTTP Access to Jenkins (only available after you start the lab) 
 
 
 1.1 Connect using SSH to the RS-CONTAINER

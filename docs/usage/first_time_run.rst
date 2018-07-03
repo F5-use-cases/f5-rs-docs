@@ -7,14 +7,14 @@ Running the container for the first time on a host
 The entire lab is built from code hosted in this repo.
 To run the deployments you need to configure your personal information and credentials. 
 
-.. NOTE:: You will be asked to configure sensitive parameters like AWS credentials. 
-          those are used to deploy resources on your account. those cloud resources will appear on your cloud account
+.. NOTE:: You will be asked to configure sensitive parameters like AWS credentials.
+          those are used to deploy resources on your account. those cloud resources will appear on your cloud account 
 		  it is your responsibility to use it responsibly and shut down the instances when done. 
        
 1.1 Configure credentials and personal information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-the following steps are required only in the first time you run the container on a host, 
+The following steps are required only in the first time you run the container on a host, 
 this information persists on the host and will be available for you on any subsequent runs. 
 
 1.1.1 Create an AWS credentials file
@@ -25,7 +25,7 @@ this information persists on the host and will be available for you on any subse
 
    vi /home/snops/host_volume/credentials
 
-- Copy and paste the following :   
+- Copy and paste the following (and change to your keys):   
    
 .. code-block:: terminal
 
@@ -38,9 +38,7 @@ this information persists on the host and will be available for you on any subse
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The SSH key will be used when creating EC2 instances.  
-we will store them in the host-volume so they will persist any container restart
-
-Copy credentials and parameters files from the host folder using the following script: 
+we will store them in the host-volume so they will persist any container restart:
 
 .. code-block:: terminal
 
@@ -80,7 +78,31 @@ Run the following command to copy the parameters file:
 
    cp /home/snops/f5-rs-global-vars-vault.yaml /home/snops/host_volume/f5-rs-global-vars-vault.yaml
 
-1.1.5 Configure jenkins and reload it
+
+1.1.4 copy the parameters file to your host volume so it will persist after container restart 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Run the following command to copy the parameters file: 
+
+.. code-block:: terminal
+
+   cp /home/snops/f5-rs-global-vars-vault.yaml /home/snops/host_volume/f5-rs-global-vars-vault.yaml
+
+   
+1.2 Run the normal startup script 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After the initial setup your personal information is now on the host volume and will persist so you won't need to repeat those steps. 
+you will now run the script to copy the files you created on the host volume to the relevant libraries. 
+
+Copy credentials and parameters files from the host folder using the following script: 
+
+.. code-block:: terminal
+
+   /home/snops/startup.sh
+   
+   
+1.3 Configure jenkins and reload it
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Run the following command to configure jenkins with your personal information and reload it: 
