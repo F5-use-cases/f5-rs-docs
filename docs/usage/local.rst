@@ -24,8 +24,7 @@ The container exposes the following access methods:
 - username: :guilabel:`root`
 - password: :guilabel:`default`
 
-
-
+   
 1.2 Configure the container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    

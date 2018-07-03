@@ -92,10 +92,8 @@ For example:
 
 - Press the ``ESC`` key and save the file by typing: ``:wq``  
 
-* After you save the ``f5-rs-global-vars-vault.yaml`` file for the first time you get an error message, ignore it it's a bug
-  ERROR! Unexpected Exception, this is probably a bug: [Errno 1] Operation not permitted: '/home/snops/f5-rs-global-vars-vault.yaml'
 
-1.3.3 Configure jenkins and reload it
+1.3.3 Configure Jenkins and reload it
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Run the following command to configure jenkins with your personal information and reload it: 

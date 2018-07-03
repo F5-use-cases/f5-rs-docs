@@ -3,7 +3,7 @@ Regular run (after you completed the initial setup)
 
 .. NOTE:: The following instructions will create a volume on your docker host and will instruct you 
           to store private information in the host volume. the information in the volume will persist 
-		  on the host even after the container is terminated. 
+          on the host even after the container is terminated. 
 
 
 1 Copy ssh key, aws credentials and global parameters file
@@ -16,19 +16,10 @@ Copy credentials and parameters files from the host folder using the following s
 
 .. code-block:: terminal
 
-   /home/snops/host_volume/udf_startup.sh
+   /home/snops/startup.sh
        
-1.1 Configure jenkins and reload it
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Run the following command to configure jenkins with your personal information and reload it: 
-
-.. code-block:: terminal
-
-   ansible-playbook --vault-password-file /var/jenkins_home/.vault_pass.txt /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml
-
-
-2 Start a solutions
+2 Start a solution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 List of available solutions:
