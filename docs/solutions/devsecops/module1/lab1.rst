@@ -117,6 +117,8 @@ click on 'run' to start the dev environment pipeline.
 Task 1.3 - Review the deployed environment 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. Note:: Jenkins doesn't automatically refresh the page, either refresh manually to see the progress or click on the 'ENABLE AUTO REFRESH' on the upper right side.
+   
 1.3.1 review jobs output:
 **************************	
 
