@@ -20,9 +20,9 @@ Task 2.1 - Open BIGIP and review configuration items
 - open the :guilabel:`Virtual Servers` tab 
 - Look for the Virtual servers that were created by AS3 in the rs_App1 partition. 
 - You can view the actual deceleration (json file) that was sent to the bigip by:
- - Opening 
- - Search for the task :guilabel:` TASK [as3_declare : deploying AS3 service]`
- - The deceleration starts after :guilabel:` "body": ` 
+- Opening the :guilabel:`Console output` of the :guilabel:`B2 -rs-as3` job 
+- Search for the task :guilabel:` TASK [as3_declare : deploying AS3 service]`
+- The deceleration starts after :guilabel:` "body": ` 
    
 	|Bigip-020|
    

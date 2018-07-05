@@ -38,7 +38,7 @@ on the container CLI type the following commands to view the files in the repo:
 
 .. code-block:: terminal
 
-   cd /home/snops/f5-rs-app2
+   cd /home/snops/f5-rs-app1
    ls
 
 - application code under the 'all-in-one-hackazon' folder. 
@@ -125,7 +125,7 @@ we will start by deploying a DEV environment, you will start a pipeline that cre
 
    |jenkins010|
    
-- click on the 'f5-rs-app2-dev' folder. here you can see all of the relevant jenkins jobs for the dev environment.
+- click on the 'f5-rs-app1-dev' folder. here you can see all of the relevant jenkins jobs for the dev environment.
 
    |jenkins020|
 
