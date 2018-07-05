@@ -117,9 +117,9 @@ Task 1.3 - Deploy dev environment
 		  *you can cancel the jobs or let them fail*. 
 
 
-1.3.2 start the 'Full stack pipeline':
+1.3.2 start the 'Pipeline':
 **************************		  
-in jenkins open the :guilabel:`DevSecOps - AS3 - App1` folder, the lab jobs are all in this folder 
+in jenkins open the :guilabel:`AWS WAF - AS3 - App1` folder, the lab jobs are all in this folder 
 we will start by deploying a DEV environment, you will start a pipeline that creates a full environment in AWS. 
 
 
