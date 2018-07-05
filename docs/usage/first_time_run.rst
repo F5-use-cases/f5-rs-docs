@@ -49,7 +49,7 @@ we will store them in the host-volume so they will persist any container restart
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - copy paste the text from https://hive.f5.com/people/rosenboim/blog/2018/06/28/rs-global-parameters-file
-- If using UDF you should already have the file, skip to 1.1.5
+- If using UDF you should already have the file, skip to 1.1.4
 
 .. code-block:: terminal
 

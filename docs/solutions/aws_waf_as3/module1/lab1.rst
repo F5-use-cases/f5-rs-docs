@@ -145,7 +145,8 @@ Task 1.4 - Review the deployed environment
 1.4.1 review jobs output:
 **************************	
 
-you can review the output of each job while its running, click on the small :guilabel:`console output` icon as shown in the screenshot:
+- you can review the output of each job while its running, click on the small :guilabel:`console output` icon as shown in the screenshot:
+- Jenkins doesn't automatically refresh, you can turn on auto refresh on the upper right corner
 
    |jenkins050|
    
