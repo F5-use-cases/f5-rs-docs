@@ -1,7 +1,7 @@
 .. _f5_rs_attacks:
 
 
-_f5_rs_attacks - Run attacks on an HTTP/S target
+f5_rs_attacks - Run attacks on an HTTP/S target
 +++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: 2.4
