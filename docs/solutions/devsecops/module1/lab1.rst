@@ -8,8 +8,8 @@ Security team has created some security policies templates, those were built bas
 in this lab we don't cover the 'how to' of the security templates. we focus on the operational side and the workflows. 
 
 The Tasks are split between the two roles:
- - secops
- - Dave - the person who's responsible of changing code for the app and the infrastructure of the app (dev team)
+ - SecOps
+ - Dave - a person from the 'end to end' team. a team that's responsible for the application code and running it in production.
  
 Lab scenario:
 ~~~~~~~~~~~~~
@@ -136,10 +136,10 @@ wait until all of the jobs have finished (turned green and the app-test one is r
 1.3.3 open slack and extract BIG-IP and application info:
 **************************	
    
- - open slack - https://f5-rs.slack.com/messages/C9WLUB89F/ (if you don't already have an account you can set it up with an F5 email)
- - go to the :guilabel:`builds` channel. 
- - use the search box on the upper right corner and filter by your username (student#). 
- - jenkins will send to this channel the BIG-IP and the application address. 
+- open slack - https://f5-rs.slack.com/messages/C9WLUB89F/ (if you don't already have an account you can set it up with an F5 email)
+- go to the :guilabel:`builds` channel. 
+- use the search box on the upper right corner and filter by your username (student#). replace you student# in this string: "user: student# , solution: f5-rs-app2-dev, bigip acces:"
+- jenkins will send to this channel the BIG-IP and the application address. 
 
 
    |slack040|
@@ -147,8 +147,8 @@ wait until all of the jobs have finished (turned green and the app-test one is r
 1.3.4 login to the BIG-IP:
 **************************	
 
-- use the address from the slack notification (look for your username in the :guilabel:`builds` channel)
-- username: admin
+- use the address from task 1.3.3
+- username: :guilabel:`admin`
 - password: the personal password you defined in the global parameters file in the vault_dac_password parameter.
 
 explore the objects that were created: 
@@ -156,8 +156,11 @@ explore the objects that were created:
 1.3.5 Access the App:
 **************************	
 
-try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the BIG-IP.
-after ignoring the ssl error (because the certificate isn't valid for the domain) you should get to the Hackazone mainpage
+- open slack - https://f5-rs.slack.com/messages/C9WLUB89F/ (if you don't already have an account you can set it up with an F5 email)
+- go to the :guilabel:`builds` channel. 
+- use the search box on the upper right corner and filter by your username (student#). replace you student# in this string: "user: student# , solution: f5-rs-app2-dev, application at:"
+- try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the BIG-IP.
+- after ignoring the ssl error (because the certificate isn't valid for the domain) you should get to the Hackazone mainpage
 
    |hackazone010|
    

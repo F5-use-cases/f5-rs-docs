@@ -68,6 +68,7 @@ edit the iac_parameters.yaml file to point the deployment to the new WAF policy 
 
 - go back to jenkins and open the :guilabel:`f5-rs-app2-dev` folder. choose the :guilabel:`Service deployment pipeline` tab ,  it takes up to 
   a minute for jenkins to start the pipeline. **you should see that the tasks start to run and the pipeline finishes successfully (all tasks are now green).** 
+- Don't forget to refresh the page 
 
 3.1.5 view changes on the BIG-IP :
 ************************** 

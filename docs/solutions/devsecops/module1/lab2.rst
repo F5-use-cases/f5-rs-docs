@@ -4,7 +4,7 @@ Lab 2 (Secops): Tune/fix security policy
 Background: 
 ~~~~~~~~~~~~~
 
-the application team tests came back and some of the tests have failed. the test result came back with the WAF blocking page.
+The application team tests came back and some of the tests have failed. the test result came back with the WAF blocking page.
  
  
 Task 2.1 - Find which requests were blocked and resolve false-positive 
@@ -13,17 +13,17 @@ Task 2.1 - Find which requests were blocked and resolve false-positive
 2.1.1 Clear false positive:
 **************************	
 
-- log on to the 'DEV' bigip. (username: admin , password: your personal password that you set in the lab setup ) 
-- Take bigip address from slack, search by your username.
+- log on to the 'DEV' bigip. (username: admin , password: your personal password that you set in the lab setup ) see section 1.3.3
 - log on to the 'DEV' BIG-IP. 
 - go to 'traffic learning', 
 - make sure you are editing the 'linux-high' policy. 
 - check the requests that triggered suggestions. 
 
-you should see a suggestion on 'High ASCII characters in headers' , examine the request. this is a false positive. the app uses a different language in the header and it is legitimate traffic. 
-you can also see that the request comes from a trusted ip.
+- you should see a suggestion on 'High ASCII characters in headers' , examine the request. this is a false positive. 
+- the app uses a different language in the header and it is legitimate traffic. 
+- you can also see that the request comes from a trusted ip.
 
-- accept the suggestion.
+ - accept the suggestion.
 
 	|Bigip-030|
 
@@ -33,15 +33,15 @@ you can also see that the request comes from a trusted ip.
 - apply the policy.
 
 .. Note:: you are applying the policy to DEV,
-   secops shouldn't change the policy running in production 
+   secops shouldn't change the waf policy running in production outside of the ci/cd workflow
    ** unless there is a true emergency 
    
 
 Task 2.2 - Save the WAF policy to the templates repo (managed by secops) 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-secops have updated the policy with a setting that makes sense to update on the general template. 
-we will now export the policy from the BIG-IP to the waf-policies repo (managed by secops)
+- secops have updated the policy with a setting that makes sense to update on the general template. 
+- we will now export the policy from the BIG-IP to the waf-policies repo (managed by secops)
 
 2.2.1 Pull WAF policy from the BIG-IP :
 **************************
