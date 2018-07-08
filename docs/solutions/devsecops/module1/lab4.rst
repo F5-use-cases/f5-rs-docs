@@ -31,7 +31,9 @@ Task 4.2 deploy PROD:
 
 - go to the 'f5-rs-app2-prod' folder, choose the 'Full stack deployment' view and run the pipeline. 
 
-- go to slack  https://f5-rs.slack.com/messages/C9WLUB89F/ to get the ip's for the BIG-IP and the app. 
+- open slack - https://f5-rs.slack.com/messages/C9WLUB89F/
+- go to the :guilabel:`builds` channel. 
+- use the search box on the upper right corner and filter by your username (student#). replace you student# in this string: "user: student# , solution: f5-rs-app2-prd, bigip acces:"
 
 - open the BIG-IP and verify that you don't see the 'high ascii' false positive. 
 
