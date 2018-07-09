@@ -74,25 +74,7 @@ those playbooks are being controlled by jenkins which takes the iac_parameters.y
 - that enables Dave to choose the AWS region in which to deploy, the name of the app and more.  
 - Dave can also control the deployment of the security policies from his repo as we will see. 
 
-1.1.4 ONLY if you have us-east-1 as your region in the teams students table:
-*****************************************************************
-
-- replace :guilabel:`us-west-1` with :guilabel:`us-east-1` in your iac_parameters file
-.. code-block:: terminal
-
-   vi iac_parameters.yaml
    
-replace strings and save file 
-
-- Now commit the file to git (you need to configure your details in git)    
-.. code-block:: terminal
- 
-   git config --global user.email "you@example.com"
-   git config --global user.name "Your Name"
-   git add iac_parameters.yaml
-   git commit -m "changed region"
-   
-
 
 
 Task 1.2 - Deploy dev environment 

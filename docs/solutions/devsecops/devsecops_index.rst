@@ -33,5 +33,6 @@ To continue, please review the information about the Lab Environment.
    :glob:
 
    labinfo/labinfo
+   labinfo/udf
    module*/module*
    conclusion
