@@ -1,4 +1,4 @@
-F5 Unified Demo Framework (UDF)
+Module 0 - initial setup
 -------------------------------
 
 .. NOTE:: This environment is currently available for F5 employees only
