@@ -1,4 +1,4 @@
-Lab  Environment
+Module 0 - setup lab 
 ~~~~~~~~~~~~~~~~~
 
 Lab Environment
