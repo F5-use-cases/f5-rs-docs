@@ -16,7 +16,7 @@ Lab Goals:
 Roles in the Lab:
 ~~~~~~~~~~~~~~~~ 
  + SecOps - Represents an application security engineer
- + Dave - Represents an application development team member who is responsible for the app and for pushing it into the pipeline
+ + Dave - Represents a guy from the application / end to end team,  responsible for the app and infrastructure code required to build the app. 
  + DevOps / Automation / SRE - aren't represented in the lab. Their role is to build the tools we utilize in this lab (the automation pipeline of infrastructure and application security)
 
 OUT OF SCOPE: 
@@ -24,7 +24,7 @@ OUT OF SCOPE:
  + The "how-to" and the mechanics of the automation components
  + Please refer to the `F5 Super-NetOps Training <https://f5.com/supernetops>`_ for the above
  
-Expected time to complete: **2 hours**
+Expected time to complete: **1 hours**
 
 To continue, please review the information about the Lab Environment.
 

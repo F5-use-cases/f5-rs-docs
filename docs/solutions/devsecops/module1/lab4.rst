@@ -33,7 +33,7 @@ Task 4.2 deploy PROD:
 
 - open slack - https://f5-rs.slack.com/messages/C9WLUB89F/
 - go to the :guilabel:`builds` channel. 
-- use the search box on the upper right corner and filter by your username (student#). replace you student# in this string: "user: student# , solution: f5-rs-app2-prd, bigip acces:"
+- use the search box on the upper right corner and filter by your username (student#). replace you student# in this string: "user: student# , solution: f5-rs-app2-master, bigip acces:"
 
 - open the BIG-IP and verify that you don't see the 'high ascii' false positive. 
 
