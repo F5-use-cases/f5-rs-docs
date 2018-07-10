@@ -19,7 +19,6 @@ Task 1.1 - Enable proactive bot defense in the DEV environment
 ****************************************************
 
 - Open the container CLI
-- make sure you are connected as user 'jenkins' 
 - go to the application git folder. 
 - check which branches are there and what is the active branch. (git branch) 
 - you should be on the 'dev' branch. the files you see belong to the dev branch. 

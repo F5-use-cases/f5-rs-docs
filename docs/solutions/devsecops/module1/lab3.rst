@@ -42,8 +42,6 @@ edit the iac_parameters.yaml file to point the deployment to the new WAF policy 
 
  - change line: waf_policy_name: "linux-high"
  - to: waf_policy_name: "linux-high-v01" 
- - change line: ``waf_policy_name: "linux-high"``
- - to: ``waf_policy_name: "linux-high-v01"``
 
 .. code-block:: terminal
 
