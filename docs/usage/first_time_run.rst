@@ -23,7 +23,7 @@ this information persists on the host and will be available for you on any subse
 
 .. code-block:: terminal
 
-   vi /home/snops/host_volume/credentials
+   vi /home/snops/host_volume/aws/credentials
 
 - Copy and paste the following (and change to your keys):   
    
