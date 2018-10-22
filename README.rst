@@ -155,7 +155,7 @@ Change the setting for 'proactive bot' to "always':
 .. image:: img/jenkins14.PNG
    :align: center
 
-check that proactive bot defense is on by trying to access the application using curl / postman / browser with spoofed UA 
+check that proactive bot defense is on by trying to access the application using curl / postman / browser with spoofed UA  
 
 App securirty lifecycle - Brute-force protection :
 ~~~~~~~~~~~~~~~~~~~
