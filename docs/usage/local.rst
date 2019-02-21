@@ -10,8 +10,8 @@ Running the container on your docker host
 
 .. code-block:: terminal
 
-   docker pull f5usecases/f5-rs-container
-   docker run -it --name rs-container -v config:/home/snops/host_volume -v jenkins:/var/jenkins_home -p 2222:22 -p 10000:8080 --rm f5usecases/f5-rs-container
+   docker pull f5usecases/f5-rs-container:1.1
+   docker run -it --name rs-container -v config:/home/snops/host_volume -v jenkins:/var/jenkins_home -p 2222:22 -p 10000:8080 --rm f5usecases/f5-rs-container:1.1
  
 The container exposes the following access methods:
 
