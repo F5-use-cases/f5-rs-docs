@@ -45,51 +45,7 @@ we will store them in the host-volume so they will persist any container restart
 .. code-block:: terminal
 
    mkdir -p /home/snops/host_volume/sshkeys
-   ssh-keygen -f /home/snops/host_volume/sshkeys/id_rsa -t rsa -N ''  
-   
-1.1.3-(F5 employees ONLY) - Create parameters file on the host volume 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-- copy paste the text from https://hive.f5.com/people/rosenboim/blog/2018/06/28/rs-global-parameters-file
-- If using UDF you should already have the file, skip to 1.1.4
-
-.. code-block:: terminal
-
-   vi /home/snops/host_volume/f5-rs-global-vars-vault.yaml
-   
-1.1.3-(External users) - Create parameters file on the host volume 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-copy paste the example file to the host volume
-
-.. code-block:: terminal
-
-   cp  /home/snops/f5-rs-global-vars-vault.yaml /home/snops/host_volume/f5-rs-global-vars-vault.yaml
-
-   
-1.1.4 Edit the global parameters file with your personal information 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   
-   
-- Edit the encrypted global parameters file `/home/snops/host_volume/f5-rs-global-vars-vault.yaml` by typing:
-
-.. code-block:: terminal
-
-   ansible-vault edit --vault-password-file /var/jenkins_home/.vault_pass.txt /home/snops/host_volume/f5-rs-global-vars-vault.yaml
-
-- Once in edit mode - type ``i`` to activate INSERT mode and configure your personal information by changing the following variables: ``vault_dac_user``, ``vault_dac_email`` and ``vault_dac_password``
-- use your f5 username for ``vault_dac_user`` - used as a Tenant ID to differentiate between multiple deployments
-- Choose your own (secure) value for ``vault_dac_password`` - ** this is the password for the ``admin`` user of the BIG-IP **
-- There are a number of special characters that you should avoid using in passwords for F5 products. See https://support.f5.com/csp/article/K2873 for details
-
-For example:
-
-.. code-block:: terminal
-
-   vault_dac_user: "rosenboim"
-   vault_dac_email: "yossi@f5.com"
-   vault_dac_password: "Sup3rsecur3Passw0rd1"
-
-- Press the ``ESC`` key and save the file by typing: ``:wq``  
+   ssh-keygen -f /home/snops/host_volume/sshkeys/id_rsa -t rsa -N ''     
 
 1.2 Run the container startup script 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

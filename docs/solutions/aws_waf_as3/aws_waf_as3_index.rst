@@ -1,10 +1,13 @@
-F5 WAF in AWS with AS3
+F5 AWAF in AWS with DO/AS3
 ===========================================
 
 This lab covers the following topics:
 
- - Deploying an F5 WAF to protect Hackazon APP in AWS 
- - Declaring the F5 service using AS3 `AS3  <https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/3/userguide/about-as3.html>`
+ - Deploying a vpc to AWS with the required subnets 
+ - Deploying a juiceshop application in an autoscale group
+ - Deploying a bigip to AWS and onboarding it using declarative onboarding 
+ - Deploying an F5 AWAF to protect juiceshop application 
+ - Declaring the F5 service using AS3
 
 
 Here are the lab steps:
