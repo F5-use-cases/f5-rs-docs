@@ -1,49 +1,38 @@
-Lab 1: Deploy app to DEV environment 
+Lab 1: Deploy app and bigip
 ----------------------------------
-
-Background: 
-~~~~~~~~~~~~~
-
-Security team has created some security policies templates, those were built based on the F5 templates with some modifications to the specific enterprise. 
-in this lab we don't cover the 'how to' of the security templates. we focus on the operational side and the workflows. 
-
-The Tasks are split between the two roles:
- - secops
- - Dave - the person who's responsible of changing code for the app and the infrastructure of the app (dev team)
  
 
-Task 1.1 - review Dave's repo
+Task 1.1 - Configure jenkins credentials 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1.1.1 view git branches in the application repo:
+1.1.1 open jenkins 
 ****************************************************
 
-on the container CLI type the following command to view git branches:
+on your laptop:
 
-.. code-block:: terminal
+- Open brower and navigate to http://127.0.0.1:10000 
+- username: snops , password: default 
 
-   cd /home/snops/f5-rs-app1
-   git branch
-   
-the app repo has two branches, dev and master. we are now working on the dev branch. 
-
-.. Note:: the lab builds two environments, dev and prod. 
-   the dev environment deploys the code on the dev branch 
-   the prod environment deploys the code on the master branch.
-
-1.1.2 view files in the application repo:
+1.1.2 add credentials 
 ****************************************************
 
-on the container CLI type the following commands to view the files in the repo:
+- In jenkins, Navigate to 'credentilas' on the left side  
+- Click on 'global' 
+- Click on 'Add Credentials' on the left side 
+- Change the 'kind' to 'secret text'
+- Add the following credentials: 
+   - Secret: 'USERNAME' , ID: 'vault_username' 
+      - USERNAME: used as the username for instances that you launch. also used to tag instances. example johnw
+- Add the following credentials: 
+   - Secret: 'EMAIL' , ID: 'vault_email' 
+      - EMAIL: your EMAIL address 
+- Add the following credentials: 
+   - Secret: 'YOUR_SECRET_PASSWORD' , ID: 'vault_password' 
+      - USERNAME: used as the password for instances that you launch. needs to be a secure password.
+- Add the following credentials: 
+   - Secret: 'teams_builds_uri' , ID: 'teams_builds_uri' 
+      - USERNAME: uri used for teams
 
-.. code-block:: terminal
-
-   cd /home/snops/f5-rs-app1
-   ls
-
-- application code under the 'all-in-one-hackazon' folder. 
-- infrastructure code maintained in the 'iac_parameters.yaml' file. 
- 
 1.1.3 explore the infrastructure as code parameters file:
 *****************************************************************
 
