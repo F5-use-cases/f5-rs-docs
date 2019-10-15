@@ -89,7 +89,7 @@ explore the objects that were created:
 
 - AS3 and DO installed
 
-Task 1.4 - Deploy  environment 
+Task 1.4 - Deploy  services: 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.4.1 Open Jenkins:
@@ -121,70 +121,29 @@ Task 1.5 - Review the deployed application
    
 - wait until all of the jobs have finished (turned green). 
 
-1.5.3 open teams channel and extract BIG-IP info:
+1.5.3 open teams channel and extract application information info:
 **************************	
    
  - open the teams channel you've configured in the 'initial setup' section
  - jenkins will send the application access information to this channel 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1.4.5 Access the App:
-**************************	
-
-try to access the app using the ip provided in the slack channel - that's the Elastic ip address that's tied to the VIP on the BIG-IP.
-after ignoring the ssl error (because the certificate isn't valid for the domain) you should get to the Hackazone mainpage
-
-   |hackazone010|
-    
-
-Task 1.5 - Go over the test results 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
 
-1.5.1 identify the WAF blocked page response:
+1.6 Go over WAF logs:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.6.1 open WAF logs:
 **************************	
    
-- Open :guilabel:`console output` on the :guilabel:`B3 - rs-attacks` job. 
-- Scroll to the bottom of the page, you should see the response with :guilabel:`request rejected`, 
-- Look for the ASM support-id of that request 
+- Open the BIGIP
+- Switch to App10 partition 
+- Go over the 'application event log', go over the 'brute force event log' 
 
    
    
-.. |jenkins010| image:: images/jenkins010.PNG 
+.. |jenkinsjobs01| image:: images/jenkins_jobs01.PNG 
    
-.. |jenkins020| image:: images/jenkins020.PNG 
+.. |jenkinsjobs01| image:: images/jenkins_jobs02.PNG
    
-.. |jenkins030| image:: images/jenkins030.PNG
-   
-.. |jenkins040| image:: images/jenkins040.PNG
-   
-.. |jenkins050| image:: images/jenkins050.PNG
-   
-.. |jenkins055| image:: images/jenkins055.PNG
+.. |jenkinsjobs01| image:: images/jenkins_jobs03.PNG
 
-.. |jenkins053| image:: images/jenkins053.PNG
-   
-.. |slack040| image:: images/Slack-040.PNG
-   
-.. |hackazone010| image:: images/hackazone010.PNG

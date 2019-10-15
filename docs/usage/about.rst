@@ -54,7 +54,6 @@ You can run the container from any docker host, follow the instructions here:
    :maxdepth: 1
    :glob:
 
-   udf
    local
 
 .. |lab-diag-005| image:: images/lab-diag-005.PNG   
