@@ -1,6 +1,5 @@
 Lab 1: Deploy app and bigip
 ----------------------------------
- 
 
 Task 1.1 - Configure jenkins credentials 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -10,12 +9,13 @@ Task 1.1 - Configure jenkins credentials
 
 on your laptop:
 
-- Open brower and navigate to http://127.0.0.1:10000 
-- username: snops , password: default 
+- open http://localhost:10000 
+- :guilabel:`username:` ``snops`` , :guilabel:`password:` ``default``
 
 1.1.2 add credentials 
 ****************************************************
 
+- You will now configure some paramaters as 'jenkins credentials', those paramaters are used when deploying the solutions. 
 - In jenkins, Navigate to 'credentilas' on the left side  
 - Click on 'global' 
 - Click on 'Add Credentials' on the left side 
@@ -33,8 +33,24 @@ on your laptop:
    - Secret: 'teams_builds_uri' , ID: 'teams_builds_uri' 
       - USERNAME: uri used for teams
 
-1.1.3 explore the infrastructure as code parameters file:
+Task 1.2 - Explore the app repo 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.2.1 explore the infrastructure as code parameters file:
 *****************************************************************
+
+1.2.2 view git branches in the application repo:
+****************************************************
+
+on the container CLI type the following command to view git branches:
+
+.. code-block:: terminal
+
+   cd /home/snops/f5-rs-app10
+   git branch -a 
+
+1.2.3 explore files in the app repo:
+****************************************************
 
 .. code-block:: terminal
 
@@ -43,13 +59,13 @@ on your laptop:
 the infrastructure of the environments is deployed using ansible playbooks that were built by devops/netops. 
 those playbooks are being controlled by jenkins which takes the iac_parameters.yaml file and uses it as parameters for the playbooks. 
 
-- Choose the AWS region you want to deploy in 
-- Dave can also control the deployment of the security policies from his repo as we will see. 
+- You can choose the AWS region you want to deploy in 
+- You can also control the WAF blocking state using this file 
 
-Task 1.2 - Update the AWS region for the DEV environment (Optional)
+Task 1.3 - Update the AWS region for the DEV environment (Optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1.2.1 Update git with your information:
+1.3.1 Update git with your information:
 **************************
 Configure your information in git, this information is used by git (in this lab we use local git so it only has local meaning) 
 - on the RS-CONTAINER CLI 
@@ -59,44 +75,38 @@ Configure your information in git, this information is used by git (in this lab 
    git config --global user.email "you@example.com"
    git config --global user.name "Your Name"
    
-1.2.2 verify you edit the dev branch:
+1.3.2 verify you edit the dev branch:
 ************************** 
 - go to the container CLI
 - go to the application git folder (command below) 
 - check which branches are there and what is the active branch. (command below) 
-- you should be on the 'dev' branch. the files you see belong to the dev branch. 
 
 .. code-block:: terminal
 
-   cd /home/snops/f5-rs-app1
+   cd /home/snops/f5-rs-app10
    git branch
    
-1.2.3 Update the infrastructure as code parameters file:
+1.3.3 Update the infrastructure as code parameters file:
 ************************** 
  
 edit the iac_parameters.yaml file to the desired AWS region. then add the file to git and commit.
 
- - change line: aws_region: "us-west-1"
+ - change line: aws_region: "us-west-2"
  - to: aws_region: "your_region" 
 
 .. code-block:: terminal
 
    vi iac_parameters.yaml 
    git add iac_parameters.yaml
-   git commit -m "changed asm policy"
+   git commit -m "changed aws region"
    
-
  
-Task 1.3 - Deploy dev environment 
+Task 1.4 - Deploy  environment 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. Note:: Jenkins can be configured to run the dev pipeline based on a commit in dave's app repo. 
-   in this lab we are manually starting the Full stack pipeline in Jenkins to visualize the process. 
 
 1.3.1 Open Jenkins:
 **************************
 
-- UDF: on the :guilabel:`jumphost` click on :guilabel:`access` and :guilabel:`jenkins`
 - LOCAlL: open http://localhost:10000 
 - :guilabel:`username:` ``snops`` , :guilabel:`password:` ``default``
 

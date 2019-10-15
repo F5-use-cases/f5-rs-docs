@@ -47,6 +47,52 @@ we will store them in the host-volume so they will persist any container restart
    mkdir -p /home/snops/host_volume/sshkeys
    ssh-keygen -f /home/snops/host_volume/sshkeys/id_rsa -t rsa -N ''     
 
+1.1.3 open jenkins 
+****************************************************
+
+on your laptop:
+
+- open http://localhost:10000 
+- :guilabel:`username:` ``snops`` , :guilabel:`password:` ``default``
+
+1.1.4 add credentials 
+****************************************************
+
+- You will now configure some paramaters as 'jenkins credentials', those paramaters are used when deploying the solutions. 
+- In jenkins, Navigate to 'credentilas' on the left side  
+
+   |jenkin_001|
+
+
+- Click on 'global' 
+
+   |jenkin_002|
+
+
+- Click on 'Add Credentials' on the left side 
+
+   |jenkin_003|
+
+
+- Change the 'kind' to 'secret text'
+
+   |jenkin_004|
+
+- Add the following credentials: 
+   - Secret: 'USERNAME' , ID: 'vault_username' 
+      - USERNAME: used as the username for instances that you launch. also used to tag instances. example johnw
+- Add the following credentials: 
+   - Secret: 'EMAIL' , ID: 'vault_email' 
+      - EMAIL: your EMAIL address 
+- Add the following credentials: 
+   - Secret: 'YOUR_SECRET_PASSWORD' , ID: 'vault_password' 
+      - USERNAME: used as the password for instances that you launch. needs to be a secure password.
+- Add the following credentials: 
+   - Secret: 'teams_builds_uri' , ID: 'teams_builds_uri' 
+      - USERNAME: uri used for teams
+
+   |jenkin_0041|
+
 1.2 Run the container startup script 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -70,8 +116,20 @@ List of available solutions:
 
    /solutions/*/*_index
 
+   |jenkin_001|
    
 
+.. |jenkin_001| image:: images/jenkin_001.PNG 
+   
+.. |jenkins_002| image:: images/jenkins_002.PNG 
+   
+.. |jenkins_003| image:: images/jenkins_003.PNG
+   
+.. |jenkins_004| image:: images/jenkins_004.PNG
+   
+.. |jenkins_0041| image:: images/jenkins_0041.PNG
+   
+.. |jenkins_005| image:: images/jenkins_005.PNG
 
    
 
