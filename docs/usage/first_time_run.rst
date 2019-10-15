@@ -80,7 +80,7 @@ on your laptop:
 
 - Add the following credentials: 
    - Secret: 'USERNAME' , ID: 'vault_username' 
-      - USERNAME: used as the username for instances that you launch. also used to tag instances. example johnw
+      - USERNAME: used as the username for instances that you launch. also used to tag instances. example johnw. please follow BIGIP password complexity guide  https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/big-ip-system-secure-password-policy-14-0-0/01.html 
 - Add the following credentials: 
    - Secret: 'EMAIL' , ID: 'vault_email' 
       - EMAIL: your EMAIL address 

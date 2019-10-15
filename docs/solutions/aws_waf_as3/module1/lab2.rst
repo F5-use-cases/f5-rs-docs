@@ -1,36 +1,75 @@
 Lab 2 (BIGIP):
 ----------------------------
  
-Task 2.1 - Open BIGIP and review configuration items 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Task 1.2 - Explore the app repo 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-2.1.1 AS3 package:
-**************************	
-- This lab uses AS3 as the service deceleration mechanism. 
-- To use AS3 we need to install an icontrolLX package
-- Navigate to :guilabel:`iApps` , :guilabel:`Package Management LX` and verify that the AS3 package is installed. 
+1.2.1 explore the infrastructure as code parameters file:
+*****************************************************************
 
-	|Bigip-005|
+1.2.2 view git branches in the application repo:
+****************************************************
 
-2.1.2 Result of the deceleration :
-**************************	
+on the container CLI type the following command to view git branches:
 
-- AS3 deploys a single deceleration into a single partition. 
-- Open the BIGIP and switch to the :guilabel:`rs_App1` partition 
-- open the :guilabel:`Virtual Servers` tab 
-- Look for the Virtual servers that were created by AS3 in the rs_App1 partition. 
-- You can view the actual deceleration (json file) that was sent to the bigip by:
-- Opening the :guilabel:`Console output` of the :guilabel:`B2 -rs-as3` job 
-- Search for the task :guilabel:`TASK [as3_declare : deploying AS3 service]`
-- The deceleration starts after :guilabel:`"body":` 
+.. code-block:: terminal
+
+   cd /home/snops/f5-rs-app10
+   git branch -a 
+
+1.2.3 explore files in the app repo:
+****************************************************
+
+.. code-block:: terminal
+
+   more iac_parameters.yaml
    
-	|Bigip-020|
+the infrastructure of the environments is deployed using ansible playbooks that were built by devops/netops. 
+those playbooks are being controlled by jenkins which takes the iac_parameters.yaml file and uses it as parameters for the playbooks. 
+
+- You can choose the AWS region you want to deploy in 
+- You can also control the WAF blocking state using this file 
+
+Task 1.3 - Update the AWS region for the DEV environment (Optional)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.3.1 Update git with your information:
+**************************
+Configure your information in git, this information is used by git (in this lab we use local git so it only has local meaning) 
+- on the RS-CONTAINER CLI 
+
+.. code-block:: terminal
+
+   git config --global user.email "you@example.com"
+   git config --global user.name "Your Name"
+   
+1.3.2 verify you edit the dev branch:
+************************** 
+- go to the container CLI
+- go to the application git folder (command below) 
+- check which branches are there and what is the active branch. (command below) 
+
+.. code-block:: terminal
+
+   cd /home/snops/f5-rs-app10
+   git branch
+   
+1.3.3 Update the infrastructure as code parameters file:
+************************** 
+ 
+edit the iac_parameters.yaml file to the desired AWS region. then add the file to git and commit.
+
+ - change line: aws_region: "us-west-2"
+ - to: aws_region: "your_region" 
+
+.. code-block:: terminal
+
+   vi iac_parameters.yaml 
+   git add iac_parameters.yaml
+   git commit -m "changed aws region"
    
 
 
 
-   
-.. |Bigip-005| image:: images/Bigip-005.PNG
-   
-.. |Bigip-020| image:: images/Bigip-020.PNG 
+
    

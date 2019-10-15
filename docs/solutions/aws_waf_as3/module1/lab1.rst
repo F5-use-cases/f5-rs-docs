@@ -12,15 +12,10 @@ on your laptop:
 - open http://localhost:10000 
 - :guilabel:`username:` ``snops`` , :guilabel:`password:` ``default``
 
-1.1.2 add credentials 
+1.1.2 Verify that credentials are configured
 ****************************************************
 
-- You will now configure some paramaters as 'jenkins credentials', those paramaters are used when deploying the solutions. 
-- In jenkins, Navigate to 'credentilas' on the left side  
-- Click on 'global' 
-- Click on 'Add Credentials' on the left side 
-- Change the 'kind' to 'secret text'
-- Add the following credentials: 
+- verify the following credentials exists: 
    - Secret: 'USERNAME' , ID: 'vault_username' 
       - USERNAME: used as the username for instances that you launch. also used to tag instances. example johnw
 - Add the following credentials: 
@@ -33,148 +28,126 @@ on your laptop:
    - Secret: 'teams_builds_uri' , ID: 'teams_builds_uri' 
       - USERNAME: uri used for teams
 
-Task 1.2 - Explore the app repo 
+ 
+Task 1.2 - Deploy  environment 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1.2.1 explore the infrastructure as code parameters file:
-*****************************************************************
-
-1.2.2 view git branches in the application repo:
-****************************************************
-
-on the container CLI type the following command to view git branches:
-
-.. code-block:: terminal
-
-   cd /home/snops/f5-rs-app10
-   git branch -a 
-
-1.2.3 explore files in the app repo:
-****************************************************
-
-.. code-block:: terminal
-
-   more iac_parameters.yaml
-   
-the infrastructure of the environments is deployed using ansible playbooks that were built by devops/netops. 
-those playbooks are being controlled by jenkins which takes the iac_parameters.yaml file and uses it as parameters for the playbooks. 
-
-- You can choose the AWS region you want to deploy in 
-- You can also control the WAF blocking state using this file 
-
-Task 1.3 - Update the AWS region for the DEV environment (Optional)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1.3.1 Update git with your information:
-**************************
-Configure your information in git, this information is used by git (in this lab we use local git so it only has local meaning) 
-- on the RS-CONTAINER CLI 
-
-.. code-block:: terminal
-
-   git config --global user.email "you@example.com"
-   git config --global user.name "Your Name"
-   
-1.3.2 verify you edit the dev branch:
-************************** 
-- go to the container CLI
-- go to the application git folder (command below) 
-- check which branches are there and what is the active branch. (command below) 
-
-.. code-block:: terminal
-
-   cd /home/snops/f5-rs-app10
-   git branch
-   
-1.3.3 Update the infrastructure as code parameters file:
-************************** 
- 
-edit the iac_parameters.yaml file to the desired AWS region. then add the file to git and commit.
-
- - change line: aws_region: "us-west-2"
- - to: aws_region: "your_region" 
-
-.. code-block:: terminal
-
-   vi iac_parameters.yaml 
-   git add iac_parameters.yaml
-   git commit -m "changed aws region"
-   
- 
-Task 1.4 - Deploy  environment 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1.3.1 Open Jenkins:
+1.2.1 Open Jenkins:
 **************************
 
 - LOCAlL: open http://localhost:10000 
 - :guilabel:`username:` ``snops`` , :guilabel:`password:` ``default``
 
 
-.. Note:: when you open jenkins you should see some jobs that have started running automatically, jobs that contain: 'Push a WAF policy',
-          this happens because jenkins monitors the repo and start the jobs.
-		  *you can cancel the jobs or let them fail*. 
-
-
-1.3.2 start the 'Pipeline':
+1.2.2 start the 'Deployment Pipeline':
 **************************		  
-in jenkins open the :guilabel:`AWS WAF - AS3 - App1` folder, the lab jobs are all in this folder 
-we will start by deploying a DEV environment, you will start a pipeline that creates a full environment in AWS. 
+in jenkins open the :guilabel:`AWAF - AWS, F5 AO toolchain (DO, AS3)` folder, the lab jobs are all in this folder 
+we will start by deploying a full environment in AWS.
 
 
-   |jenkins010|
+   |jenkinsjobs01|
    
-- click on the 'f5-rs-app1-dev' folder. here you can see all of the relevant jenkins jobs for the dev environment.
+- click on the 'Deploy_and_onboard' job. 
 
-   |jenkins020|
+   |jenkinsjobs02|
 
-- click on :guilabel:`aws waf stack 01` tab , that's the pipeline view for the same folder. 
+- click on :guilabel:`Build Now` button on the left side.
 
-   |jenkins030|
+   |jenkinsjobs03|
    
-- click on 'run' to start the dev environment pipeline. 
-
-   |jenkins040|
-
-
    
-Task 1.4 - Review the deployed environment 
+Task 1.3 - Review the deployed environment 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1.4.1 review jobs output:
+1.3.1 review jobs output:
 **************************	
 
-- you can review the output of each job while its running, click on the small :guilabel:`console output` icon as shown in the screenshot:
-- Jenkins doesn't automatically refresh, you can turn on auto refresh on the upper right corner
-
-   |jenkins050|
+- you can review the output of each job while its running, click on any of the green square and then click on  :guilabel:`logs` icon
    
-1.4.2 let the jobs run until the pipeline finishes:
+1.3.2 let the jobs run until the pipeline finishes:
 **************************	
    
-wait until all of the jobs have finished (turned green). 
+- wait until all of the jobs have finished (turned green). 
 
-   |jenkins055|
-
-1.4.3 open slack and extract BIG-IP and application info:
+1.3.3 open teams channel and extract BIG-IP info:
 **************************	
    
- - open slack - https://f5-rs.slack.com/messages/C9WLUB89F/ (if you don't already have an account you can set it up with an F5 email)
- - go to the :guilabel:`builds` channel. 
- - use the search box on the upper right corner and filter by your username (student#). 
- - jenkins will send to this channel the BIG-IP and the application address. 
+ - open the teams channel you've configured in the 'initial setup' section
+ - jenkins will send to this channel the BIG-IP address. 
+ - username is the 'vault_username' that was configured in jenkins credentials 
+ - password is the 'vault_password' that was configured in jenkins credentials 
 
 
-   |slack040|
-
-1.4.4 login to the BIG-IP:
+1.3.4 login to the BIG-IP:
 **************************	
 
 - use the address from the slack notification (look for your username in the :guilabel:`builds` channel)
-- username: :guilabel:`admin`
-- password: the personal password you defined in the global parameters file in the vault_dac_password parameter.
+- username is the 'vault_username' that was configured in jenkins credentials 
+- password is the 'vault_password' that was configured in jenkins credentials
 
 explore the objects that were created: 
+
+- AS3 and DO installed
+
+Task 1.4 - Deploy  environment 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.4.1 Open Jenkins:
+**************************
+
+- LOCAlL: open http://localhost:10000 
+- :guilabel:`username:` ``snops`` , :guilabel:`password:` ``default``
+
+
+1.4.2 start the 'service deployment Pipeline':
+**************************		  
+in jenkins open the :guilabel:`AWAF - AWS, F5 AO toolchain (DO, AS3)` folder, the lab jobs are all in this folder 
+   
+- click on the 'Deploy_service' job. 
+
+- click on :guilabel:`Build Now` button on the left side.
+
+   
+Task 1.5 - Review the deployed application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.5.1 review jobs output:
+**************************	
+
+- you can review the output of each job while its running, click on any of the green square and then click on  :guilabel:`logs` icon
+   
+1.5.2 let the jobs run until the pipeline finishes:
+**************************	
+   
+- wait until all of the jobs have finished (turned green). 
+
+1.5.3 open teams channel and extract BIG-IP info:
+**************************	
+   
+ - open the teams channel you've configured in the 'initial setup' section
+ - jenkins will send the application access information to this channel 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 1.4.5 Access the App:
 **************************	
