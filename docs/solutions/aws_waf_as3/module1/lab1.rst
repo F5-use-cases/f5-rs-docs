@@ -143,7 +143,7 @@ Task 1.5 - Review the deployed application
    
 .. |jenkinsjobs01| image:: images/jenkins_jobs01.PNG 
    
-.. |jenkinsjobs01| image:: images/jenkins_jobs02.PNG
+.. |jenkinsjobs02| image:: images/jenkins_jobs02.PNG
    
-.. |jenkinsjobs01| image:: images/jenkins_jobs03.PNG
+.. |jenkinsjobs03| image:: images/jenkins_jobs03.PNG
 
