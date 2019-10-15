@@ -61,22 +61,22 @@ on your laptop:
 - You will now configure some paramaters as 'jenkins credentials', those paramaters are used when deploying the solutions. 
 - In jenkins, Navigate to 'credentilas' on the left side  
 
-   |jenkin_001|
+	|jenkins_001|
 
 
 - Click on 'global' 
 
-   |jenkin_002|
+	|jenkins_002|
 
 
 - Click on 'Add Credentials' on the left side 
 
-   |jenkin_003|
+	|jenkins_003|
 
 
 - Change the 'kind' to 'secret text'
 
-   |jenkin_004|
+	|jenkins_004|
 
 - Add the following credentials: 
    - Secret: 'USERNAME' , ID: 'vault_username' 
@@ -88,10 +88,12 @@ on your laptop:
    - Secret: 'YOUR_SECRET_PASSWORD' , ID: 'vault_password' 
       - USERNAME: used as the password for instances that you launch. needs to be a secure password.
 - Add the following credentials: 
-   - Secret: 'teams_builds_uri' , ID: 'teams_builds_uri' 
-      - USERNAME: uri used for teams
+   - Secret: 'TEAMS_WEBHOOK' , ID: 'teams_builds_uri' 
+      - TEAMS_WEBHOOK: webhook from your teams channel. 
+      - open teams, click on the channel options (3 points next to the channel name) 
+      - configure an Incoming Webhook 
 
-   |jenkin_0041|
+	|jenkins_0041|
 
 1.2 Run the container startup script 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -118,7 +120,7 @@ List of available solutions:
 
    
 
-.. |jenkin_001| image:: images/jenkin_001.PNG 
+.. |jenkins_001| image:: images/jenkins_001.PNG 
    
 .. |jenkins_002| image:: images/jenkins_002.PNG 
    
