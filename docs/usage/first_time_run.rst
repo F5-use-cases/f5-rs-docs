@@ -116,7 +116,6 @@ List of available solutions:
 
    /solutions/*/*_index
 
-   |jenkin_001|
    
 
 .. |jenkin_001| image:: images/jenkin_001.PNG 
